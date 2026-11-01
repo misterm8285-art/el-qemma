@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منصة القمّة 2027 | ملخصات وامتحانات أولى وتانية وتالتة ثانوي</title>
+  <meta name="description" content="منصة القمّة التعليمية — ملخصات منهج 2027 وامتحانات شاملة لكل درس وباب لطلاب أولى وتانية وتالتة ثانوي علمي علوم وعلمي رياضة وأدبي. تأسيس م/ مهاب محمد." />
+  <meta name="keywords" content="منصة القمة, ملخصات ثانوية عامة 2027, امتحانات تالتة ثانوي, علمي رياضة, علمي علوم, أدبي, زيتونة, مهاب محمد" />
+  <meta name="author" content="م/ مهاب محمد" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="منصة القمّة 2027 | ملخصات وامتحانات الثانوية" />
+  <meta property="og:description" content="ملخص لكل درس + امتحان على الملخص + شامل على كل باب. أولى وتانية وتالتة ثانوي." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_EG" />
+  <meta name="google-site-verification" content="" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "منصة القمّة",
+    "alternateName": "El-Qemma 2027",
+    "description": "ملخصات وامتحانات الثانوية العامة منهج 2027",
+    "founder": { "@type": "Person", "name": "مهاب محمد" }
+  }
+  </script>
+</head>
+<body class="no-print">
+
+  <div id="gate" class="gate">
+    <div class="gate-box">
+      <div class="brand" style="justify-content:center;margin-bottom:8px;">
+        <div class="brand-logo">ق</div>
+        <div>
+          <div class="brand-title">منصة القمّة</div>
+          <div class="brand-sub">ملخص لكل درس • امتحان على كل ملخص • شامل على كل باب</div>
+        </div>
+      </div>
+      <h1 id="gate-title">اختار مرحلتك الدراسية</h1>
+      <p id="gate-sub" class="gate-sub">أولى وتانية وتالتة ثانوي — كل شعبة لوحدها</p>
+      <div id="gate-stages" class="gate-cards"></div>
+      <div id="gate-tracks" class="gate-cards" style="display:none;"></div>
+    </div>
+  </div>
+
+  <header class="navbar" id="app-header" style="display:none;">
+    <div class="nav-inner">
+      <div class="brand" onclick="goHome()">
+        <div class="brand-logo">ق</div>
+        <div>
+          <div class="brand-title">منصة القمّة</div>
+          <div class="brand-sub" id="header-context">الثانوية العامة</div>
+        </div>
+      </div>
+      <nav class="nav-tabs">
+        <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">📚 المواد والملخصات</button>
+        <button class="nav-btn" data-tab="exams" onclick="switchTab('exams')">🔥 الامتحانات</button>
+        <button class="nav-btn" data-tab="leaderboard" onclick="switchTab('leaderboard')">🏆 سجل الأبطال</button>
+        <button class="nav-btn" data-tab="plans" onclick="switchTab('plans')">💳 الاشتراك</button>
+        <button class="nav-btn" data-tab="founder" onclick="switchTab('founder')">💻 استوديو المؤسس</button>
+      </nav>
+      <div class="header-tools">
+        <button class="btn-secondary" style="padding:6px 12px;font-size:13px;" onclick="openGate(true)">تغيير المرحلة / الشعبة</button>
+        <button id="sub-chip" class="sub-chip" onclick="switchTab('plans')">غير مشترك</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrap" id="app-main" style="display:none;">
+    <section id="tab-home">
+      <div class="hero">
+        <div>
+          <div class="hero-badge" id="hero-badge">مرحلتك</div>
+          <h1>ملخص لكل درس، امتحان على الملخص، وبعدين <span>شامل على الباب</span></h1>
+          <p>اختار المادة → الباب → افتح الزيتونة وامتحن عليها. الطباعة وتحميل PDF للمشتركين فقط.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="switchTab('exams')">الامتحانات الجاهزة ⚡</button>
+            <button class="btn-secondary" onclick="switchTab('plans')">اشترك للطباعة 🖨️</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card"><div class="stat-num" id="stat-subjects">0</div><div class="stat-label">مواد شعبتك</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-ready">0</div><div class="stat-label">ملخص جاهز</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-exams">0</div><div class="stat-label">امتحان شغّال</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-attempts">0</div><div class="stat-label">محاولة</div></div>
+        </div>
+      </div>
+      <div id="crumb" class="crumb"></div>
+      <div id="home-view"></div>
+    </section>
+
+    <section id="tab-exams" style="display:none;">
+      <div id="exams-list-view">
+        <div class="filter-bar">
+          <div class="section-title">امتحانات شعبتك</div>
+        </div>
+        <div id="exams-grid" class="cards-grid"></div>
+      </div>
+      <div id="exam-active-view" style="display:none;"></div>
+      <div id="exam-result-view" style="display:none;"></div>
+    </section>
+
+    <section id="tab-leaderboard" style="display:none;">
+      <div class="filter-bar"><div class="section-title">🏆 سجل المحاولات</div></div>
+      <div id="attempts-container"></div>
+    </section>
+
+    <section id="tab-plans" style="display:none;">
+      <div class="filter-bar"><div class="section-title">💳 الاشتراك — الطباعة والتحميل للمشتركين فقط</div></div>
+      <div class="admin-grid">
+        <div class="item-card">
+          <div class="card-top"><span class="tag">تالتة ثانوي</span></div>
+          <h3>500 جنيه طول السنة</h3>
+          <p>تفتح طباعة كل الملخصات وتحميل PDF لكل مواد تالتة ثانوي طول العام الدراسي.</p>
+          <ul class="plan-list">
+            <li>قراءة الملخصات والامتحانات مجاناً لكل الطلاب</li>
+            <li>الطباعة + PDF بعد الاشتراك فقط</li>
+            <li>ساري لتالتة ثانوي حتى نهاية السنة</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;" onclick="startSubscribe('g3')">اشترك تالتة ثانوي — 500 ج</button>
+        </div>
+        <div class="item-card">
+          <div class="card-top"><span class="tag">أولى / تانية ثانوي</span></div>
+          <h3>1000 جنيه طول السنة</h3>
+          <p>تفتح طباعة وتحميل كل ملخصات أولى وتانية ثانوي طول السنة.</p>
+          <ul class="plan-list">
+            <li>قراءة وحل الامتحانات مجاناً</li>
+            <li>الطباعة + PDF بعد الاشتراك</li>
+            <li>ساري للمرحلة اللي هتختارها</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;" onclick="startSubscribe('g1')">اشترك أولى/تانية — 1000 ج</button>
+        </div>
+      </div>
+      <div id="pay-box" class="pay-box" style="display:none;">
+        <h3 id="pay-title">إتمام الاشتراك</h3>
+        <p>حوّل المبلغ على فودافون كاش أو إنستاباي، وبعد التحويل اكتب كود التفعيل اللي هتوصّلهولك الإدارة. للتجربة دلوقتي استخدم كود المؤسس.</p>
+        <div class="form-group">
+          <label>كود التفعيل</label>
+          <input id="pay-code" class="form-control" placeholder="مثال: QEMMA2027" />
+        </div>
+        <button class="btn-primary" onclick="activateCode()">تفعيل الاشتراك</button>
+        <div id="pay-msg" style="margin-top:10px;font-weight:800;"></div>
+      </div>
+    </section>
+
+    <section id="tab-founder" style="display:none;">
+      <div class="filter-bar">
+        <div class="section-title">💻 استوديو المؤسس — م/ مهاب محمد</div>
+      </div>
+      <div class="admin-grid">
+        <div class="item-card">
+          <div class="card-top"><span class="tag">إضافة سؤال</span></div>
+          <h3>أضف سؤالاً لأي امتحان</h3>
+          <p>السؤال يتحفظ فوراً ويظهر للطلاب. الاختيار الأول هو الإجابة الصحيحة، والترتيب بيتلخبط في الامتحان.</p>
+          <div class="form-group"><label>الامتحان</label><select id="cq-exam" class="form-control"></select></div>
+          <div class="form-group"><label>نص السؤال</label><textarea id="cq-text" rows="2" class="form-control"></textarea></div>
+          <div class="form-group"><label>الإجابة الصحيحة</label><input id="cq-opt0" class="form-control" /></div>
+          <div class="form-group">
+            <label>اختيارات خاطئة</label>
+            <input id="cq-opt1" class="form-control" style="margin-bottom:6px;" />
+            <input id="cq-opt2" class="form-control" style="margin-bottom:6px;" />
+            <input id="cq-opt3" class="form-control" />
+          </div>
+          <div class="form-group"><label>شرح الحل</label><textarea id="cq-exp" rows="2" class="form-control"></textarea></div>
+          <button class="btn-primary" style="width:100%;" onclick="addCustomQuestion()">حفظ السؤال</button>
+          <div id="cq-msg" style="margin-top:10px;font-weight:700;"></div>
+        </div>
+        <div class="item-card">
+          <div class="card-top"><span class="tag" style="background:rgba(251,191,36,0.16);color:#fbbf24;">خطة السنة</span></div>
+          <h3>المنهج بيتقفّل مع مذاكرتك</h3>
+          <p>خريطة كل المراحل والمواد والأبواب موجودة من دلوقتي. أي درس بتذاكره بينزل زيتونة + امتحان على الملخص + شامل على الباب. من غير ما تضيّع وقت البرمجة.</p>
+          <p>بعد يونيو: الموقع مجاني للقراءة، والطباعة باشتراك 500 لتالتة و 1000 لأولى وتانية.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="summary-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <strong id="modal-title" style="color:#fbbf24;">عرض الملخص</strong>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button id="btn-print" class="btn-secondary" style="padding:5px 12px;font-size:13px;" onclick="tryPrint()">🖨️ طباعة</button>
+          <a id="modal-newtab" href="#" target="_blank" class="btn-secondary" style="padding:5px 12px;font-size:13px;">فتح كامل ↗</a>
+          <button onclick="closeModal()" class="btn-primary" style="padding:5px 14px;font-size:13px;">إغلاق ✕</button>
+        </div>
+      </div>
+      <div class="read-only-bar" id="readonly-bar">نسخة قراءة فقط — الطباعة وتحميل PDF بعد الاشتراك</div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="footer" id="app-footer" style="display:none;">
+    منصة القمّة — تأسيس وتطوير: <strong style="color:#fbbf24;">م/ مهاب محمد</strong>
+  </footer>
+
+  <script src="exams-data.js"></script>
+  <script src="curriculum.js"></script>
+  <script src="content-bank.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
