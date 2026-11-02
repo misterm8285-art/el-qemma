@@ -13,7 +13,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_EG" />
   <meta name="google-site-verification" content="" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20271102d" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -133,9 +133,19 @@
           <button class="btn-primary" style="width:100%;" onclick="startSubscribe('g1')">اشترك أولى/تانية — 1000 ج</button>
         </div>
       </div>
-      <div id="pay-box" class="pay-box" style="display:none;">
+      <div class="pay-number-card">
+        <div class="pay-label">حوّل الاشتراك فودافون كاش أو إنستاباي على الرقم ده</div>
+        <a class="pay-number" href="tel:01556766145" id="pay-number">01556766145</a>
+        <div class="pay-actions">
+          <button class="btn-primary" type="button" onclick="copyPayNumber()">نسخ الرقم</button>
+          <a class="btn-secondary" href="tel:01556766145">اتصال</a>
+        </div>
+        <p class="pay-hint">تالتة ثانوي <strong>500 ج</strong> / أولى وتانية <strong>1000 ج</strong> طول السنة. بعد التحويل ابعت سكرين للإدارة وهتوصّلك كود التفعيل. للتجربة استخدم كود المؤسس.</p>
+        <div id="pay-copy-msg" class="pay-copy-msg"></div>
+      </div>
+      <div id="pay-box" class="pay-box">
         <h3 id="pay-title">إتمام الاشتراك</h3>
-        <p>حوّل المبلغ على فودافون كاش أو إنستاباي، وبعد التحويل اكتب كود التفعيل اللي هتوصّلهولك الإدارة. للتجربة دلوقتي استخدم كود المؤسس.</p>
+        <p>بعد التحويل على <strong>01556766145</strong> اكتب كود التفعيل. للتجربة دلوقتي: <strong>QEMMA2027</strong></p>
         <div class="form-group">
           <label>كود التفعيل</label>
           <input id="pay-code" class="form-control" placeholder="مثال: QEMMA2027" />
@@ -196,9 +206,9 @@
     منصة القمّة — تأسيس وتطوير: <strong style="color:#fbbf24;">م/ مهاب محمد</strong>
   </footer>
 
-  <script src="exams-data.js?v=20271102c"></script>
-  <script src="curriculum.js?v=20271102c"></script>
-  <script src="content-bank.js?v=20271102c"></script>
-  <script src="app.js?v=20271102c"></script>
+  <script src="exams-data.js?v=20271102d"></script>
+  <script src="curriculum.js?v=20271102d"></script>
+  <script src="content-bank.js?v=20271102d"></script>
+  <script src="app.js?v=20271102d"></script>
 </body>
 </html>
