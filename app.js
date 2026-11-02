@@ -1,6 +1,17 @@
 (function () {
   const LETTERS = ["أ", "ب", "ج", "د"];
-  const PROFILE_KEY = "qemma_profile_v2";
+  const PROFILE_KEY = "qemma_profile_v3";
+  const PASS_MARK = 50;
+  const SYSTEMS = {
+    thanaweya: { id: "thanaweya", label: "ثانوية عامة (عام)" },
+    baccalaureate: { id: "baccalaureate", label: "بكالوريا مصرية" }
+  };
+  const PATHS = {
+    medicine: { id: "medicine", label: "طب وعلوم الحياة", icon: "🧬" },
+    engineering: { id: "engineering", label: "هندسة وعلوم الحاسب", icon: "💻" },
+    business: { id: "business", label: "الأعمال", icon: "💼" },
+    arts: { id: "arts", label: "الآداب والفنون", icon: "📜" }
+  };
   const SUB_KEY = "qemma_sub_v2";
 
   let profile = loadProfile();
@@ -142,9 +153,21 @@
   }
   function subjectsForProfile() {
     if (!profile) return [];
-    return allSubjects().filter(
-      s => s.stage === profile.stage && s.tracks.indexOf(profile.track) !== -1
-    );
+    return allSubjects().filter(s => {
+      if (s.stage !== profile.stage) return false;
+      const sys = s.system || "thanaweya";
+      if (profile.stage === "g3") {
+        return (s.tracks || []).indexOf(profile.track) !== -1;
+      }
+      if (profile.system === "baccalaureate") {
+        if (sys !== "baccalaureate" && sys !== "both") return false;
+        if (s.paths && s.paths.length && profile.path && s.paths.indexOf(profile.path) === -1) return false;
+        return true;
+      }
+      if (sys === "baccalaureate") return false;
+      if (profile.stage === "g1") return true;
+      return (s.tracks || []).indexOf(profile.track) !== -1;
+    });
   }
   function getMergedQuestions(exam) {
     const extras = (serverState.customQuestions || []).filter(q => q.examId === exam.id);
@@ -166,7 +189,15 @@
     return window.QEMMA_CATALOG.stages[profile.stage].label;
   }
   function trackLabel() {
-    return window.QEMMA_CATALOG.tracks[profile.track].label;
+    if (profile.system === "baccalaureate" && profile.path && PATHS[profile.path]) {
+      return "بكالوريا • " + PATHS[profile.path].label;
+    }
+    if (profile.system === "thanaweya") {
+      const t = window.QEMMA_CATALOG.tracks[profile.track];
+      return "عام" + (t ? " • " + t.label : "");
+    }
+    const t = window.QEMMA_CATALOG.tracks[profile.track];
+    return t ? t.label : "";
   }
   function priceFor(stage) {
     return window.QEMMA_CATALOG.stages[stage].price;
@@ -174,7 +205,7 @@
 
   window.openGate = function (force) {
     const gate = document.getElementById("gate");
-    if (!force && profile && profile.stage && profile.track) {
+    if (!force && profileReady(profile)) {
       gate.style.display = "none";
       bootApp();
       return;
@@ -184,10 +215,9 @@
     document.getElementById("app-main").style.display = "none";
     document.getElementById("app-footer").style.display = "none";
     document.getElementById("gate-title").textContent = "اختار مرحلتك الدراسية";
-    document.getElementById("gate-sub").textContent = "أولى وتانية وتالتة ثانوي — وبعدين اختار شعبتك";
+    document.getElementById("gate-sub").textContent = "أولى وتانية: عام أو بكالوريا — تالتة: شعبة الثانوية";
+    hideGatePanels();
     const stages = document.getElementById("gate-stages");
-    const tracks = document.getElementById("gate-tracks");
-    tracks.style.display = "none";
     stages.style.display = "grid";
     stages.innerHTML = Object.values(window.QEMMA_CATALOG.stages)
       .map(
@@ -200,12 +230,89 @@
       .join("");
   };
 
+  function hideGatePanels() {
+    ["gate-stages", "gate-system", "gate-paths", "gate-tracks"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    });
+  }
+  function profileReady(p) {
+    if (!p || !p.stage) return false;
+    if (p.stage === "g3") return !!p.track;
+    if (!p.system) return false;
+    if (p.system === "baccalaureate") return !!p.path;
+    if (p.stage === "g1") return true;
+    return !!p.track;
+  }
+  function finishGate() {
+    profile.studentName = profile.studentName || "مهاب محمد";
+    if (!profile.track) profile.track = "science";
+    saveProfile();
+    document.getElementById("gate").style.display = "none";
+    selectedSubjectId = null;
+    bootApp();
+  }
+
   window.pickStage = function (stageId) {
     profile = profile || {};
     profile.stage = stageId;
-    document.getElementById("gate-title").textContent = "اختار شعبتك";
-    document.getElementById("gate-sub").textContent = window.QEMMA_CATALOG.stages[stageId].label;
-    document.getElementById("gate-stages").style.display = "none";
+    profile.system = null;
+    profile.path = null;
+    profile.track = null;
+    hideGatePanels();
+    if (stageId === "g3") {
+      showTracks("اختار شعبتك");
+      return;
+    }
+    document.getElementById("gate-title").textContent = "اختار النظام الدراسي";
+    document.getElementById("gate-sub").textContent = window.QEMMA_CATALOG.stages[stageId].label + " — عام ولا بكالوريا؟";
+    const box = document.getElementById("gate-system");
+    box.style.display = "grid";
+    box.innerHTML = `
+      <button class="gate-card" onclick="pickSystem('thanaweya')">
+        <strong>ثانوية عامة (عام)</strong>
+        <span>علمي علوم / علمي رياضة / أدبي</span>
+      </button>
+      <button class="gate-card" onclick="pickSystem('baccalaureate')">
+        <strong>بكالوريا مصرية</strong>
+        <span>طب • هندسة وحاسبات • أعمال • آداب</span>
+      </button>`;
+  };
+
+  window.pickSystem = function (sys) {
+    profile.system = sys;
+    hideGatePanels();
+    if (sys === "baccalaureate") {
+      document.getElementById("gate-title").textContent = "اختار مسارك";
+      document.getElementById("gate-sub").textContent = "البكالوريا المصرية 2027";
+      const box = document.getElementById("gate-paths");
+      box.style.display = "grid";
+      box.innerHTML = Object.values(PATHS)
+        .map(
+          p => `
+        <button class="gate-card" onclick="pickPath('${p.id}')">
+          <strong>${p.icon} ${p.label}</strong>
+          <span>منهج المسار حسب تعديلات الوزارة</span>
+        </button>`
+        )
+        .join("");
+      return;
+    }
+    if (profile.stage === "g1") {
+      finishGate();
+      return;
+    }
+    showTracks("اختار شعبتك (ثانوية عامة)");
+  };
+
+  window.pickPath = function (pathId) {
+    profile.path = pathId;
+    finishGate();
+  };
+
+  function showTracks(title) {
+    document.getElementById("gate-title").textContent = title;
+    document.getElementById("gate-sub").textContent = window.QEMMA_CATALOG.stages[profile.stage].label;
     const tracks = document.getElementById("gate-tracks");
     tracks.style.display = "grid";
     tracks.innerHTML = Object.values(window.QEMMA_CATALOG.tracks)
@@ -217,15 +324,11 @@
       </button>`
       )
       .join("");
-  };
+  }
 
   window.pickTrack = function (trackId) {
     profile.track = trackId;
-    profile.studentName = profile.studentName || "مهاب محمد";
-    saveProfile();
-    document.getElementById("gate").style.display = "none";
-    selectedSubjectId = null;
-    bootApp();
+    finishGate();
   };
 
   function bootApp() {
@@ -532,6 +635,9 @@
   }
 
   function shuffleOptions(question) {
+    if (!question || question.type === "essay" || !question.options || !question.options.length) {
+      return Object.assign({}, question, { type: question && question.type === "essay" ? "essay" : "mcq" });
+    }
     const indexed = question.options.map((opt, idx) => ({
       text: opt,
       isCorrect: idx === question.correct
@@ -552,7 +658,9 @@
     const rawExam = getExam(examId);
     if (!rawExam) return;
     window.switchTab("exams");
-    const questions = getMergedQuestions(rawExam).map(shuffleOptions);
+    const questions = getMergedQuestions(rawExam).map(q =>
+      q && q.type === "essay" ? Object.assign({}, q, { type: "essay", options: [] }) : shuffleOptions(q)
+    );
     if (activeExam && activeExam.timerId) clearInterval(activeExam.timerId);
     activeExam = {
       id: rawExam.id,
@@ -587,7 +695,7 @@
     const q = activeExam.questions[activeExam.currentIndex];
     const m = String(Math.floor(activeExam.remainingSec / 60)).padStart(2, "0");
     const s = String(activeExam.remainingSec % 60).padStart(2, "0");
-    const answeredCount = activeExam.answers.filter(a => a !== null).length;
+    const answeredCount = activeExam.answers.filter(a => a !== null && a !== "").length;
     document.getElementById("exam-active-view").innerHTML = `
       <div class="exam-shell">
         <div class="exam-topbar">
@@ -607,7 +715,7 @@
             .map(
               (_, idx) =>
                 `<button class="q-dot ${idx === activeExam.currentIndex ? "current" : ""} ${
-                  activeExam.answers[idx] !== null ? "answered" : ""
+                  activeExam.answers[idx] !== null && activeExam.answers[idx] !== "" ? "answered" : ""
                 }" onclick="jumpQuestion(${idx})">${idx + 1}</button>`
             )
             .join("")}
@@ -615,8 +723,14 @@
         <div class="q-box">
           <div style="color:var(--gold);font-weight:800;font-size:14px;margin-bottom:6px;">السؤال (${activeExam.currentIndex + 1}) من (${activeExam.questions.length})</div>
           <div class="q-text">${escapeHtml(q.text)}</div>
-          <div class="options-list">
-            ${q.options
+          ${
+            q.type === "essay"
+              ? `<div style="color:#fbbf24;font-size:13px;font-weight:800;margin-bottom:8px;">سؤال مقالي — اكتب بإيدك</div>
+                 <textarea class="form-control" rows="5" placeholder="اكتب الإجابة هنا..." oninput="saveEssay(this.value)">${escapeHtml(
+                   activeExam.answers[activeExam.currentIndex] || ""
+                 )}</textarea>`
+              : `<div class="options-list">
+            ${(q.options || [])
               .map(
                 (opt, oIdx) => `
               <button class="opt-btn ${activeExam.answers[activeExam.currentIndex] === oIdx ? "selected" : ""}" onclick="selectOption(${oIdx})">
@@ -625,7 +739,8 @@
               </button>`
               )
               .join("")}
-          </div>
+          </div>`
+          }
         </div>
         <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
           <button class="btn-secondary" ${activeExam.currentIndex === 0 ? "disabled style='opacity:0.4'" : ""} onclick="jumpQuestion(${activeExam.currentIndex - 1})">→ السابق</button>
@@ -653,6 +768,22 @@
     activeExam.answers[activeExam.currentIndex] = oIdx;
     renderActiveExam();
   };
+  window.saveEssay = function (val) {
+    if (!activeExam) return;
+    activeExam.answers[activeExam.currentIndex] = val;
+  };
+
+  function gradeQuestion(q, ans) {
+    if (q.type === "essay") {
+      const text = String(ans || "");
+      if (text.trim().length < 12) return 0;
+      const keys = q.keywords || [];
+      if (!keys.length) return 1;
+      const hit = keys.filter(k => k && text.indexOf(k) !== -1).length;
+      return hit > 0 ? 1 : 0.5;
+    }
+    return ans === q.correct ? 1 : 0;
+  }
   window.jumpQuestion = function (idx) {
     if (!activeExam || idx < 0 || idx >= activeExam.questions.length) return;
     activeExam.currentIndex = idx;
@@ -666,7 +797,7 @@
 
   window.submitExam = async function (autoTimeUp) {
     if (!activeExam) return;
-    const unanswered = activeExam.answers.filter(a => a === null).length;
+    const unanswered = activeExam.answers.filter(a => a === null || a === "").length;
     if (!autoTimeUp && unanswered > 0) {
       if (!confirm(`باقي ${unanswered} سؤال من غير إجابة. تسليم؟`)) return;
     }
@@ -675,10 +806,11 @@
     activeExam = null;
     let score = 0;
     finished.questions.forEach((q, idx) => {
-      if (finished.answers[idx] === q.correct) score++;
+      score += gradeQuestion(q, finished.answers[idx]);
     });
     const total = finished.questions.length;
     const percent = Math.round((score / total) * 100);
+    const passed = percent >= PASS_MARK;
     const durationSec = Math.max(1, finished.totalSec - finished.remainingSec);
     try {
       await apiPost("api/attempts", {
@@ -700,7 +832,7 @@
     resView.innerHTML = `
       <div class="result-card">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-          <span class="pass-badge">${percent >= 50 ? "ناجح" : "محتاج مراجعة"}</span>
+          <span class="pass-badge">${passed ? "ناجح — 50% فأكثر" : "راسب — أقل من 50%"}</span>
           <span style="color:var(--text-muted);font-size:14px;">${escapeHtml(finished.studentName)} • ${minsUsed} دقيقة</span>
         </div>
         <h2 style="margin-top:12px;font-size:24px;">${escapeHtml(finished.title)}</h2>
@@ -718,12 +850,21 @@
       ${finished.questions
         .map((q, idx) => {
           const userAns = finished.answers[idx];
-          const isRight = userAns === q.correct;
+          const got = gradeQuestion(q, userAns);
+          const isRight = got >= 1;
+          if (q.type === "essay") {
+            return `
+          <div class="review-item ${isRight ? "" : "wrong"}">
+            <div style="font-weight:800;margin-bottom:8px;">${idx + 1}) [مقالي] ${escapeHtml(q.text)}</div>
+            <div style="font-size:14.5px;">إجابتك: <b>${escapeHtml(userAns || "بدون إجابة")}</b></div>
+            <div class="explain-box"><b>الإجابة النموذجية:</b> ${escapeHtml(q.model || q.explanation || "")}</div>
+          </div>`;
+          }
           return `
           <div class="review-item ${isRight ? "" : "wrong"}">
             <div style="font-weight:800;margin-bottom:8px;">${idx + 1}) ${escapeHtml(q.text)}</div>
             <div style="font-size:14.5px;">إجابتك: <b style="color:${isRight ? "#34d399" : "#f87171"};">${
-              userAns !== null ? `(${LETTERS[userAns]}) ${escapeHtml(q.options[userAns])}` : "بدون إجابة"
+              userAns !== null && userAns !== "" ? `(${LETTERS[userAns]}) ${escapeHtml((q.options || [])[userAns] || "")}` : "بدون إجابة"
             }</b> ${isRight ? "✓" : "✗"}</div>
             ${
               !isRight
