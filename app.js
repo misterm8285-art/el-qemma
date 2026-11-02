@@ -261,7 +261,7 @@
     profile.track = null;
     hideGatePanels();
     if (stageId === "g3") {
-      showTracks("اختار شعبتك");
+      showTracks("اختار شعبتك — تالتة ثانوي");
       return;
     }
     document.getElementById("gate-title").textContent = "اختار النظام الدراسي";
