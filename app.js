@@ -156,9 +156,6 @@
     return allSubjects().filter(s => {
       if (s.stage !== profile.stage) return false;
       const sys = s.system || "thanaweya";
-      if (profile.stage === "g3") {
-        return (s.tracks || []).indexOf(profile.track) !== -1;
-      }
       if (profile.system === "baccalaureate") {
         if (sys !== "baccalaureate" && sys !== "both") return false;
         if (s.paths && s.paths.length && profile.path && s.paths.indexOf(profile.path) === -1) return false;
@@ -237,9 +234,7 @@
     });
   }
   function profileReady(p) {
-    if (!p || !p.stage) return false;
-    if (p.stage === "g3") return !!p.track;
-    if (!p.system) return false;
+    if (!p || !p.stage || !p.system) return false;
     if (p.system === "baccalaureate") return !!p.path;
     if (p.stage === "g1") return true;
     return !!p.track;
@@ -260,10 +255,6 @@
     profile.path = null;
     profile.track = null;
     hideGatePanels();
-    if (stageId === "g3") {
-      showTracks("اختار شعبتك — تالتة ثانوي");
-      return;
-    }
     document.getElementById("gate-title").textContent = "اختار النظام الدراسي";
     document.getElementById("gate-sub").textContent = window.QEMMA_CATALOG.stages[stageId].label + " — عام ولا بكالوريا؟";
     const box = document.getElementById("gate-system");
@@ -302,7 +293,7 @@
       finishGate();
       return;
     }
-    showTracks("اختار شعبتك (ثانوية عامة)");
+    showTracks(profile.stage === "g3" ? "اختار شعبتك — ثانوية عامة" : "اختار شعبتك (ثانوية عامة)");
   };
 
   window.pickPath = function (pathId) {
