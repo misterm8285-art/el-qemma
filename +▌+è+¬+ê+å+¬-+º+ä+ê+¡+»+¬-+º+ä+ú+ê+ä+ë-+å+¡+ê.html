@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>زيتونة الوحدة الأولى نحو - الصف الثالث الثانوي</title>
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --primary: #0f4c5c;
+    --primary-light: #e6f2f5;
+    --accent: #e36414;
+    --accent-light: #fff3eb;
+    --success: #1b7f5a;
+    --success-light: #e8f6f0;
+    --danger: #b91c1c;
+    --danger-light: #fef2f2;
+    --purple: #5b21b6;
+    --purple-light: #f3e8ff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 14px rgba(15, 76, 92, 0.07);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, 'Geeza Pro', 'Traditional Arabic', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    padding-bottom: 50px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0f4c5c 0%, #1a6b7c 100%);
+    color: #fff;
+    padding: 28px 20px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .header h1 {
+    font-size: 1.75rem;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .header p {
+    font-size: 0.98rem;
+    opacity: 0.92;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .controls {
+    max-width: 960px;
+    margin: -18px auto 20px;
+    padding: 0 16px;
+  }
+
+  .controls-box {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.96rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input:focus {
+    border-color: var(--primary);
+  }
+
+  .print-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .print-btn:hover {
+    opacity: 0.9;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #f1f5f9;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .tab-btn:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+
+  .tab-btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.28rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .section-num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .sub-box {
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    background: #fafbfc;
+  }
+
+  .sub-box.qat3 {
+    background: var(--danger-light);
+    border-color: #fecaca;
+  }
+
+  .sub-box.wasl {
+    background: var(--success-light);
+    border-color: #bbf7d0;
+  }
+
+  .sub-box h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sub-box.qat3 h3 { color: var(--danger); }
+  .sub-box.wasl h3 { color: var(--success); }
+
+  ul.clean-list {
+    list-style: none;
+    padding-right: 0;
+  }
+
+  ul.clean-list li {
+    position: relative;
+    padding-right: 18px;
+    margin-bottom: 7px;
+    font-size: 0.97rem;
+  }
+
+  ul.clean-list li::before {
+    content: "•";
+    position: absolute;
+    right: 2px;
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .b-qat3 { background: #fee2e2; color: #991b1b; }
+  .b-wasl { background: #dcfce7; color: #166534; }
+  .b-info { background: var(--primary-light); color: var(--primary); }
+  .b-purple { background: var(--purple-light); color: var(--purple); }
+
+  .trap-box {
+    background: var(--accent-light);
+    border-right: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+
+  .trap-title {
+    color: #c2410c;
+    font-weight: 700;
+    font-size: 0.96rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .example {
+    background: #f1f5f9;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  table.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  table.comp-table th,
+  table.comp-table td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: right;
+  }
+
+  table.comp-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  table.comp-table tr:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  .ladder {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--primary-light);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+
+  .ladder-step {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    padding: 5px 12px;
+    border-radius: 8px;
+    color: var(--primary);
+  }
+
+  .arrow {
+    color: var(--accent);
+    font-weight: 900;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .empty-msg {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    background: #fff;
+    border-radius: 14px;
+    display: none;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .controls { display: none; }
+    .header { background: #0f4c5c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16px; }
+    .section-card { box-shadow: none; break-inside: avoid; margin-bottom: 14px; border: 1px solid #cbd5e1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">الصف الثالث الثانوي • النظام الجديد</div>
+  <h1>زيتونة الوحدة الأولى في النحو (النطق والإملاء)</h1>
+  <p>ملخص الشفرات ومفاتيح الحل السريع وأشهر أفخاخ الجروبات والامتحانات في مكان واحد</p>
+</div>
+
+<div class="controls">
+  <div class="controls-box">
+    <div class="search-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="ابحث بسرعة بكلمة من السؤال (مثلاً: يدعون، علماؤنا، عمرو، إلا، ثَمَّ، ابن...)">
+      <button class="print-btn" onclick="window.print()">طباعة / حفظ PDF</button>
+    </div>
+    <div class="tabs" id="tabsContainer">
+      <button class="tab-btn active" data-cat="all">كل الوحدة</button>
+      <button class="tab-btn" data-cat="wasl">١. القطع والوصل</button>
+      <button class="tab-btn" data-cat="hamza">٢. الهمزات والإعراب</button>
+      <button class="tab-btn" data-cat="waw">٣. الواو وعَمرو</button>
+      <button class="tab-btn" data-cat="similar">٤. أَلَّا وإِلَّا وثَمَّ</button>
+      <button class="tab-btn" data-cat="extras">٥. الشمسية والتاء وابن</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="cardsContainer">
+
+  <!-- ١. همزة القطع وألف الوصل -->
+  <div class="section-card" data-cat="wasl">
+    <h2 class="section-title"><span class="section-num">١</span> همزة القطع (أَ / أُ / إِ) وألف الوصل (ا)</h2>
+
+    <div class="grid-2">
+      <div class="sub-box qat3">
+        <h3>عيلة همزة القَطْع (تُرسَم همزتها)</h3>
+        <ul class="clean-list">
+          <li><strong>كل الحروف:</strong> <span class="example">إنَّ، أنْ، إلى، أو، إلَّا</span> (ما عدا الـ).</li>
+          <li><strong>كل الأسماء:</strong> <span class="example">أحمد، أسد، أنا، أبناء، أسماء</span> (ما عدا الـ ٩).</li>
+          <li><strong>أي مضارع للمتكلم:</strong> <span class="example">أَكتُبُ، أَنتَصِرُ، أَستَخرِجُ</span>.</li>
+          <li><strong>الرباعي كله (٤):</strong> ماضٍ وأمر ومصدر <span class="example">أَكْرَمَ - أَكْرِمْ - إِكرام</span> / <span class="example">أَعْطَى - أَعْطِ - إِعطاء</span> / <span class="example">أَحَبَّ (شدة!)</span>.</li>
+          <li><strong>ماضي الثلاثي ومصدره:</strong> <span class="example">أَخَذَ - أَخْذ</span> / <span class="example">أَمَرَ - أَمْر</span>.</li>
+        </ul>
+      </div>
+
+      <div class="sub-box wasl">
+        <h3>عيلة ألف الوَصْل (بدون همزة)</h3>
+        <ul class="clean-list">
+          <li><strong>حرف واحد فقط:</strong> <span class="example">الـ</span> التعريف (الكتاب، الرجال).</li>
+          <li><strong>٩ أسماء سماعية فقط:</strong> <span class="example">ابن، ابنة، اثنان، اثنتان، امرؤ، امرأة، ايمُ الله، ايمنُ الله، اسم</span> (ومثناها وصل، أما جمعها <span class="example">أبناء / أسماء</span> فقطع!).</li>
+          <li><strong>أمر الثلاثي فقط:</strong> <span class="example">اكتُبْ، افهَمْ، ادْعُ، اسْعَ</span>.</li>
+          <li><strong>الخماسي كله (٥):</strong> <span class="example">انتَصَرَ - انتَصِرْ - انتِصار</span>.</li>
+          <li><strong>السداسي كله (٦):</strong> <span class="example">استَخرَجَ - استَخرِجْ - استِخراج</span> / <span class="example">اطمَأَنَّ - اطمِئنان</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trap-box">
+      <span class="trap-title">أخطر أفخاخ الجروبات في القطع والوصل:</span>
+      <ul class="clean-list">
+        <li><strong>فخ الشَّدَّة في الأمر القصير:</strong> كلمة <span class="example">اتَّقِ / اتَّحِدْ / اتَّصِفْ</span> مش ثلاثي! رجّع للماضي <span class="example">(اتَّقَى)</span> التاء مشددة = ٥ حروف ← <strong>أمر خماسي (وصل)</strong>.</li>
+        <li><strong>فخ (استـ):</strong> مش كل (استـ) سداسي! <span class="example">استِماع / استِلام / استِباق</span> ماضيها <span class="example">(استَمَعَ)</span> ٥ حروف لأن السين أصلية ← <strong>مصدر خماسي</strong>!</li>
+        <li><strong>فخ اسم البنت والمصدر:</strong> «حقق الجيش <span class="example">انتصارًا</span>» (مصدر = وصل)، لكن «تفوقت الطالبة <span class="example">إِنتصار</span>» (عَلَم لمؤنث = قطع!).</li>
+        <li><strong>فخ نداء لفظ الجلالة:</strong> عند النداء بـ (يا) تُقطع الهمزة <span class="example">«يا أَللهُ»</span>، أو نحذف (يا) ونعوض بميم مشددة فتظل وصلاً <span class="example">«اللَّهُمَّ»</span>.</li>
+        <li><strong>دخول همزة الاستفهام على (الـ):</strong> تقلب همزة مد <span class="example">(آ)</span> مثل: <span class="example">«آللهُ أذن لكم؟» / «آلكتابُ قرأت؟»</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ٢. الهمزة المتوسطة والمتطرفة -->
+  <div class="section-card" data-cat="hamza">
+    <h2 class="section-title"><span class="section-num">٢</span> الهمزة المتوسطة والمتطرفة وشفرة الإعراب</h2>
+
+    <div class="ladder">
+      <span>سُلَّم القوة في المتوسطة:</span>
+      <span class="ladder-step">١. الكسرة (ئـ)</span>
+      <span class="arrow">←</span>
+      <span class="ladder-step">٢. الضمة (ؤ)</span>
+      <span class="arrow">←</span>
+      <span class="ladder-step">٣. الفتحة (أ)</span>
+      <span class="arrow">←</span>
+      <span class="ladder-step">٤. السكون (أضعفهم)</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="sub-box">
+        <h3 style="color:var(--primary)">حالات خاصة مهمة جداً (المتوسطة)</h3>
+        <ul class="clean-list">
+          <li><strong>مفتوحة بعد ألف مد أو واو مد ← على السطر:</strong> <span class="example">تفاءَلَ، قراءَة، مروءَة، توءَم</span>.</li>
+          <li><strong>مضمومة بعد ألف مد ← على الواو:</strong> <span class="example">تفاؤُل، تشاؤُم</span>.</li>
+          <li><strong>مكسورة بعد ألف مد ← على نبرة:</strong> <span class="example">متفائِل، رسائِل</span>.</li>
+          <li><strong>بعد ياء ساكنة ← على نبرة:</strong> <span class="example">هَيْئَة، بِيْئَة، جَرِيْئَة</span>.</li>
+          <li><strong>مضمومة بعدها واو مد:</strong> لو الحرف قبلها يتصل تُرسم على نبرة <span class="example">(مسئول، شئون)</span>، ولو لا يتصل تُرسم على السطر <span class="example">(رءوف، رءوس، دءوب)</span>.</li>
+        </ul>
+      </div>
+
+      <div class="sub-box">
+        <h3 style="color:var(--primary)">المتطرفة وتنوينها بالفتح</h3>
+        <ul class="clean-list">
+          <li><strong>المتطرفة تتبع حركة ما قبلها فقط:</strong> كسر <span class="example">شاطِئ</span>، ضم <span class="example">يجرُؤ</span>، فتح <span class="example">قرَأ</span>، سكون أو مد <span class="example">شَيْء، عِبْء، سماء، هدوء</span>.</li>
+          <li><strong>تنوين الفتح (١) قبلها ألف مد:</strong> ممنوع ألف بعدها! <span class="example">سماءً، مساءً، بناءً</span>.</li>
+          <li><strong>تنوين الفتح (٢) قبلها ساكن يتصل:</strong> تقلب على نبرة + ألف <span class="example">عبئًا، شيئًا، دفئًا</span>.</li>
+          <li><strong>تنوين الفتح (٣) قبلها ساكن لا يتصل:</strong> ع السطر + ألف <span class="example">جزءًا، ضوءًا، هدوءًا، بدءًا</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>الحالة الإعرابية للكلمة</th>
+          <th>الهمزة الممدودة + ضمير</th>
+          <th>كلمة (امرؤ)</th>
+          <th>أشهر المواقع الإعرابية</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>في حالة الرَّفْع</strong> (ضمة)</td>
+          <td><span class="badge b-info">علماؤُنا / أبناؤُه / هواؤُها</span> (على الواو)</td>
+          <td><span class="example">امرُؤٌ</span> (على الواو)</td>
+          <td>مبتدأ، خبر، فاعل، نائب فاعل، اسم كان، خبر إنَّ</td>
+        </tr>
+        <tr>
+          <td><strong>في حالة النَّصْب</strong> (فتحة)</td>
+          <td><span class="badge b-qat3">علماءَنا / أبناءَه / هواءَها</span> (على السطر)</td>
+          <td><span class="example">امرَأً</span> (على الألف)</td>
+          <td>مفعول به، اسم إنَّ، خبر كان، حال</td>
+        </tr>
+        <tr>
+          <td><strong>في حالة الجَرّ</strong> (كسرة)</td>
+          <td><span class="badge b-wasl">علمائِنا / أبنائِه / هوائِها</span> (على نبرة)</td>
+          <td><span class="example">امرِئٍ</span> (على الياء)</td>
+          <td>اسم مجرور بحرف جر، مضاف إليه</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٣. أنواع الواو وعمرو وعمر -->
+  <div class="section-card" data-cat="waw">
+    <h2 class="section-title"><span class="section-num">٣</span> أنواع الواو في آخر الكلمة + (عَمْرو وعُمَر)</h2>
+
+    <div class="grid-2">
+      <div class="sub-box">
+        <h3 style="color:var(--primary)">التفرقة بين الواوات الثلاث</h3>
+        <ul class="clean-list">
+          <li><strong>واو الجمع (علامة رفع):</strong> في <strong>الأسماء</strong> المضافة فقط، تحذف النون <strong>وممنوع وضع ألف بعدها!</strong> <span class="example">معلِّمو المدرسة، مهندسو المشروع</span>.</li>
+          <li><strong>واو الجماعة (ضمير فاعل):</strong> في <strong>الأفعال</strong> مع الذكور، ونضع بعدها الألف الفارقة عند حذف النون: <span class="example">الطلاب فهموا / لم يهملوا / اجتهدوا</span>.</li>
+          <li><strong>الواو الأصلية (لام الفعل):</strong> في آخر الفعل المعتل مع المفرد أو نحن، <strong>بدون ألف أبداً!</strong> <span class="example">المؤمن يدعو ربه ويسمو بخلقه / نحن نرجو الخير</span>.</li>
+        </ul>
+      </div>
+
+      <div class="sub-box">
+        <h3 style="color:var(--primary)">قاعدة (عَمْرو) و(عُمَر)</h3>
+        <ul class="clean-list">
+          <li><strong>عُمَر:</strong> ممنوع من الصرف (لا يُنوَّن ولا يأخذ واواً ولا ألفاً): <span class="example">جاء عُمَرُ / رأيتُ عُمَرَ / مررتُ بعُمَرَ</span>.</li>
+          <li><strong>عَمْرو في الرفع والجر:</strong> تبقى الواو <span class="example">جاء عَمْرٌو / سلمتُ على عَمْرٍو</span>.</li>
+          <li><strong>عَمْرو في النصب:</strong> تُحذف الواو ونضع ألف تنوين <span class="example">إنَّ عَمْرًا بطل / كافأتُ عَمْرًا</span>.</li>
+          <li><strong>فخ (ابن) بعد عَمرو:</strong> لو وُصف بـ (ابن) لا يُنوَّن فتبقى الواو حتى في النصب! <span class="example">إنَّ عَمْرَو بنَ العاص قائدٌ ذكي</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>وجه المقارنة</th>
+          <th>مع جمع المذكر: «الرجال يدعون / يرجون»</th>
+          <th>مع جمع المؤنث: «النساء يدعون / يرجون»</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ما حدث للفعل</strong></td>
+          <td>حُذفت الواو الأصلية لالتقاء الساكنين</td>
+          <td>لم يُحذف منه أي حرف (كامل)</td>
+        </tr>
+        <tr>
+          <td><strong>الوزن الصرفي</strong></td>
+          <td><span class="badge b-qat3">يَفْعُون</span></td>
+          <td><span class="badge b-wasl">يَفْعُلْن</span></td>
+        </tr>
+        <tr>
+          <td><strong>نوع الواو</strong></td>
+          <td><strong>واو الجماعة</strong> (ضمير في محل رفع فاعل)</td>
+          <td><strong>واو أصلية</strong> (لام الفعل - حرف أصلي)</td>
+        </tr>
+        <tr>
+          <td><strong>نوع النون</strong></td>
+          <td><strong>علامة رفع</strong> (ثبوت النون)</td>
+          <td><strong>نون النسوة</strong> (ضمير في محل رفع فاعل)</td>
+        </tr>
+        <tr>
+          <td><strong>الإعراب والبناء</strong></td>
+          <td>فعل مضارع <strong>مُعرَب</strong> (مرفوع بثبوت النون)</td>
+          <td>فعل مضارع <strong>مَبْنِي</strong> على السكون</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٤. المتشابهات: ألا وإلا وثم -->
+  <div class="section-card" data-cat="similar">
+    <h2 class="section-title"><span class="section-num">٤</span> المتشابهات الخطيرة: (أَلَّا / إِلَّا / أَلا) و (ثَمَّ / ثُمَّ)</h2>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>الأداة</th>
+          <th>أصلها ونوعها</th>
+          <th>ما يأتي بعدها وإعرابه</th>
+          <th>مثال امتحانات مشهور</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge b-qat3">أَلَّا</span> (فتحة + شدة)</td>
+          <td>(أنْ الناصبة + لا النافية)</td>
+          <td>فعل مضارع <strong>مَنْصُوب</strong></td>
+          <td>«يجبُ <strong>أَلَّا تُهمِلَ</strong> واجبك» (تُهمِلَ: منصوب)</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-wasl">إِلَّا</span> (كسرة + شدة)</td>
+          <td>(إنْ الشرطية الجازمة + لا)</td>
+          <td>فعل مضارع <strong>مَجْزُوم</strong></td>
+          <td>«ذاكرْ <strong>وإِلَّا تندمْ</strong>» (تندمْ: مجزوم في جواب الشرط، وفعل الشرط محذوف تقديره: تفعلْ)</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-info">أَلا</span> (بدون شدة)</td>
+          <td>أداة استفتاح وتنبيه أو عرض</td>
+          <td>فعل مضارع <strong>مَرْفُوع</strong> (لا تؤثر)</td>
+          <td>«<strong>أَلا تُحِبُّونَ</strong> أن يغفر الله لكم» (مرفوع بثبوت النون)</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-purple">ثَمَّ / ثَمَّةَ</span> (بفتح الثاء)</td>
+          <td>ظرف مكان بمعنى (هُناك)</td>
+          <td>شبه جملة خبر مقدم + ما بعده <strong>مبتدأ مؤخر مرفوع</strong></td>
+          <td>«<strong>ثَمَّ</strong> خلافٌ بيننا» / «<strong>ثَمَّةَ</strong> تحدياتٌ» (خلافٌ/تحدياتٌ: مبتدأ مؤخر)</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-info">ثُمَّ / ثُمَّتَ</span> (بضم الثاء)</td>
+          <td>حرف عطف (ترتيب وتراخٍ)</td>
+          <td>ما بعده معطوف (اسماً أو جملة)</td>
+          <td>«حضر المعلم <strong>ثُمَّ</strong> الطلاب» / «نام الطفل <strong>ثُمَّتَ</strong> استيقظ»</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٥. ال الشمسية والقمرية + ابن + التاء والهاء -->
+  <div class="section-card" data-cat="extras">
+    <h2 class="section-title"><span class="section-num">٥</span> تريكات (الـ القمرية والشمسية) + (حذف ألف ابن) + (التاء والهاء)</h2>
+
+    <div class="grid-2">
+      <div class="sub-box">
+        <h3 style="color:var(--primary)">١) الـ القمرية والـ الشمسية</h3>
+        <ul class="clean-list">
+          <li><strong>الـ القمرية:</strong> مع حروف جملة <strong>«ابغ حجك وخف عقيمه»</strong>.</li>
+          <li><strong>فخ الجيم:</strong> أي كلمة أولها جيم بعد (الـ) فهي <strong>قمرية دائماً</strong> حتى لو نطقناها بالعامية غير كده! مثل: <span class="example">الجَنَّة، الجَمَل، الجامعة</span>.</li>
+          <li><strong>فخ اللام:</strong> أي كلمة أولها لام بعد (الـ) فهي <strong>شمسية دائماً</strong>! مثل: <span class="example">اللَّيل، اللُّغة، اللَّبيب، اللَّيمون</span>.</li>
+        </ul>
+      </div>
+
+      <div class="sub-box">
+        <h3 style="color:var(--primary)">٢) متى تُحذف ألف (ابن) وتُكتب (بن)؟</h3>
+        <ul class="clean-list">
+          <li>إذا وقعت <strong>بين عَلَمين</strong> الثاني أب للأول وتُعرب نعتاً ولم تقع أول السطر: <span class="example">عمرُ بنُ الخطابِ عادل</span>.</li>
+          <li>بعد <strong>ياء النداء</strong>: <span class="example">يا بنَ الأكرمين</span>، وبعد <strong>همزة الاستفهام</strong>: <span class="example">أَبْنُكَ متفوق؟</span>.</li>
+          <li><strong>متى ترجع الألف؟</strong> لو أُعربت <strong>خبراً</strong> <span class="example">«عمرُ ابنُ الخطابِ»</span> (جملة تامة تخبر عن نسبه)، أو جت مثنى <span class="example">«الحسن والحسين ابنا علي»</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trap-box">
+      <span class="trap-title">٣) التفرقة السريعة بين (ة / ه / ت) + ألف (اسم) في البسملة:</span>
+      <ul class="clean-list">
+        <li><strong>التاء المربوطة (ة) والهاء (ه):</strong> حط تنوين أو ضمة على آخر الكلمة؛ لو نطقتها تاء تبقى <strong>(ة)</strong> مثل <span class="example">مدرسةٌ، حياةٌ، قضاةٌ</span>، ولو نطقتها هاء تبقى <strong>(ه)</strong> مثل <span class="example">مياهٌ، وجهٌ، اتجاهٌ، يشبهُ، كتابهُ</span>.</li>
+        <li><strong>ألف (اسم):</strong> تُحذف في البسملة الكاملة فقط <span class="example">«بسمِ اللهِ الرحمنِ الرحيمِ»</span>، وتثبت لو ناقصة أو ذُكر متعلقها: <span class="example">«باسمِ اللهِ نبدأ» / «باسمِك اللهم»</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="empty-msg" id="emptyMsg">مفيش نتيجة مطابقة للكلمة دي.. جرب تكتبها من غير تشكيل (مثلاً: علماؤنا، يدعون، عمرو، الا).</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.section-card');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  let activeCat = 'all';
+
+  function stripTashkeel(str) {
+    return str
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .toLowerCase();
+  }
+
+  function filterCards() {
+    const query = stripTashkeel(searchInput.value.trim());
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const catMatch = (activeCat === 'all' || card.dataset.cat === activeCat);
+      const textMatch = !query || stripTashkeel(card.innerText).includes(query);
+
+      if (catMatch && textMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  searchInput.addEventListener('input', filterCards);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ملخص الدعامة في النبات والإنسان - أحياء تالتة ثانوي 2027</title>
+<style>
+  :root {
+    --bg: #f3f7f5;
+    --card: #ffffff;
+    --primary: #14532d;
+    --primary-mid: #166534;
+    --primary-light: #e7f5ec;
+    --med: #0f4c81;
+    --med-light: #e8f1f8;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --rose: #be123c;
+    --rose-light: #ffe4e6;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #d1dce5;
+    --shadow: 0 4px 16px rgba(20, 83, 45, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, 'Geeza Pro', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    padding-bottom: 60px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #14532d 0%, #0f4c81 100%);
+    color: #fff;
+    padding: 30px 20px 26px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+
+  .header p {
+    font-size: 0.96rem;
+    opacity: 0.93;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .controls {
+    max-width: 1060px;
+    margin: -18px auto 22px;
+    padding: 0 14px;
+  }
+
+  .controls-box {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 230px;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  .search-input:focus { border-color: var(--primary); }
+
+  .print-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #f8fafc;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.16s;
+  }
+
+  .tab-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+  .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  .container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .section-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid #dce6e0;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .section-title.human {
+    color: var(--med);
+    border-bottom-color: var(--med-light);
+  }
+
+  .sec-num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .sec-num.human { background: var(--med); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .box {
+    background: #fafcfb;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .box h3 {
+    font-size: 1.04rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  .box.h-box { background: #f8fbfe; border-color: #dbe7f3; }
+  .box.h-box h3 { color: var(--med); }
+
+  ul.list {
+    list-style: none;
+    padding-right: 0;
+  }
+
+  ul.list li {
+    position: relative;
+    padding-right: 16px;
+    margin-bottom: 7px;
+    font-size: 0.95rem;
+  }
+
+  ul.list li::before {
+    content: "●";
+    position: absolute;
+    right: 0;
+    font-size: 0.7rem;
+    top: 4px;
+    color: var(--primary-mid);
+  }
+
+  table.bio-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.93rem;
+  }
+
+  table.bio-table th,
+  table.bio-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 11px;
+    text-align: right;
+    vertical-align: top;
+  }
+
+  table.bio-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  table.bio-table.h-table th {
+    background: var(--med);
+  }
+
+  table.bio-table tr:nth-child(even) { background: #f8fafc; }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .t-green { background: var(--primary-light); color: var(--primary); }
+  .t-blue { background: var(--med-light); color: var(--med); }
+  .t-amber { background: var(--amber-light); color: var(--amber); }
+  .t-rose { background: var(--rose-light); color: var(--rose); }
+
+  .trap {
+    background: #fffbeb;
+    border-right: 4px solid #d97706;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-top: 12px;
+    font-size: 0.94rem;
+  }
+
+  .trap strong.t-head {
+    color: #b45309;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.98rem;
+  }
+
+  .law-strip {
+    background: var(--med-light);
+    border: 1px solid #bfdbfe;
+    border-radius: 11px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-weight: 700;
+    color: var(--med);
+  }
+
+  .svg-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .svg-card {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .svg-card h4 {
+    font-size: 0.93rem;
+    color: var(--med);
+    margin-bottom: 6px;
+  }
+
+  .svg-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  .hidden { display: none !important; }
+  .empty-msg {
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    border-radius: 14px;
+    color: var(--muted);
+    display: none;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .controls { display: none; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16px; }
+    .section-card { box-shadow: none; break-inside: avoid; margin-bottom: 14px; border: 1px solid #94a3b8; }
+    .tag, table.bio-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">الصف الثالث الثانوي • دفعة 2027 • الفصل الأول (الدرس الأول كاملاً)</div>
+  <h1>زيتونة الأحياء: الدعامة في النبات + الدعامة في الإنسان</h1>
+  <p>شامل ١٠٠٪ لكتاب المدرسة وتريكات وقوانين النظام الجديد: الفسيولوجية والتركيبية • الهيكل المحوري والطرفي (٢٠٦ عظمة) • الغضاريف والمفاصل والأربطة والأوتار</p>
+</div>
+
+<div class="controls">
+  <div class="controls-box">
+    <div class="search-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="ابحث بسرعة بأي كلمة (مثلاً: كيوتين، لجنين، أسموزية، فقرات، ضلوع، كعبرة، ركبة، أخيل، تجويف...)">
+      <button class="print-btn" onclick="window.print()">طباعة / حفظ PDF</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-cat="all">الدرس كاملاً</button>
+      <button class="tab-btn" data-cat="plant">١. الدعامة في النبات</button>
+      <button class="tab-btn" data-cat="axial">٢. الهيكل المحوري (٨٠ عظمة)</button>
+      <button class="tab-btn" data-cat="append">٣. الهيكل الطرفي (١٢٦ عظمة)</button>
+      <button class="tab-btn" data-cat="joints">٤. الغضاريف والمفاصل والأربطة والأوتار</button>
+      <button class="tab-btn" data-cat="laws">٥. قوانين الأعداد وتريكات الامتحانات</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="cardsContainer">
+
+  <!-- ١. الدعامة في النبات -->
+  <div class="section-card" data-cat="plant">
+    <h2 class="section-title"><span class="sec-num">١</span> الدعامة في النبات: الدعامة الفسيولوجية والدعامة التركيبية</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>أولاً: الدعامة الفسيولوجية <span class="tag t-green">مؤقتة • فيزيائية</span></h3>
+        <ul class="list">
+          <li><strong>تتناول الخلية نفسها ككل!</strong> وتعتمد على <strong>الخاصية الأسموزية</strong> ووجود فجوة عصارية حية.</li>
+          <li><strong>خطوات حدوثها بالترتيب:</strong> يدخل الماء بالخاصية الأسموزية إلى <strong>الفجوة العصارية</strong> ← يزداد حجم العصير الخلوي ← يضغط على <strong>البروتوبلازم</strong> ويدفعه للخارج نحو الجدار ← يتمدد الجدار لزيادة الضغط (ضغط الامتلاء) فينتفخ وتصبح الخلية ذات <strong>جدار متوتر</strong>.</li>
+          <li><strong>لماذا هي مؤقتة؟</strong> لأنها تعتمد على امتلاء الخلية بالماء، وعند فقد هذا الماء (بالنتح أو الجفاف) تضعف أو تزول الدعامة.</li>
+          <li><strong>أمثلة كتاب المدرسة:</strong> (١) انتفاخ الثمار المنكمشة أو الضامرة عند وضعها في الماء • (٢) ضمور البذور الغضة كالبسلة والفول عند تركها لفترة • (٣) ذبول سوق وأوراق النباتات العشبية عند جفاف التربة واستقامتها عند الري.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>ثانياً: الدعامة التركيبية <span class="tag t-amber">دائمة • كيميائية/تشريحية</span></h3>
+        <ul class="list">
+          <li><strong>تتناول جدر الخلايا أو أجزاء منها فقط!</strong> وتعتمد على ترسيب مواد صلبة قوية.</li>
+          <li><strong>أهميتها الثلاثية:</strong> (١) منع فقد الماء من الخلايا الداخلية • (٢) إكساب النبات الصلابة والقوة والتدعيم • (٣) الحفاظ على الأنسجة الداخلية للنبات.</li>
+          <li><strong>لماذا هي دائمة؟</strong> لأنها تعتمد على ترسيب مواد صلبة دائمة في جدر الخلايا لا تزول بنقص الماء.</li>
+          <li><strong>لماذا لا تنفجر الخلية النباتية في الماء المقطر عكس خلية الدم الحمراء؟</strong> لوجود <strong>الجدار الخلوي السليلوزي</strong> المتين الذي يقاوم التمدد الزائد ويمنع انفجارها.</li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="bio-table">
+      <thead>
+        <tr>
+          <th>المادة المترسبة</th>
+          <th>نفاذيتها للماء</th>
+          <th>مكان الترسيب ونوع الخلايا</th>
+          <th>الوظيفة الأساسية + نوع الدعامة في النسيج</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>١. الكيوتين</strong><br><em>(مادة شمعية)</em></td>
+          <td><span class="tag t-rose">غير منفذ للماء</span></td>
+          <td><strong>ترسيب خارجي</strong> على جدر خلايا <strong>البشرة</strong> الخارجية <em>(خلايا بارنشيمية حية)</em>.</td>
+          <td>منع فقد الماء ← خلايا البشرة تمتلك <strong>دعامة فسيولوجية وتركيبية معاً</strong>! (والكيوتين يحافظ على بقاء الدعامة الفسيولوجية).</td>
+        </tr>
+        <tr>
+          <td><strong>٢. السيوبرين</strong></td>
+          <td><span class="tag t-rose">غير منفذ للماء</span></td>
+          <td><strong>ترسيب داخلي</strong> في جدر <strong>الخلايا الفلينية</strong> المحيطة بالسيقان المسنّة <em>(خلايا ميتة)</em>.</td>
+          <td>عزل ومنع فقد الماء وحماية الداخل ← الفلين يمتلك <strong>دعامة تركيبية فقط</strong> (لأنه خلايا غير حية).</td>
+        </tr>
+        <tr>
+          <td><strong>٣. السليلوز</strong><br><em>(تغلظ إضافي)</em></td>
+          <td><span class="tag t-green">منفذ للماء!</span></td>
+          <td>تغلظ أركان جدر <strong>النسيج الكولنشيمي</strong> <em>(خلايا حية)</em>، ويدخل مع اللجنين في الاسكلرنشيمي.</td>
+          <td>إكساب <strong>الصلابة والمرونة (الليونة)</strong> ← النسيج الكولنشيمي يمتلك <strong>دعامة فسيولوجية وتركيبية معاً</strong>!</td>
+        </tr>
+        <tr>
+          <td><strong>٤. اللجنين</strong></td>
+          <td><span class="tag t-rose">غير منفذ للماء</span></td>
+          <td>على السطح الداخلي لجدر <strong>النسيج الاسكلرنشيمي</strong> (الألياف والخلايا الحجرية) وأوعية الخشب <em>(خلايا ميتة)</em>.</td>
+          <td>إكساب <strong>الصلابة والقوة الشديدة</strong> ← النسيج الاسكلرنشيمي والخشب يمتلكان <strong>دعامة تركيبية فقط</strong>!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="trap">
+      <strong class="t-head">تريكات العلاقات البيانية في الدعامة الفسيولوجية (مهمة جداً!):</strong>
+      • عندما تمتص الخلية الماء وتكتسب دعامة فسيولوجية: <strong>يزداد</strong> (حجم الفجوة العصارية + ضغط الامتلاء + توتر الجدار)، بينما <strong>يقل الضغط الأسموزي (تركيز الذائبات)</strong> داخل الفجوة العصارية! إذن العلاقة بين <strong>الدعامة الفسيولوجية والضغط الأسموزي للفجوة علاقة عكسية</strong> بعد دخول الماء!<br>
+      • <strong>النسيج البارنشيمي العادي (الداخلي):</strong> يمتلك دعامة <strong>فسيولوجية فقط</strong>! (السليلوز الأساسي المكون للجدار الأصلي لا يُحسب ترسيباً إضافياً للدعامة التركيبية).
+    </div>
+  </div>
+
+  <!-- ٢. الدعامة في الإنسان: الهيكل المحوري -->
+  <div class="section-card" data-cat="axial">
+    <h2 class="section-title human"><span class="sec-num human">٢</span> الدعامة في الإنسان — أولاً: الهيكل المحوري (٨٠ عظمة)</h2>
+    <p style="font-size:0.94rem; margin-bottom:10px;">
+      • <strong>الجهاز الهيكلي للإنسان</strong> يتكون من ٥ أشياء: (١. الهيكل العظمي ٢٠٦ عظمة • ٢. الغضاريف • ٣. المفاصل • ٤. الأربطة • ٥. الأوتار).<br>
+      • <strong>الهيكل المحوري (٨٠ عظمة)</strong> = العمود الفقري (٢٦ عظمة) + الجمجمة وملحقاتها (٢٩ عظمة) + عظمة القص والضلوع (٢٥ عظمة).
+    </p>
+
+    <h3 style="color:var(--med); margin-bottom:6px;">١) العمود الفقري (٣٣ فقرة = ٢٦ عظمة — محور الهيكل العظمي!):</h3>
+    <table class="bio-table h-table">
+      <thead>
+        <tr>
+          <th>المجموعة</th>
+          <th>العدد والأرقام</th>
+          <th>عدد العظام والتفصل</th>
+          <th>الحجم والوصف وموضعها واتجاه الانحناء</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>١. العنقية</strong></td>
+          <td><strong>٧ فقرات</strong> (١ ← ٧)</td>
+          <td>٧ عظام (متمفصلة)</td>
+          <td><strong>متوسطة الحجم</strong> • في العنق • تنحني <strong>للأمام</strong> <em>(لها ٣ أشكال مختلفة: الأولى، الثانية، وبقية الـ ٥)</em>.</td>
+        </tr>
+        <tr>
+          <td><strong>٢. الظهرية (الصدرية)</strong></td>
+          <td><strong>١٢ فقرة</strong> (٨ ← ١٩)</td>
+          <td>١٢ عظمة (متمفصلة)</td>
+          <td><strong>أكبر حجماً من العنقية</strong> • تواجه الصدر وتتصل بالضلوع • تنحني <strong>للخلف</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>٣. القطنية</strong></td>
+          <td><strong>٥ فقرات</strong> (٢٠ ← ٢٤)</td>
+          <td>٥ عظام (متمفصلة)</td>
+          <td><strong>أكبر الفقرات جميعاً حجماً!</strong> (أكبر فقرة على الإطلاق رقم ٢٤) • تواجه تجويف البطن • تنحني <strong>للأمام</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>٤. العجزية</strong></td>
+          <td><strong>٥ فقرات</strong> (٢٥ ← ٢٩)</td>
+          <td><strong>١ عظمة واحدة</strong> (ملتحمة)</td>
+          <td><strong>عريضة ومفلطحة</strong> • بين عظمتي الحرقفة في الحوض • تنحني <strong>للخلف</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>٥. العصعصية</strong></td>
+          <td><strong>٤ فقرات</strong> (٣٠ ← ٣٣)</td>
+          <td><strong>١ عظمة واحدة</strong> (ملتحمة)</td>
+          <td><strong>صغيرة الحجم وضامرة</strong> (أصغر فقرة رقم ٣٣) • في نهاية العمود الفقري.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="margin-top:14px;">
+      <div class="box h-box">
+        <h3>تركيب الفقرة العظمية النموذجية (بها ٧ نتوءات!)</h3>
+        <ul class="list">
+          <li><strong>جسم الفقرة:</strong> الجزء الأمامي السميك.</li>
+          <li><strong>نتوءان مستعرضان (٢):</strong> يتصلان بجسم الفقرة من الجانبين، ويحمل كل منهما <strong>نتوءاً مفصلياً أمامياً (٢)</strong>.</li>
+          <li><strong>الحلقة الشوكية (العصبية):</strong> حلقة خلفية تحيط بـ <strong>القناة العصبية</strong> لحماية الحبل الشوكي المار بها.</li>
+          <li><strong>النتوء الشوكي (١):</strong> زائدة خلفية مائلة لأسفل تحملها الحلقة الشوكية، ويحمل <strong>نتوءين مفصليين خلفيين (٢)</strong>.</li>
+          <li><strong>قانون تمفصل الفقرات:</strong> الفقرة رقم (س) تتصل بالتي <strong>فوقها (س−١) بنتوءيها الأماميين</strong>، وبالتي <strong>تحتها (س+١) بنتوءيها الخلفيين</strong>!</li>
+        </ul>
+      </div>
+
+      <div class="box h-box">
+        <h3>٢) الجمجمة (٢٩ بالملحقات) + ٣) القفص الصدري</h3>
+        <ul class="list">
+          <li><strong>الجمجمة:</strong> الجزء الخلفي المخي <strong>(٨ عظام)</strong> مسننة الأطراف وبقاعها <strong>الثقب الكبير</strong> لاتصال المخ بالحبل الشوكي + الجزء الأمامي الوجهي <strong>(١٤ عظمة)</strong> + الملحقات <strong>(٧ عظام: ٦ سمعية + ١ لامي)</strong> = ٢٩ عظمة.</li>
+          <li><strong>القفص الصدري (٣٧ عظمة شاملة الـ ١٢ فقرة ظهرية):</strong> عظمة القص (١ مفلطحة جزؤها السفلي غضروفي) + <strong>١٢ زوجاً من الضلوع (٢٤ ضلعاً)</strong>.</li>
+          <li>الـ ١٠ أزواج الأولى تتصل بالقص، أما <strong>الزوجان ١١ و ١٢ (٤ ضلوع عائمة)</strong> فقصيران لا يتصلان بالقص ويتصلان بالفقرتين <strong>رقم ١٨ و ١٩</strong>!</li>
+          <li><strong>في الشهيق:</strong> تتحرك الضلوع <strong>للأمام والجانبين</strong> لزيادة اتساع التجويف الصدري، والعكس في الزفير.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٣. الهيكل الطرفي -->
+  <div class="section-card" data-cat="append">
+    <h2 class="section-title human"><span class="sec-num human">٣</span> ثانياً: الهيكل الطرفي (١٢٦ عظمة = ٦٤ علوي + ٦٢ سفلي)</h2>
+
+    <div class="grid-2">
+      <div class="box h-box">
+        <h3>١) الحزام الصدري والطرفان العلويان (٤ + ٦٠ = ٦٤ عظمة)</h3>
+        <ul class="list">
+          <li><strong>الحزام الصدري (٤ عظام = ٢ بكل جانب):</strong>
+            <ul>
+              <li><strong>لوح الكتف (٢):</strong> ظهرية مثلثة، داخلها عريض وخارجها مدبب به <strong>التجويف الأروح</strong> (يستقر فيه رأس العضد) ونتوء تتصل به الترقوة.</li>
+              <li><strong>الترقوة (٢):</strong> عظمة <strong>باطنية رفيعة</strong> تتصل أماماً بالقص وجانباً بنتوء لوح الكتف.</li>
+            </ul>
+          </li>
+          <li><strong>الطرف العلوي الواحد (٣٠ عظمة):</strong>
+            <ul>
+              <li><strong>العضد (١):</strong> بأسفلها نتوء داخلي يستقر في تجويف الزند.</li>
+              <li><strong>الساعد (٢):</strong> <strong>الزند</strong> (ثابتة وبأعلاها تجويف الكوع ولا تتصل بالرسغ!) + <strong>الكعبرة</strong> (أصغر، <strong>تتحرك حركة نصف دائرية حول الزند الثابت</strong>، وتتصل من أسفل برسغ اليد!).</li>
+              <li><strong>رسغ اليد (٨ عظام في صفين)</strong> ← <strong>راحة اليد (٥ أمشاط)</strong> ← <strong>السلاميات (١٤: ٣ لكل إصبع و٢ للإبهام)</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box h-box">
+        <h3>٢) الحزام الحوضي والطرفان السفليان (٢ + ٦٠ = ٦٢ عظمة)</h3>
+        <ul class="list">
+          <li><strong>الحزام الحوضي (٢ عظمة فقط!):</strong> كل نصف حوض عبارة عن ٣ عظام ملتحمة <strong>(حرقفة ظهرية + ورك خلفية باطنية + عانة أمامية باطنية)</strong> = عظمة واحدة بكل جانب!
+            <ul>
+              <li>يلتقيان أماماً في <strong>الارتفاق العاني</strong>، وخلفاً بالعجز.</li>
+              <li>به <strong>التجويف الحُقِّي</strong> (عميق يستقر فيه رأس الفخذ؛ لذا مفصل الفخذ أكثر ثباتاً من الكتف!).</li>
+            </ul>
+          </li>
+          <li><strong>الطرف السفلي الواحد (٣٠ عظمة):</strong>
+            <ul>
+              <li><strong>الفخذ (١):</strong> أكبر وأطول عظام الجسم.</li>
+              <li><strong>الرضفة (١):</strong> عظمة صغيرة مستديرة أمام مفصل الركبة.</li>
+              <li><strong>الساق (٢):</strong> <strong>القصبة</strong> (داخلية أكبر) + <strong>الشظية</strong> (خارجية أصغر).</li>
+              <li><strong>رسغ القدم / العرقوب (٧ عظام فقط! أكبرها الخلفية عظمة الكعب)</strong> ← <strong>مشط القدم (٥)</strong> ← <strong>السلاميات (١٤)</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trap">
+      <strong class="t-head">مقارنة سريعة بين عدد عظام الحوض والحزام الحوضي (فخ مشهور جداً!):</strong>
+      • عدد عظام <strong>الحزام الحوضي فقط = ٢ عظمة</strong> (نصف حوض أيمن + نصف حوض أيسر).<br>
+      • عدد عظام <strong>تجويف الحوض ككل = ٤ عظام</strong> (٢ حزام حوضي + ١ عظمة العجز + ١ عظمة العصعص)!<br>
+      • لاحظ تساوي الطرف العلوي والسفلي (كلاهما ٣٠ عظمة) رغم أن رسغ اليد (٨) ورسغ القدم (٧)؛ لأن الطرف السفلي يعوّض الفارق بعظمة <strong>الرضفة (١)</strong>!
+    </div>
+  </div>
+
+  <!-- ٤. الغضاريف والمفاصل والأربطة والأوتار -->
+  <div class="section-card" data-cat="joints">
+    <h2 class="section-title human"><span class="sec-num human">٤</span> الغضاريف + المفاصل + الأربطة + الأوتار</h2>
+
+    <div class="grid-2">
+      <div class="box h-box">
+        <h3>١) الغضاريف (نسيج ضام خالٍ من الأوعية الدموية!)</h3>
+        <ul class="list">
+          <li>توجد عند أطراف العظام وبين الفقرات، وفي <strong>الأذن والأنف والشعب الهوائية</strong>.</li>
+          <li>تحمي العظام من التآكل نتيجة الاحتكاك المستمر.</li>
+          <li><strong>لا تحتوي على أوعية دموية!</strong> تحصل على الغذاء والأكسجين من العظام <strong>بالانتشار</strong> (لذلك تلتئم ببطء شديد عند إصابتها!).</li>
+        </ul>
+      </div>
+
+      <div class="box h-box">
+        <h3>٢) أنواع المفاصل الثلاثة</h3>
+        <ul class="list">
+          <li><strong>مفاصل ليفية:</strong> <span class="tag t-rose">لا تسمح بالحركة</span>، تلتحم بأنسجة ليفية تتحول لعظمية مع العمر (عظام الجمجمة المسننة).</li>
+          <li><strong>مفاصل غضروفية:</strong> <span class="tag t-amber">حركة محدودة جداً</span> (بين فقرات العمود الفقري، والارتفاق العاني).</li>
+          <li><strong>مفاصل زلالية (معظم مفاصل الجسم):</strong> بها غضروف أملس وسائل زلالي يمنع الاحتكاك، وتنقسم إلى:
+            <ul>
+              <li><strong>محدودة الحركة (اتجاه واحد):</strong> الكوع والركبة.</li>
+              <li><strong>واسعة الحركة (عدة اتجاهات):</strong> الكتف والفخذ.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="bio-table h-table">
+      <thead>
+        <tr>
+          <th>وجه المقارنة</th>
+          <th>الأربطة (Ligaments)</th>
+          <th>الأوتار (Tendons)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>الوصف والربط</strong></td>
+          <td>حزم منفصلة من نسيج ضام ليفي تربط <strong>عظمة بعظمة</strong> عند المفصل.</td>
+          <td>نسيج ضام قوي يربط <strong>عضلة بعظمة</strong> عند المفصل.</td>
+        </tr>
+        <tr>
+          <td><strong>المرونة والوظيفة</strong></td>
+          <td>متينة + <strong>على درجة من المرونة</strong> (تتمدد قليلاً فلا تنقطع عند الضغط) • <strong>تحدد اتجاه حركة العظام</strong> عند المفصل.</td>
+          <td>قوية لنقل قوة انقباض وانبساط العضلة فتتحرك العظمة.</td>
+        </tr>
+        <tr>
+          <td><strong>مثال كتاب المدرسة</strong></td>
+          <td><strong>أربطة مفصل الركبة (٤ أربطة):</strong><br>
+            • صليبي أمامي + صليبي خلفي + رباط وسطي <em>(الثلاثة يربطون <strong>الفخذ بالقصبة</strong>)</em>.<br>
+            • رباط جانبي <em>(الوحيد الذي يربط <strong>الفخذ بالشظية</strong>!)</em>.
+          </td>
+          <td><strong>وتر أخيل:</strong> يربط <strong>العضلة التوأمية</strong> (بطن الساق) بـ <strong>عظمة الكعب</strong>.<br>
+            • يتمزق بسبب المجهود العنيف أو التقلص المفاجئ أو انعدام مرونة العضلة.<br>
+            • <strong>علاجه:</strong> مسكنات ومضادات التهاب + جبيرة طبية + <strong>جراحة فقط لو القطع كامل!</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٥. قوانين الأعداد وتريكات النظام الجديد -->
+  <div class="section-card" data-cat="laws">
+    <h2 class="section-title human"><span class="sec-num human">٥</span> قوانين الأعداد السحرية + رسومات وتريكات امتحانات النظام الجديد</h2>
+
+    <div class="law-strip">
+      ١) <strong>قانون الضلوع والفقرات:</strong> رقم الفقرة في العمود الفقري = رقم زوج الضلوع + ٧ &nbsp;|&nbsp; رقم الفقرة الظهرية = رقم زوج الضلوع نفسه!<br>
+      <em>(مثال: الضلع الخامس يتصل بالفقرة الظهرية الـ ٥، وهي الفقرة رقم ١٢ في العمود الفقري!).</em>
+    </div>
+
+    <div class="law-strip" style="background:var(--primary-light); color:var(--primary); border-color:#bbf7d0;">
+      ٢) <strong>أهم أرقام الفقرات في الامتحان:</strong> الفقرة المنصِّفة للعمود الفقري = <strong>رقم ١٧</strong> (الظهرية الـ ١٠) • أكبر فقرة حجماً = <strong>رقم ٢٤</strong> (القطنية الـ ٥) • الفقرتان المتصلتان بالضلوع العائمة = <strong>رقم ١٨ و ١٩</strong> • الفقرة المتصلة بالحزام الحوضي = العجز (٢٥-٢٩) • الفقرات التي لا يوجد بينها غضاريف = الملتحمة (العجزية والعصعصية) وبين ١ و ٢.
+    </div>
+
+    <div class="grid-3">
+      <div class="box h-box">
+        <h3>عظام مفصل الكوع = ٣</h3>
+        <p style="font-size:0.9rem;">١. العضد<br>٢. الزند<br>٣. الكعبرة</p>
+      </div>
+      <div class="box h-box">
+        <h3>عظام مفصل الركبة = ٣</h3>
+        <p style="font-size:0.9rem;">١. الفخذ + ٢. القصبة + ٣. الرضفة<br><em>(الشظية لا تشارك في تمفصل الركبة لكن يتصل بها الرباط الجانبي!).</em></p>
+      </div>
+      <div class="box h-box">
+        <h3>العظام المتصلة بالقص</h3>
+        <p style="font-size:0.9rem;"><strong>٢٢ عظمة إجمالاً:</strong> ٢٠ ضلعاً (١٠ أزواج أولى) + ٢ ترقوة! <em>(والمتصلة اتصالاً مباشراً مستقل الغضروف = ١٦: ٧ أزواج ضلوع + ٢ ترقوة).</em></p>
+      </div>
+    </div>
+
+    <div class="svg-row">
+      <div class="svg-card">
+        <h4>١) الدعامة الفسيولوجية ومعاكساتها</h4>
+        <svg viewBox="0 0 180 100" width="155" height="88">
+          <polyline points="24,10 24,86 162,86" fill="none" stroke="#334155" stroke-width="2"/>
+          <path d="M 30,18 Q 85,76 155,81" fill="none" stroke="#be123c" stroke-width="3.2"/>
+          <path d="M 30,80 Q 85,24 155,19" fill="none" stroke="#166534" stroke-width="3.2" stroke-dasharray="5,3"/>
+        </svg>
+        <p><span style="color:#166534;font-weight:700;">الأخضر المتقطع:</span> ضغط الامتلاء (يزيد) • <span style="color:#be123c;font-weight:700;">الأحمر:</span> الضغط الأسموزي للفجوة (يقل عكسياً!).</p>
+      </div>
+
+      <div class="svg-card">
+        <h4>٢) خريطة أربطة الركبة الـ ٤ (من الأمام)</h4>
+        <svg viewBox="0 0 180 112" width="155" height="95">
+          <!-- ١ الفخذ -->
+          <rect x="65" y="6" width="50" height="30" rx="10" fill="#e2e8f0" stroke="#0f4c81" stroke-width="2"/>
+          <text x="90" y="25" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f4c81">1</text>
+          <!-- ٢ القصبة -->
+          <rect x="55" y="68" width="44" height="38" rx="8" fill="#e2e8f0" stroke="#0f4c81" stroke-width="2"/>
+          <text x="77" y="91" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f4c81">2</text>
+          <!-- ٣ الشظية -->
+          <rect x="108" y="72" width="22" height="34" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+          <text x="119" y="93" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">3</text>
+          <!-- الصليبيان -->
+          <line x1="78" y1="36" x2="92" y2="68" stroke="#be123c" stroke-width="2.5"/>
+          <line x1="96" y1="36" x2="74" y2="68" stroke="#166534" stroke-width="2.5"/>
+          <!-- الوسطي والجانبي -->
+          <line x1="65" y1="30" x2="58" y2="72" stroke="#b45309" stroke-width="3"/>
+          <line x1="115" y1="30" x2="120" y2="72" stroke="#0f4c81" stroke-width="3"/>
+        </svg>
+        <p><strong>(1) الفخذ • (2) القصبة • (3) الشظية الرفيعة</strong> (توجد للخارج دائماً وبها تعرف اليمين من اليسار، ومعها الرباط الجانبي الأزرق!).</p>
+      </div>
+
+      <div class="svg-card">
+        <h4>٣) انحناءات العمود الفقري الـ ٤</h4>
+        <svg viewBox="0 0 180 112" width="155" height="95">
+          <path d="M 90,8 Q 68,21 90,34 Q 114,51 90,68 Q 68,81 90,94 Q 110,103 95,110" fill="none" stroke="#14532d" stroke-width="4"/>
+          <circle cx="66" cy="21" r="8" fill="#0f4c81"/><text x="66" y="25" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">1</text>
+          <circle cx="114" cy="51" r="8" fill="#be123c"/><text x="114" y="55" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">2</text>
+          <circle cx="66" cy="81" r="8" fill="#0f4c81"/><text x="66" y="85" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">3</text>
+          <circle cx="114" cy="102" r="8" fill="#be123c"/><text x="114" y="106" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">4</text>
+        </svg>
+        <p>بالتبادل: <strong>(1) عنقية</strong> للأمام • <strong>(2) ظهرية</strong> للخلف • <strong>(3) قطنية</strong> للأمام • <strong>(4) عجزية</strong> للخلف!</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="empty-msg" id="emptyMsg">مفيش نتيجة مطابقة للكلمة دي.. جرب تكتبها ببساطة (مثلاً: كيوتين، لجنين، ضلوع، ركبة، كعبرة، أخيل).</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.section-card');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  let activeCat = 'all';
+
+  function normalizeText(str) {
+    return str
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .toLowerCase();
+  }
+
+  function filterCards() {
+    const query = normalizeText(searchInput.value.trim());
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const catMatch = (activeCat === 'all' || card.dataset.cat === activeCat);
+      const textMatch = !query || normalizeText(card.innerText).includes(query);
+
+      if (catMatch && textMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  searchInput.addEventListener('input', filterCards);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>زيتونة الأدب: الكلاسيكية والرومانتيكية - الصف الثالث الثانوي</title>
+<style>
+  :root {
+    --bg: #f5f4f8;
+    --card: #ffffff;
+    --primary: #3b1d5e;
+    --primary-light: #f1ebf8;
+    --teal: #0f626a;
+    --teal-light: #e6f4f5;
+    --accent: #d95d16;
+    --accent-light: #fff3eb;
+    --gold: #9a6700;
+    --gold-light: #fef9e7;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 16px rgba(59, 29, 94, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, 'Geeza Pro', 'Traditional Arabic', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    padding-bottom: 50px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #3b1d5e 0%, #0f626a 100%);
+    color: #fff;
+    padding: 28px 20px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .header h1 {
+    font-size: 1.75rem;
+    margin-bottom: 6px;
+  }
+
+  .header p {
+    font-size: 0.98rem;
+    opacity: 0.92;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .controls {
+    max-width: 980px;
+    margin: -18px auto 20px;
+    padding: 0 16px;
+  }
+
+  .controls-box {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.96rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input:focus {
+    border-color: var(--primary);
+  }
+
+  .print-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #f1f5f9;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .tab-btn:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+
+  .tab-btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.28rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .section-title.rom {
+    color: var(--teal);
+    border-bottom-color: var(--teal-light);
+  }
+
+  .section-num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .section-num.rom {
+    background: var(--teal);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .sub-box {
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    background: #fafbfc;
+  }
+
+  .sub-box h3 {
+    font-size: 1.04rem;
+    margin-bottom: 8px;
+    color: var(--primary);
+  }
+
+  .sub-box.rom-box {
+    background: #f4fbfb;
+    border-color: #cce8ea;
+  }
+
+  .sub-box.rom-box h3 {
+    color: var(--teal);
+  }
+
+  ul.clean-list {
+    list-style: none;
+    padding-right: 0;
+  }
+
+  ul.clean-list li {
+    position: relative;
+    padding-right: 18px;
+    margin-bottom: 8px;
+    font-size: 0.96rem;
+  }
+
+  ul.clean-list li::before {
+    content: "◆";
+    position: absolute;
+    right: 0;
+    top: 2px;
+    font-size: 0.72rem;
+    color: var(--primary);
+  }
+
+  .kw {
+    background: var(--gold-light);
+    border: 1px solid #f5d78e;
+    color: #7c4d00;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .ans {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+
+  .ans-rom {
+    background: var(--teal-light);
+    color: var(--teal);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+
+  table.code-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  table.code-table th,
+  table.code-table td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: right;
+    vertical-align: top;
+  }
+
+  table.code-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  table.code-table.rom-table th {
+    background: var(--teal);
+  }
+
+  table.code-table tr:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  .trap-box {
+    background: var(--accent-light);
+    border-right: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+
+  .trap-title {
+    color: #c2410c;
+    font-weight: 700;
+    font-size: 0.96rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .step-card {
+    background: var(--teal-light);
+    border: 1px solid #bce3e6;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .step-card strong {
+    color: var(--teal);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .empty-msg {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    background: #fff;
+    border-radius: 14px;
+    display: none;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .controls { display: none; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16px; }
+    .section-card { box-shadow: none; break-inside: avoid; margin-bottom: 14px; border: 1px solid #cbd5e1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">الصف الثالث الثانوي • شفرات حل الأبيات</div>
+  <h1>زيتونة الأدب: الكلاسيكية + الرومانتيكية (مطران)</h1>
+  <p>إزاي تحل أي بيت شعر في الجروب أو الامتحان بمجرد ما تلقط «الكلمة المفتاحية» من غير ما تترجم القصيدة كلها!</p>
+</div>
+
+<div class="controls">
+  <div class="controls-box">
+    <div class="search-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="اكتب كلمة شفتها في البيت أو الاختيارات (مثلاً: الرسم، الهلال، الطائرة، الصحافة، شوقي، الغروب، مطران...)">
+      <button class="print-btn" onclick="window.print()">طباعة / حفظ PDF</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-cat="all">المدرستان معاً</button>
+      <button class="tab-btn" data-cat="c-keys">١. شفرات موضوعات الكلاسيكية</button>
+      <button class="tab-btn" data-cat="c-pioneers">٢. شوقي ومحرم والتجديد</button>
+      <button class="tab-btn" data-cat="c-old">٣. مظاهر القديم عند الكلاسيكية</button>
+      <button class="tab-btn" data-cat="rom">٤. الرومانتيكية (خليل مطران)</button>
+      <button class="tab-btn" data-cat="comp">٥. مقارنة ومآخذ مطران</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="cardsContainer">
+
+  <!-- ١. شفرات الكلاسيكية -->
+  <div class="section-card" data-cat="c-keys">
+    <h2 class="section-title"><span class="section-num">١</span> قاموس شفرات الأبيات في المدرسة الكلاسيكية (تلاميذ البارودي)</h2>
+
+    <div class="sub-box" style="margin-bottom: 12px;">
+      <h3>طرق تتلمذهم على يد البارودي (سؤال متكرر):</h3>
+      <p style="font-size: 0.95rem;">
+        ١) <strong>بالمشافهة:</strong> أحمد شوقي، حافظ إبراهيم، عبد المحسن الكاظمي •
+        ٢) <strong>بالمراسلة:</strong> شكيب أرسلان •
+        ٣) <strong>بقراءة ما نُشر من شعره</strong> في كتاب <span class="kw">الوسيلة الأدبية</span> للشيخ حسين المرصفي.
+      </p>
+    </div>
+
+    <table class="code-table">
+      <thead>
+        <tr>
+          <th style="width: 44%;">لو لقيت في البيت الكلمات دي (الشفرة)</th>
+          <th>تختار في الإجابة فوراً (العامل أو السمة)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="kw">الإنجليز، الاحتلال، دنشواي، السجن، الظلم، الفداء، الشهيد</span></td>
+          <td><span class="ans">عمق النضال الوطني والتنديد بالاحتلال ومظالمه</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">الأهرام، الفراعنة، رمسيس، مجد الأجداد، ماضينا العريق</span></td>
+          <td><span class="ans">ترسيخ الإحساس بتراث الأجداد وماضينا العريق</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">مكة، الأزهر، الخلافة، الرسول ﷺ، الشرق، القرآن، المسلمون</span></td>
+          <td><span class="ans">الإيمان بفكرة الجامعة الإسلامية (رمز وحدة المسلمين)</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">الهلال والصليب، المسجد والكنيسة، أحمد وعيسى، القبط</span></td>
+          <td><span class="ans">وحدة عنصري الأمة (المسلمين والأقباط)</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">الأم، الفتاة، البنات، السفور والحجاب، تربية النشء، قاسم أمين</span></td>
+          <td><span class="ans">الاستجابة لدعوة قاسم أمين لتحرير المرأة وتعليمها</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">الدستور، البرلمان، النواب، الأحزاب، حرية المطبوعات، القصر</span></td>
+          <td><span class="ans">الانشغال بقضايا الإصلاح السياسي والدستور وتعدد الأحزاب</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">العلم، الجامعة الأهلية / المصرية ١٩٠٧، المدارس، الفقر، الغلاء</span></td>
+          <td><span class="ans">التعبير عن روح عصرهم اجتماعياً وثقافياً ومعالجة مشكلات المجتمع</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">كلمات أجنبية مترجمة، أو ذكر شعراء الغرب واللغات الأجنبية</span></td>
+          <td><span class="ans">الانفتاح على الثقافة الغربية (بسبب الاختلاط بالأجانب والترجمات)</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw">الصحف، الجرائد</span> أو سؤال: <strong>ما نتيجة ارتباطهم بالصحافة؟</strong></td>
+          <td><span class="ans">سَلِسَ أسلوبهم وسَهُل</span> (ليلائم جمهور القراء)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٢. شوقي ومحرم وسمات التجديد -->
+  <div class="section-card" data-cat="c-pioneers">
+    <h2 class="section-title"><span class="section-num">٢</span> دور أحمد شوقي وأحمد محرم + سمات التجديد عند جيل التطوير</h2>
+
+    <div class="grid-2">
+      <div class="sub-box">
+        <h3>دور أحمد شوقي في التطوير (٤ علامات)</h3>
+        <ul class="clean-list">
+          <li><strong>عوامل تفوقه:</strong> جمع إلى الثقافة العربية <strong>ثقافة أوروبية وتركية</strong>، درس الحقوق في <strong>فرنسا</strong>، شاهد المسارح الأوروبية، وجالس شعراء الغرب <span class="kw">(فيكتور هوجو، لامارتين، دي موسيه)</span>.</li>
+          <li><strong>١) عدل عن المديح إلى التاريخ:</strong> في قصيدته <span class="kw">كبار الحوادث في وادي النيل</span>.</li>
+          <li><strong>٢) اتجه اتجاهاً إسلامياً:</strong> مدح الرسول ﷺ، الأزهر، مكة، الخلافة.</li>
+          <li><strong>٣) وصف المنجزات والمخترعات الحديثة:</strong>
+            <ul>
+              <li>وصف <strong>السفينة (الفُلْك / الباخرة)</strong> في مطلع القصيدة بدلاً من الناقة عند القدماء: <span class="kw">«هَمَّتِ الفُلْكُ واحتواها الماءُ»</span>.</li>
+              <li>وصف <strong>الطائرة، الغواصة، القطار، التلغراف</strong>: <span class="kw">«أَعُقابٌ في عَنانِ الجَوِّ لاح»</span>.</li>
+            </ul>
+          </li>
+          <li><strong>٤) ريادة المسرح الشعري:</strong> منذ مسرحيته الأولى <span class="kw">علي بك الكبير</span> بفرنسا ١٨٩٣، ثم: <span class="kw">مصرع كليوباترا، مجنون ليلى، قمبيز، عنترة، الست هدى، أميرة الأندلس</span>.</li>
+        </ul>
+      </div>
+
+      <div class="sub-box">
+        <h3>أحمد محرم + سمات جيل التطوير العامة</h3>
+        <ul class="clean-list">
+          <li><strong>دور أحمد محرم:</strong> <span class="ans">طوّع الشعر العربي للقصص التاريخي الحماسي</span> في مطولته <span class="kw">ديوان مجد الإسلام (الإلياذة الإسلامية)</span> سنة ١٩٣٣ (أي أبيات تحكي غزوات الرسول ﷺ والبطولات في شكل ملحمة قصصية).</li>
+          <li><strong>الملاءمة بين اتجاهين:</strong> (الأخذ من التراث + الالتفات إلى ثقافة العصر).</li>
+          <li><strong>الناحية البيانية:</strong> لم يقتصروا على المحاكاة بل اهتموا بجلال الصياغة وروعة البيان وحلاوة الموسيقى (كثرة الصور البيانية).</li>
+          <li><strong>التجارب الذاتية والغير:</strong> أفسحوا المجال لمزيد من التجارب الذاتية، وإن غلب على شعرهم <strong>الاهتمام بالغير أكثر من الذات</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trap-box">
+      <span class="trap-title">فخ امتحانات في مسرحيات شوقي:</span>
+      كل مسرحيات شوقي <strong>شعرية</strong> ما عدا مسرحية <span class="kw">أميرة الأندلس</span> فهي <strong>نثرية</strong>! وكلها تاريخية ما عدا <span class="kw">الست هدى</span> فهي مسرحية <strong>اجتماعية كوميدية (ملهاة)</strong>!
+    </div>
+  </div>
+
+  <!-- ٣. مظاهر القديم عند الكلاسيكية -->
+  <div class="section-card" data-cat="c-old">
+    <h2 class="section-title"><span class="section-num">٣</span> مظاهر «القديم» التي لم يتخلَّ عنها الكلاسيكيون (شفرات مضمونة!)</h2>
+
+    <table class="code-table">
+      <thead>
+        <tr>
+          <th style="width: 38%;">العلامة في البيت</th>
+          <th>مظهر التقليد (التمسك بالقديم) الذي تختاره</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>نهاية الشطر الأول = نهاية الشطر الثاني في البيت الأول <span class="kw">(يُنسـي / أُنسـي)</span></td>
+          <td><span class="ans">الالتزام بالتصريع في مطلع القصيدة</span></td>
+        </tr>
+        <tr>
+          <td>كلمات مثل: <span class="kw">الرَّسْم، الأطلال، الدِّمن، الديار، المنازل، العَرَصات</span></td>
+          <td><span class="ans">البكاء على الأطلال ووصف الديار</span> (مثل شوقي: <em>أنادي الرسم لو ملك الجوابا</em>)</td>
+        </tr>
+        <tr>
+          <td>بداية القصيدة بذكر المحبوبة والهوى والغزل والجمال</td>
+          <td><span class="ans">البدء بالغزل التقليدي</span> (مثل حافظ مادحاً البارودي: <em>تعمّدت قتلي في الهوى</em>)</td>
+        </tr>
+        <tr>
+          <td>مخاطبة المثنى: <span class="kw">خليليَّ، صاحبيَّ، اذكُرا، قِفا، اسألا</span></td>
+          <td><span class="ans">التجرد ومناجاة الصاحبين على عادة القدماء</span></td>
+        </tr>
+        <tr>
+          <td>أبيات فيها <span class="kw">مدح، رثاء وعزاء، تهنئة بمنصب أو حفل أو عيد</span></td>
+          <td><span class="ans">طغيان شعر المناسبات والمجاملات</span> (بسبب انشغالهم بقضايا عصرهم المتعددة)</td>
+        </tr>
+        <tr>
+          <td>يجيبلك بيت لشوقي/حافظ وبيت لشاعر قديم على <strong>نفس الوزن ونفس القافية</strong></td>
+          <td><span class="ans">المعارضة الشعرية</span> (محاكاة القدماء ومنافستهم في نفس الوزن والقافية)</td>
+        </tr>
+        <tr>
+          <td>ينتقل فجأة من الغزل إلى المدح أو الفخر، أو وجود كلمات معجمية صعبة</td>
+          <td><span class="ans">تعدد الأغراض في القصيدة الواحدة (غياب الوحدة العضوية) + استعمال الألفاظ التراثية</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٤. المدرسة الرومانتيكية - خليل مطران -->
+  <div class="section-card" data-cat="rom">
+    <h2 class="section-title rom"><span class="section-num rom">٤</span> الاتجاه الوجداني (المدرسة الرومانتيكية - خليل مطران)</h2>
+
+    <div class="timeline">
+      <div class="step-card"><strong>١. البداية:</strong> بدأ مع حركة الإحياء (ردّت للشعر لمسات وجدانية) محاكياً الرومانتيكية الغربية.</div>
+      <div class="step-card"><strong>٢. النمو:</strong> نما على يد رائده <strong>خليل مطران</strong> (الأب الروحي للاتجاه الوجداني).</div>
+      <div class="step-card"><strong>٣. الازدهار:</strong> ازدهر في العقد الثالث من القرن العشرين بمدارس (الديوان وأبولو والمهاجر).</div>
+      <div class="step-card"><strong>٤. التراجع:</strong> تراجع بعد الحرب العالمية الثانية أمام تيار <strong>الواقعية الجديدة</strong>.</div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 14px;">
+      <div class="sub-box rom-box">
+        <h3>علامَ يقوم الاتجاه الوجداني؟ (الـ ٣ ركائز)</h3>
+        <ul class="clean-list">
+          <li><strong>اكتشاف الفرد ذاته</strong> والعمل على النهوض بها.</li>
+          <li><strong>اعتزازه بثقافته الجديدة</strong> ووعيه الاجتماعي.</li>
+          <li><strong>تطلعه إلى المُثُل الإنسانية العليا:</strong> <span class="kw">الحرية، الكرامة، العدل، الحب، الإخاء، التواصل، عشق الجمال، ومجافاة القبح والتخلف</span>.</li>
+        </ul>
+      </div>
+
+      <div class="sub-box rom-box">
+        <h3>الصيغة الشعرية الحديثة عند مطران (مهم جداً!)</h3>
+        <ul class="clean-list">
+          <li>يمتزج فيها <strong>التراث بالعصرية</strong>.</li>
+          <li>تكتسب فيها الألفاظ <strong>دلالات حديثة وقدرة جديدة على الإيحاء</strong>.</li>
+          <li>تقوم الصورة الشعرية على مفهوم فني حديث ينتفع بالنظريات الجديدة في <strong>الأدب والفن والموسيقى واللغة</strong>.</li>
+          <li><strong>تنطلق الصورة الفنية من الوجدان!</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="code-table rom-table">
+      <thead>
+        <tr>
+          <th style="width: 44%;">لو لقيت في بيت الرومانتيكية (الشفرة)</th>
+          <th>تختار في الإجابة فوراً (سمة شعر مطران)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>الشاعر حزين فشايف الشمس/البحر/المساء حزين زيه <span class="kw">(تشخيص الطبيعة ومشاركتها همومه)</span></td>
+          <td><span class="ans-rom">الامتزاج بالطبيعة وبثّها مشاعره (يرى الكون من خلال أحاسيسه الذاتية)</span></td>
+        </tr>
+        <tr>
+          <td>حديث صادق عن <span class="kw">الحب، الشوق، الحنين، الألم النفسي، لوعة الفراق</span></td>
+          <td><span class="ans-rom">صدق التجربة الذاتية وغلبة العاطفة الجياشة (التعبير عن الذات)</span></td>
+        </tr>
+        <tr>
+          <td>دعوة إلى <span class="kw">العدل، السلام، الإخاء، الحرية، الجمال، نبذ الظلم والقبح</span></td>
+          <td><span class="ans-rom">التطلع إلى المُثُل الإنسانية العليا وعشق الجمال</span></td>
+        </tr>
+        <tr>
+          <td>الأبيات كلها بتتكلم عن موضوع واحد ومشاعر واحدة مترابطة</td>
+          <td><span class="ans-rom">تحقق الوحدة الفنية (جمال القصيدة في تركيبها وترتيبها وتناسق معانيها)</span></td>
+        </tr>
+        <tr>
+          <td>وصف دقيق لمشهد أو طائر أو زهرة مع خيال مبتكر وألفاظ فصيحة سهلة</td>
+          <td><span class="ans-rom">تحرّي دقة الوصف واستيفاؤه على قدر + المعنى الصحيح باللفظ الفصيح + ندرة التصوير وغرابة الموضوع</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٥. مآخذ مطران ومقارنة سريعة -->
+  <div class="section-card" data-cat="comp">
+    <h2 class="section-title rom"><span class="section-num rom">٥</span> مآخذ (عيوب) مطران على الكلاسيكيين + تريكة المرحلة الانتقالية</h2>
+
+    <div class="grid-2">
+      <div class="sub-box">
+        <h3 style="color:#b91c1c;">الـ ٣ مآخذ (عيوب) التي أخذها مطران على من سبقوه:</h3>
+        <ul class="clean-list">
+          <li><strong>١) الانصراف عن النفس</strong> وما يشغلها من أحاسيس ومشاعر ذاتية.</li>
+          <li><strong>٢) الاهتمام بالمناسبات والمجاملات</strong> على حساب المعنى والفكر والوجدان.</li>
+          <li><strong>٣) عدم الاهتمام بالوحدة الفنية</strong> في الشعر، حيث كانت القصيدة وحدات مبعثرة لا نسق لها ولا نظام (تعدد الأغراض وتفكك القصيدة).</li>
+        </ul>
+      </div>
+
+      <div class="sub-box rom-box">
+        <h3>ليه بنقول إن مطران «مرحلة انتقالية» بين القديم والجديد؟</h3>
+        <ul class="clean-list">
+          <li>لأنه <strong>حافظ من القديم</strong> على: <span class="kw">وحدة الوزن والقافية</span> + <span class="kw">أصالة اللفظ العربي الفصيح</span> (المعنى الصحيح باللفظ الفصيح) وأحياناً الرثاء.</li>
+          <li>وفي نفس الوقت <strong>جدّد في المضمون</strong>: <span class="kw">العاطفة الجياشة، الخيال الكلي، الامتزاج بالطبيعة، والوحدة العضوية</span>، وقال إن الشاعر <strong>«ليس ناظمه بعبده»</strong> (غير مضطر لضرورات الوزن والقافية على غير قصده).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="empty-msg" id="emptyMsg">مفيش نتيجة مطابقة للكلمة دي.. جرب كلمة تانية أبسط!</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.section-card');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  let activeCat = 'all';
+
+  function stripTashkeel(str) {
+    return str
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .toLowerCase();
+  }
+
+  function filterCards() {
+    const query = stripTashkeel(searchInput.value.trim());
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const catMatch = (activeCat === 'all' || card.dataset.cat === activeCat);
+      const textMatch = !query || stripTashkeel(card.innerText).includes(query);
+
+      if (catMatch && textMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  searchInput.addEventListener('input', filterCards);
+</script>
+
+</body>
+</html>

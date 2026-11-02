@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>زيتونة الوحدة الأولى تفاضل 2027 - الاشتقاق وتطبيقاته</title>
+<style>
+  :root {
+    --bg: #f3f5f9;
+    --card: #ffffff;
+    --primary: #1e3a8a;
+    --primary-light: #e8eefb;
+    --teal: #0f766e;
+    --teal-light: #e6f6f4;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --crimson: #be123c;
+    --crimson-light: #ffe4e6;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #cbd5e1;
+    --shadow: 0 4px 16px rgba(30, 58, 138, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, 'Geeza Pro', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    padding-bottom: 60px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+    color: #fff;
+    padding: 28px 20px 24px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .header h1 { font-size: 1.8rem; margin-bottom: 6px; }
+  .header p { font-size: 0.96rem; opacity: 0.93; max-width: 740px; margin: 0 auto; }
+
+  .controls {
+    max-width: 1040px;
+    margin: -18px auto 22px;
+    padding: 0 14px;
+  }
+
+  .controls-box {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 230px;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  .search-input:focus { border-color: var(--primary); }
+
+  .print-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .tabs { display: flex; gap: 7px; flex-wrap: wrap; }
+
+  .tab-btn {
+    background: #f8fafc;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.16s;
+  }
+
+  .tab-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+  .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .section-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid #dce4ee;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.28rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .sec-num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .box {
+    background: #fafbfe;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .box h3 {
+    font-size: 1.03rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  ul.list { list-style: none; padding-right: 0; }
+  ul.list li {
+    position: relative;
+    padding-right: 16px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  ul.list li::before {
+    content: "◆";
+    position: absolute;
+    right: 0;
+    top: 3px;
+    font-size: 0.7rem;
+    color: var(--teal);
+  }
+
+  .math-box {
+    background: var(--primary-light);
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    font-size: 1.03rem;
+  }
+
+  .m-inline {
+    background: #eef2ff;
+    color: #1e3a8a;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+  }
+
+  table.m-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.95rem;
+  }
+
+  table.m-table th, table.m-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 12px;
+    text-align: right;
+  }
+
+  table.m-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  table.m-table tr:nth-child(even) { background: #f8fafc; }
+
+  .trap {
+    background: #fffbeb;
+    border-right: 4px solid #d97706;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-top: 12px;
+    font-size: 0.94rem;
+  }
+
+  .trap strong.t-head {
+    color: #b45309;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.98rem;
+  }
+
+  .shortcut {
+    background: var(--crimson-light);
+    border-right: 4px solid var(--crimson);
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-top: 12px;
+  }
+
+  .shortcut strong { color: var(--crimson); }
+
+  .hidden { display: none !important; }
+  .empty-msg {
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    border-radius: 14px;
+    color: var(--muted);
+    display: none;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .controls { display: none; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16px; }
+    .section-card { box-shadow: none; break-inside: avoid; margin-bottom: 14px; border: 1px solid #94a3b8; }
+    table.m-table th, .math-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">علمي رياضة • دفعة 2027 • الرياضيات البحتة (التفاضل)</div>
+  <h1>ورقة قوانين وشفرات الوحدة الأولى: الاشتقاق وتطبيقاته</h1>
+  <p>كل قوانين المشتقات والمثلثية • الضمني والبارامتري • المشتقات العليا • المماس والعمودي • الأسية واللوغاريتمية • المعدلات الزمنية المرتبطة + شفرات الحل السريع والآلة الحاسبة</p>
+</div>
+
+<div class="controls">
+  <div class="controls-box">
+    <div class="search-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="ابحث بسرعة (مثلاً: ظا، قا، ضمني، بارامتري، مماس، عمودي، لوغاريتم، سلم، مخروط، كرة...)">
+      <button class="print-btn" onclick="window.print()">طباعة / حفظ PDF</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-cat="all">كل الوحدة</button>
+      <button class="tab-btn" data-cat="basic">١. القواعد الأساسية والمثلثية</button>
+      <button class="tab-btn" data-cat="imp">٢. الضمني والبارامتري</button>
+      <button class="tab-btn" data-cat="high">٣. المشتقات العليا والمماس</button>
+      <button class="tab-btn" data-cat="exp">٤. الأسية واللوغاريتمية</button>
+      <button class="tab-btn" data-cat="rates">٥. المعدلات الزمنية وقوانين الأشكال</button>
+      <button class="tab-btn" data-cat="calc">٦. شفرة الآلة الحاسبة</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="cardsContainer">
+
+  <!-- ١. قواعد الاشتقاق الأساسية والدوال المثلثية -->
+  <div class="section-card" data-cat="basic">
+    <h2 class="section-title"><span class="sec-num">١</span> قواعد الاشتقاق الأساسية + الدوال المثلثية الـ ٦</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>القواعد الـ ٦ الأساسية (أبجديات الاشتقاق)</h3>
+        <ul class="list">
+          <li><strong>الرقم الثابت لوحده</strong> (مثل ٥ ، ط ، هـ²): مشتقته = <strong>صفر</strong>.</li>
+          <li><strong>س مرفوعة لأس (س<sup>ن</sup>):</strong> نزّل الأس واطرح منه ١ ← <span class="m-inline">ن × س<sup>ن−١</sup></span>.</li>
+          <li><strong>قوس مرفوع لأس [د(س)]<sup>ن</sup>:</strong> نزّل الأس واطرح ١ × <strong>مشتقة اللي جوه القوس</strong>!</li>
+          <li><strong>الجذر التربيعي √د(س) (قانون سريع جداً!):</strong><br>
+            <span class="m-inline">مشتقة ما تحت الجذر ÷ (٢ × الجذر نفسه)</span>.</li>
+          <li><strong>حاصل ضرب دالتين (الأولى × التانية):</strong><br>
+            (الأولى × مشتقة التانية) + (التانية × مشتقة الأولى).</li>
+          <li><strong>خارج قسمة دالتين (بسط ÷ مقام):</strong><br>
+            [(المقام × مشتقة البسط) − (البسط × مشتقة المقام)] ÷ <strong>(المقام)<sup>٢</sup></strong>.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>مشتقات الدوال المثلثية الـ ٦ (لا تنسَ الضرب في مشتقة الزاوية!)</h3>
+        <p style="font-size:0.9rem; color:var(--crimson); font-weight:700; margin-bottom:6px;">
+          ★ شفرة الإشارة: أي دالة فيها حرف <strong>(ت)</strong> مشتقتها تبدأ بـ <strong>سالب (−)</strong> فوراً!
+        </p>
+        <table class="m-table" style="margin:0;">
+          <thead>
+            <tr>
+              <th>الدالة ص</th>
+              <th>المشتقة ص' = دص / دس</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>جا (زاوية)</strong></td><td><strong>+ جتا (زاوية)</strong> × مشتقة الزاوية</td></tr>
+            <tr><td><strong>جـتـا (زاوية)</strong></td><td><strong style="color:var(--crimson);">− جا (زاوية)</strong> × مشتقة الزاوية</td></tr>
+            <tr><td><strong>ظا (زاوية)</strong></td><td><strong>+ قا<sup>٢</sup> (زاوية)</strong> × مشتقة الزاوية</td></tr>
+            <tr><td><strong>ظـتـا (زاوية)</strong></td><td><strong style="color:var(--crimson);">− قتا<sup>٢</sup> (زاوية)</strong> × مشتقة الزاوية</td></tr>
+            <tr><td><strong>قا (زاوية)</strong></td><td><strong>+ قا (زاوية) ظا (زاوية)</strong> × مشتقة الزاوية</td></tr>
+            <tr><td><strong>قـتـا (زاوية)</strong></td><td><strong style="color:var(--crimson);">− قتا (زاوية) ظتا (زاوية)</strong> × مشتقة الزاوية</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="trap">
+      <strong class="t-head">فخ الزاوية بالدرجات (س°)! (بيوقع نص الدفعة في الاختيارات!):</strong>
+      في التفاضل لازم الزاوية تكون بالتقدير الدائري! فلو جابلك في السؤال <span class="m-inline">ص = جا (س°)</span> عليها علامة الدرجة، حوّلها الأول لـ <span class="m-inline">جا (ط س ÷ ١٨٠)</span> فتكون المشتقة = <span class="m-inline">(ط ÷ ١٨٠) جتا (س°)</span>! أما <span class="m-inline">ص = جا (٣٠°)</span> فده رقم ثابت مشتقته = <strong>صفر</strong>!
+    </div>
+  </div>
+
+  <!-- ٢. الاشتقاق الضمني والبارامتري -->
+  <div class="section-card" data-cat="imp">
+    <h2 class="section-title"><span class="sec-num">٢</span> الدرس الأول: الاشتقاق الضمني والاشتقاق البارامتري</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>أولاً: الاشتقاق الضمني (س و ص مع بعض في معادلة)</h3>
+        <ul class="list">
+          <li><strong>الطريقة العادية:</strong> اشتق الـ <strong>س</strong> عادي، وأي حاجة فيها <strong>ص</strong> اشتقها عادي واكتب جنبها <strong>ص'</strong> (يعني مثلاً <span class="m-inline">ص<sup>٣</sup></span> مشتقتها <span class="m-inline">٣ ص<sup>٢</sup> ص'</span>، و <span class="m-inline">س ص</span> حاصل ضرب دالتين: <span class="m-inline">س ص' + ص</span>).</li>
+        </ul>
+        <div class="shortcut">
+          <strong>⚡ الشفرة السحرية لأسئلة الاختيارات (تحل المسألة في ٥ ثواني!):</strong><br>
+          دخّل كل الحدود في طرف واحد عشان المعادلة تساوي صفر، ثم:<br>
+          <div class="math-box">دص / دس = − [ مشتقة المعادلة بالنسبة لـ س (واعتبر ص رقم ثابت) ] ÷ [ مشتقة المعادلة بالنسبة لـ ص (واعتبر س رقم ثابت) ]</div>
+          <em>مثال: <span class="m-inline">س<sup>٢</sup> + ٢ س ص + ص<sup>٣</sup> − ٤ = ٠</span> عند (١، ١) ← البسط = <span class="m-inline">٢س + ٢ص = ٤</span>، والمقام = <span class="m-inline">٢س + ٣ص<sup>٢</sup> = ٥</span> ← الناتج فوراً = <strong>− ٤ / ٥</strong>!</em>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>ثانياً: الاشتقاق البارامتري (س دالة في ن ، و ص دالة في ن)</h3>
+        <div class="math-box">دص / دس = (دص / دن) ÷ (دس / دن)</div>
+        <ul class="list">
+          <li>يعني اشتق معادلة <strong>ص</strong> لوحدها، واشتق معادلة <strong>س</strong> لوحدها، واقسم مشتقة الـ ص على مشتقة الـ س!</li>
+          <li><strong>سؤال المنصات الشهير:</strong> «أوجد معدل تغير <strong>(المقدار الأول)</strong> بالنسبة إلى <strong>(المقدار الثاني)</strong>»:
+            <ul>
+              <li>اشتق المقدار الأول لوحده، واشتق المقدار الثاني لوحده، واقسم <strong>(مشتقة الأول ÷ مشتقة الثاني)</strong>!</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٣. المشتقات العليا + معادلتا المماس والعمودي -->
+  <div class="section-card" data-cat="high">
+    <h2 class="section-title"><span class="sec-num">٣</span> الدرس الثاني: المشتقات العليا + معادلة المماس والعمودي</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>١) المشتقات العليا (ص'' = د<sup>٢</sup>ص / دس<sup>٢</sup> ، ص''' ...)</h3>
+        <ul class="list">
+          <li>المشتقة التانية يعني تشتق المشتقة الأولى كمان مرة!</li>
+          <li><strong>أخطر فخ في الامتحان (المشتقة التانية للبارامتري!):</strong><br>
+            إوعى تقسم <span class="m-inline">ص''(ن) ÷ س''(ن)</span>! غلط!<br>
+            <strong>الصح:</strong> بعد ما تجيب <span class="m-inline">(دص / دس)</span> بدلالة ن، اشتقها بالنسبة لـ ن ثم <strong>اقسم الناتج على (دس / دن) كمان مرة!</strong></li>
+          <li><strong>تريكات سريعة:</strong>
+            <ul>
+              <li>إذا كانت <span class="m-inline">ص = س<sup>٥</sup></span> فإن المشتقة الخامسة = <span class="m-inline">٥! = ١٢٠</span>، والمشتقة السادسة = <strong>صفر</strong>!</li>
+              <li>مشتقات <span class="m-inline">جا س</span> و <span class="m-inline">جتا س</span> تعيد نفسها كل <strong>٤ مرات</strong>! (فالمشتقة رقم ٢٠ لـ جا س هي جا س نفسها!).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>٢) المماس والعمودي للمنحنى عند النقطة (س<sub>١</sub> ، ص<sub>١</sub>)</h3>
+        <ul class="list">
+          <li><strong>ميل المماس (م)</strong> = قيمة <span class="m-inline">(دص / دس)</span> عند النقطة = <span class="m-inline">ظا هـ</span> (حيث هـ الزاوية مع الاتجاه الموجب لمحور السينات).</li>
+          <li><strong>ميل العمودي</strong> = <span class="m-inline">− ١ ÷ م</span> (اقلب الكسر واعكس إشارته!).</li>
+          <li><strong>معادلة المماس:</strong> <span class="m-inline">ص − ص<sub>١</sub> = م (س − س<sub>١</sub>)</span>.</li>
+          <li><strong>معادلة العمودي:</strong> <span class="m-inline">ص − ص<sub>١</sub> = (−١/م) (س − س<sub>١</sub>)</span>.</li>
+          <li><strong>شفرات التوازي:</strong>
+            <ul>
+              <li>المماس <strong>يوازي محور السينات (أفقي)</strong> ← نضع <strong>دص/دس = صفر</strong> (البسط = ٠).</li>
+              <li>المماس <strong>يوازي محور الصادات (رأسي)</strong> ← الميل غير معرف (المقام = ٠).</li>
+              <li>المماس يوازي المستقيم <span class="m-inline">أ س + ب ص + ج = ٠</span> ← ميله = <span class="m-inline">− معامل س ÷ معامل ص</span>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٤. الدوال الأسية واللوغاريتمية -->
+  <div class="section-card" data-cat="exp">
+    <h2 class="section-title"><span class="sec-num">٤</span> الدرس الثالث: مشتقات الدوال الأسية واللوغاريتمية (منهج 2027)</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>١) الدالة الأسية (هـ = ٢٫٧١٨ الأساس الطبيعي)</h3>
+        <div class="math-box">ص = هـ<sup>د(س)</sup> &nbsp;←&nbsp; ص' = هـ<sup>د(س)</sup> × مشتقة الأس!</div>
+        <ul class="list">
+          <li>أسهل دالة في التفاضل: <strong>انسخها زي ما هي بالظبط × اشتق الأس جنبها!</strong></li>
+          <li><em>مثال:</em> <span class="m-inline">ص = هـ<sup>٣س + ١</sup></span> ← مشتقتها = <span class="m-inline">٣ هـ<sup>٣س + ١</sup></span>.</li>
+          <li><strong>لو الأساس رقم تاني غير هـ</strong> مثل <span class="m-inline">ص = ٥<sup>د(س)</sup></span>:<br>
+            انسخها زي ما هي × مشتقة الأس × <span class="m-inline">لو<sub>هـ</sub> (٥)</span>.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>٢) الدالة اللوغاريتمية (لو<sub>هـ</sub>)</h3>
+        <div class="math-box">ص = لو<sub>هـ</sub> [ د(س) ] &nbsp;←&nbsp; ص' = (مشتقة اللي قدام اللو) ÷ (اللي قدام اللو نفسه!)</div>
+        <ul class="list">
+          <li><em>مثال:</em> <span class="m-inline">ص = لو<sub>هـ</sub> (س<sup>٢</sup> + ٥)</span> ← مشتقتها = <span class="m-inline">٢س ÷ (س<sup>٢</sup> + ٥)</span>.</li>
+          <li><strong>لو الأساس رقم غير هـ</strong> مثل <span class="m-inline">لو<sub>١٠</sub> د(س)</span>: نفس القانون واقسم المقام كمان على <span class="m-inline">لو<sub>هـ</sub> (١٠)</span>.</li>
+          <li><strong>تريكة ذكية قبل ما تشتق اللوغاريتم:</strong> نزّل الأس ورا اللوغاريتم الأول! يعني <span class="m-inline">لو<sub>هـ</sub> (س<sup>٧</sup>) = ٧ لو<sub>هـ</sub> س</span> فمشتقتها فوراً <span class="m-inline">٧ / س</span>!</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٥. المعدلات الزمنية المرتبطة -->
+  <div class="section-card" data-cat="rates">
+    <h2 class="section-title"><span class="sec-num">٥</span> الدرس الرابع: المعدلات الزمنية المرتبطة + قوانين الأشكال الهندسية</h2>
+
+    <div class="box" style="margin-bottom:12px; background:var(--teal-light); border-color:#99f6e4;">
+      <h3 style="color:var(--teal);">خطة الحل في ٣ خطوات ثابتة لأي مسألة معدلات زمنية:</h3>
+      <p style="font-size:0.95rem;">
+        <strong>١) ترجم الألفاظ لإشارات:</strong> كلمة (يزداد / يتمدد / يبتعد / يُصبّ) = <strong>موجب (+)</strong> • كلمة (ينقص / ينكمش / يقترب / يتسرب / ينصهر) = <strong>سالب (−)</strong> • كلمة (يتوقف لحظياً / يصل لأقصى قيمة) = المعدل <strong>صفر</strong>!<br>
+        <strong>٢) اكتب قانون الشكل الهندسي واشتقه بالنسبة للزمن (ن):</strong> كل متغير تشتقه حط جنبه <span class="m-inline">د(الرمز)/دن</span> (والطول الثابت اللي مبيتغيرش زي <strong>طول السُّلَّم</strong> أو نصف قطر الإناء الأسطواني عوض برقمه من الأول لأنه ثابت مشتقته صفر!).<br>
+        <strong>٣) عوض بالأرقام في اللحظة المطلوبة!</strong>
+      </p>
+    </div>
+
+    <table class="m-table">
+      <thead>
+        <tr>
+          <th>الشكل الهندسي / الفكرة الشهيرة</th>
+          <th>قانون المساحة (م) أو العلاقة</th>
+          <th>قانون المحيط (ح) أو الحجم</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>١. المربع</strong> (ضلعه ل)</td>
+          <td>المساحة <span class="m-inline">م = ل<sup>٢</sup></span> ← <span class="m-inline">دم/دن = ٢ ل (دل/دن)</span></td>
+          <td>المحيط = <span class="m-inline">٤ ل</span> • القطر = <span class="m-inline">ل √٢</span></td>
+        </tr>
+        <tr>
+          <td><strong>٢. المستطيل</strong> (س ، ص)</td>
+          <td>المساحة <span class="m-inline">م = س × ص</span> ← <span class="m-inline">دم/دن = س(دص/دن) + ص(دس/دن)</span></td>
+          <td>المحيط = <span class="m-inline">٢ (س + ص)</span></td>
+        </tr>
+        <tr>
+          <td><strong>٣. الدائرة / الصفيحة الدائرية</strong></td>
+          <td>المساحة <span class="m-inline">م = ط نق<sup>٢</sup></span> ← <span class="m-inline">دم/دن = ٢ ط نق (دنق/دن)</span></td>
+          <td>المحيط = <span class="m-inline">٢ ط نق</span></td>
+        </tr>
+        <tr>
+          <td><strong>٤. المكعب</strong> (طول حرفه ل)</td>
+          <td>المساحة الكلية = <span class="m-inline">٦ ل<sup>٢</sup></span> • الجانبية = <span class="m-inline">٤ ل<sup>٢</sup></span></td>
+          <td>الحجم <span class="m-inline">ح = ل<sup>٣</sup></span> ← <span class="m-inline">دح/دن = ٣ ل<sup>٢</sup> (دل/دن)</span></td>
+        </tr>
+        <tr>
+          <td><strong>٥. الكرة / البالون الكروي</strong></td>
+          <td>المساحة <span class="m-inline">م = ٤ ط نق<sup>٢</sup></span></td>
+          <td>الحجم <span class="m-inline">ح = (٤/٣) ط نق<sup>٣</sup></span> ← <span class="m-inline">دح/دن = ٤ ط نق<sup>٢</sup> (دنق/دن)</span></td>
+        </tr>
+        <tr>
+          <td><strong>٦. الأسطوانة الدائرية القائمة</strong></td>
+          <td>المساحة الجانبية = <span class="m-inline">٢ ط نق ع</span><br><em>(لو سائل في إناء أسطواني: <strong>نق ثابتة</strong> لا تُشتق!)</em></td>
+          <td>الحجم <span class="m-inline">ح = ط نق<sup>٢</sup> ع</span></td>
+        </tr>
+        <tr>
+          <td><strong>٧. المخروط القائم</strong></td>
+          <td>الجانبية = <span class="m-inline">ط نق ل</span> (ل الراسم)</td>
+          <td>الحجم <span class="m-inline">ح = (١/٣) ط نق<sup>٢</sup> ع</span></td>
+        </tr>
+        <tr>
+          <td><strong>٨. مسألة السُّلَّم المنزلق</strong> (أشهر مسألة!)</td>
+          <td colspan="2">فيثاغورس: <span class="m-inline">س<sup>٢</sup> + ص<sup>٢</sup> = (طول السلم)<sup>٢</sup></span> ← بالاشتقاق: <span class="m-inline">٢ س (دس/دن) + ٢ ص (دص/دن) = صفر!</span> (مشتقة طول السلم صفر لأنه ثابت!).</td>
+        </tr>
+        <tr>
+          <td><strong>٩. مسألة الرجل وعمود النور والظل</strong></td>
+          <td colspan="2">تشابه مثلثات: <span class="m-inline">(طول الظل) ÷ (طول الرجل) = (طول الظل + بُعد الرجل عن العمود) ÷ (ارتفاع العمود)</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٦. شفرة الآلة الحاسبة -->
+  <div class="section-card" data-cat="calc">
+    <h2 class="section-title"><span class="sec-num">٦</span> شفرة الآلة الحاسبة الرهيبة في امتحان المنصة (تضمنلك الدرجة!)</h2>
+
+    <div class="box">
+      <h3>إزاي تجيب قيمة أي مشتقة أولى عند رقم (س = أ) بالآلة في ٣ ثواني؟</h3>
+      <ul class="list">
+        <li>على آلة <strong>Casio</strong> دوس <span class="m-inline">SHIFT</span> وبعدين زرار التكامل <span class="m-inline">∫dx</span> هيظهرلك على الشاشة رمز المشتقة <span class="m-inline">d/dx( □ ) | x=□</span>.</li>
+        <li>اكتب الدالة جوه القوس (حرف الـ س هو <span class="m-inline">ALPHA</span> + القوس اليمين <span class="m-inline">)</span> يعني <span class="m-inline">X</span>، والعدد <span class="m-inline">هـ</span> هو <span class="m-inline">ALPHA + ×10<sup>x</sup></span>، و <span class="m-inline">لو<sub>هـ</sub></span> هو زرار <span class="m-inline">ln</span>، والـ <span class="m-inline">قا س</span> تكتبها <span class="m-inline">1/cos(X)</span>، والـ <span class="m-inline">ظتا س</span> تكتبها <span class="m-inline">1/tan(X)</span>!).</li>
+        <li>اكتب الرقم قدام <span class="m-inline">x=</span> ودوس <span class="m-inline">=</span> يطلعلك الناتج النهائي بالملي! (وحتى لو الاختيارات رموز، عوض بنفس الرقم في الـ ٤ اختيارات واللي يطلع نفس رقم الآلة يبقى هو الإجابة الصح ١٠٠٪!).</li>
+      </ul>
+      <div class="trap">
+        <strong class="t-head">⚠️ تحذير حياة أو موت على الآلة الحاسبة:</strong>
+        لو المسألة فيها أي دالة مثلثية (<span class="m-inline">sin , cos , tan</span> يعني جا أو جتا أو ظا)، <strong>لازم تحوّل نظام الآلة لـ Radian الأول</strong> (<span class="m-inline">SHIFT</span> ثم <span class="m-inline">MODE</span> ثم اختار <span class="m-inline">4:Rad</span>)، وبعد ما تخلص المسألة رجّعها درجات بـ <span class="m-inline">SHIFT + MODE + 3:Deg</span>! لو نسيتها ع الـ Deg هتطلع رقم غلط!
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="empty-msg" id="emptyMsg">مفيش نتيجة مطابقة.. جرب كلمة أبسط زي: ظا، ضمني، مماس، لوغاريتم، سلم، كرة، آلة!</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.section-card');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  let activeCat = 'all';
+
+  function normalizeText(str) {
+    return str
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .toLowerCase();
+  }
+
+  function filterCards() {
+    const query = normalizeText(searchInput.value.trim());
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const catMatch = (activeCat === 'all' || card.dataset.cat === activeCat);
+      const textMatch = !query || normalizeText(card.innerText).includes(query);
+
+      if (catMatch && textMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  searchInput.addEventListener('input', filterCards);
+</script>
+
+</body>
+</html>

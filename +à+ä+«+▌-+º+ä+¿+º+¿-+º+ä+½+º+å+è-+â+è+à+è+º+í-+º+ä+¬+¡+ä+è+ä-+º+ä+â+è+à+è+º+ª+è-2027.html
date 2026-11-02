@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ملخص الباب الثاني كيمياء: التحليل الكيميائي 2027 - تالتة ثانوي</title>
+<style>
+  :root {
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --primary: #0f3d5e;
+    --primary-light: #e6f0f7;
+    --teal: #0d7463;
+    --teal-light: #e6f6f3;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --red: #b91c1c;
+    --red-light: #fee2e2;
+    --purple: #6d28d9;
+    --purple-light: #f3e8ff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #cbd5e1;
+    --shadow: 0 4px 16px rgba(15, 61, 94, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, 'Geeza Pro', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    padding-bottom: 60px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0f3d5e 0%, #0d7463 100%);
+    color: #fff;
+    padding: 30px 20px 26px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+
+  .header p {
+    font-size: 0.96rem;
+    opacity: 0.93;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .controls {
+    max-width: 1060px;
+    margin: -18px auto 22px;
+    padding: 0 14px;
+  }
+
+  .controls-box {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 230px;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  .search-input:focus { border-color: var(--primary); }
+
+  .print-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #f8fafc;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.16s;
+  }
+
+  .tab-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+  .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  .container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .section-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid #dce4ee;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .sec-num {
+    background: var(--primary);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* صيغ ومعادلات كيميائية من اليسار لليمين دائماً */
+  .chem {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-weight: 700;
+    background: #eef2f6;
+    color: #0f172a;
+    padding: 0px 6px;
+    border-radius: 5px;
+    font-size: 0.92em;
+  }
+
+  .eq-box {
+    direction: ltr;
+    text-align: left;
+    background: #f8fafc;
+    border: 1px dashed #94a3b8;
+    border-radius: 8px;
+    padding: 7px 12px;
+    margin: 6px 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #0f3d5e;
+    overflow-x: auto;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .box {
+    background: #fafbfc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .box h3 {
+    font-size: 1.03rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  ul.list {
+    list-style: none;
+    padding-right: 0;
+  }
+
+  ul.list li {
+    position: relative;
+    padding-right: 16px;
+    margin-bottom: 7px;
+    font-size: 0.95rem;
+  }
+
+  ul.list li::before {
+    content: "▪";
+    position: absolute;
+    right: 0;
+    color: var(--teal);
+  }
+
+  table.chem-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.93rem;
+  }
+
+  table.chem-table th,
+  table.chem-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 11px;
+    text-align: right;
+    vertical-align: top;
+  }
+
+  table.chem-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  table.chem-table tr:nth-child(even) { background: #f8fafc; }
+
+  /* ألوان الرواسب والأدلة كشارات واضحة */
+  .ppt {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.86rem;
+    border: 1px solid transparent;
+  }
+  .p-white { background: #ffffff; color: #1e293b; border-color: #94a3b8; }
+  .p-ywhite { background: #fefce8; color: #854d0e; border-color: #fde047; }
+  .p-yellow { background: #fef08a; color: #713f12; border-color: #eab308; }
+  .p-black { background: #1e293b; color: #ffffff; }
+  .p-green { background: #dcfce7; color: #166534; border-color: #86efac; }
+  .p-redbrown { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+  .p-violet { background: #f3e8ff; color: #6b21a8; border-color: #d8b4fe; }
+  .p-orange { background: #ffedd5; color: #9a3412; border-color: #fdba74; }
+  .p-blue { background: #dbeafe; color: #1e40af; border-color: #93c5fd; }
+
+  .trap {
+    background: #fffbeb;
+    border-right: 4px solid #d97706;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-top: 12px;
+    font-size: 0.94rem;
+  }
+
+  .trap strong.t-head {
+    color: #b45309;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.97rem;
+  }
+
+  .law-card {
+    background: var(--primary-light);
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .law-math {
+    direction: ltr;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    background: #fff;
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 10px;
+    margin: 8px 0;
+    border: 1px solid #cbd5e1;
+  }
+
+  .graph-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .graph-box {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .graph-box h4 {
+    font-size: 0.92rem;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  .graph-box p {
+    font-size: 0.84rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .hidden { display: none !important; }
+  .empty-msg {
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    border-radius: 14px;
+    color: var(--muted);
+    display: none;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .controls { display: none; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16px; }
+    .section-card { box-shadow: none; break-inside: avoid; margin-bottom: 14px; border: 1px solid #94a3b8; }
+    .ppt, table.chem-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">منهج وزارة التربية والتعليم المصرية • دفعة 2027</div>
+  <h1>الخلاصة الكاملة للباب الثاني: التحليل الكيميائي</h1>
+  <p>مطابق ١٠٠٪ لكتاب المدرسة وورقة المفاهيم: الأنيونات • الكاتيونات • الألوان والذوبانية • المعايرة والأدلة • التطاير والترسيب • تريكات المسائل والرسومات البيانية</p>
+</div>
+
+<div class="controls">
+  <div class="controls-box">
+    <div class="search-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="ابحث بأي كلمة أو صيغة (مثلاً: ثيوكبريتات، حلقة بنية، فوسفات، ألومنيوم، راسب أصفر، ميثيل، تبلر، BaCl2...)">
+      <button class="print-btn" onclick="window.print()">طباعة / حفظ PDF</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-cat="all">الباب كاملاً</button>
+      <button class="tab-btn" data-cat="intro">١. مقدمة وثبات الأحماض</button>
+      <button class="tab-btn" data-cat="hcl">٢. مجموعة HCl (٦ أنيونات)</button>
+      <button class="tab-btn" data-cat="h2so4">٣. مجموعة H₂SO₄ و BaCl₂</button>
+      <button class="tab-btn" data-cat="cations">٤. الكاتيونات المقررة</button>
+      <button class="tab-btn" data-cat="titration">٥. المعايرة والأدلة</button>
+      <button class="tab-btn" data-cat="grav">٦. التطاير والترسيب</button>
+      <button class="tab-btn" data-cat="summary">٧. تجميعة الرواسب والرسومات</button>
+      <button class="tab-btn" data-cat="equations">٨. كل المعادلات الموزونة</button>
+      <button class="tab-btn" data-cat="details">٩. بين السطور وأدوات المعمل</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="cardsContainer">
+
+  <!-- ١. مقدمة وثبات الأحماض -->
+  <div class="section-card" data-cat="intro">
+    <h2 class="section-title"><span class="sec-num">١</span> أهمية التحليل الكيميائي وأنواعه + قاعدة ثبات الأحماض</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>أهمية التحليل الكيميائي (٤ مجالات في كتاب المدرسة)</h3>
+        <ul class="list">
+          <li><strong>في الطب:</strong> تقدير نسب السكر والزلال والبولينا والكوليسترول، وتقدير كمية المكونات الفعالة في الدواء.</li>
+          <li><strong>في الزراعة:</strong> معرفة حموضة وقاعدية التربة ونسب العناصر بها لتحسين الخواص وتحديد السماد المناسب.</li>
+          <li><strong>في الصناعة:</strong> فحص الخامات والمنتجات لتحديد مدى مطابقتها للمواصفات القياسية.</li>
+          <li><strong>في البيئة:</strong> قياس ملوثات المياه والأغذية، ونسب غازات <span class="chem">CO, SO<sub>2</sub>, NO<sub>x</sub></span> في الهواء.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>نوعا التحليل الكيميائي (قاعدة الترتيب)</h3>
+        <ul class="list">
+          <li><strong>١) تحليل وصفي (كيفي / نوعي):</strong> التعرف على مكونات المادة (عناصر ومجموعات وظيفية في العضوية، أو أنيونات وكاتيونات في غير العضوية).</li>
+          <li><strong>٢) تحليل كمي:</strong> تقدير نسبة أو تركيز كل مكون (حجمي بالمعايرة، أو كتلي بالتطاير والترسيب).</li>
+          <li><strong>ملحوظة امتحانات:</strong> لا بد من إجراء <strong>التحليل الوصفي أولاً</strong> للتعرف على مكونات المادة حتى نختار أنسب طرق تحليلها كمياً.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box" style="background: var(--primary-light); border-color: #bae6fd;">
+      <h3>الأساس العلمي للكشف عن الأنيونات (سُلَّم ثبات الأحماض — مهم جداً!)</h3>
+      <p style="font-size:0.95rem; margin-bottom:8px;">
+        <strong>الحمض الأكثر ثباتاً</strong> (الأعلى في درجة الغليان والأقل تطايراً) يطرد الحمض الأقل ثباتاً من أملاحه الصلبة في صورة غاز يسهل الكشف عنه:
+      </p>
+      <div class="grid-3" style="margin-bottom:0;">
+        <div class="box">
+          <h3 style="color:var(--red);">١. أحماض ضعيفة الثبات (متطايرة)</h3>
+          <p style="font-size:0.9rem;">
+            • الكربونيك <span class="chem">H<sub>2</sub>CO<sub>3</sub></span><br>
+            • الكبريتوز <span class="chem">H<sub>2</sub>SO<sub>3</sub></span><br>
+            • الهيدروكبريتيك <span class="chem">H<sub>2</sub>S</span><br>
+            • الثيوكبريتيك <span class="chem">H<sub>2</sub>S<sub>2</sub>O<sub>3</sub></span><br>
+            • النيتروز <span class="chem">HNO<sub>2</sub></span>
+          </p>
+        </div>
+        <div class="box">
+          <h3 style="color:var(--amber);">٢. أحماض متوسطة الثبات</h3>
+          <p style="font-size:0.9rem;">
+            • الهيدروكلوريك <span class="chem">HCl</span><br>
+            • الهيدروبروميك <span class="chem">HBr</span><br>
+            • الهيدرويوديك <span class="chem">HI</span><br>
+            • النيتريك <span class="chem">HNO<sub>3</sub></span><br>
+            <em>(تطرد المجموعة ١ ولا تطرد ٣)</em>
+          </p>
+        </div>
+        <div class="box">
+          <h3 style="color:var(--teal);">٣. أحماض عالية الثبات</h3>
+          <p style="font-size:0.9rem;">
+            • الكبريتيك <span class="chem">H<sub>2</sub>SO<sub>4</sub></span><br>
+            • الفوسفوريك <span class="chem">H<sub>3</sub>PO<sub>4</sub></span><br>
+            <em>(تطرد ١ و ٢، ولا يطردها أي حمض فنرسبها بـ <span class="chem">BaCl<sub>2</sub></span>)</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٢. مجموعة HCl المخفف -->
+  <div class="section-card" data-cat="hcl">
+    <h2 class="section-title"><span class="sec-num">٢</span> المجموعة الأولى للأنيونات: كاشفها حمض <span class="chem">dil. HCl</span> (٦ أنيونات)</h2>
+    <p style="font-size:0.93rem; color:var(--muted); margin-bottom:10px;">
+      • <strong>التجربة الأساسية دائماً:</strong> الملح الصلب + <span class="chem">dil. HCl</span> &nbsp;|&nbsp; <strong>التجربة التأكيدية دائماً:</strong> محلول الملح + الكاشف التأكيدي.
+    </p>
+
+    <table class="chem-table">
+      <thead>
+        <tr>
+          <th style="width:16%;">الأنيون</th>
+          <th style="width:44%;">التجربة الأساسية (الملح الصلب + <span class="chem">dil. HCl</span>)</th>
+          <th style="width:40%;">التجربة التأكيدية (محلول الملح + الكاشف)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>١. الكربونات</strong><br><span class="chem">CO<sub>3</sub><sup>2-</sup></span></td>
+          <td>فوران وتصاعد غاز <span class="chem">CO<sub>2</sub></span> الذي <strong>يُعكّر ماء الجير الرائق</strong> <span class="chem">Ca(OH)<sub>2</sub></span> عند إمراره لفترة قصيرة <span class="chem">(S.T)</span> لتكوّن راسب <span class="chem">CaCO<sub>3</sub></span>، ويزول التعكير لفترة طويلة <span class="chem">(L.T)</span> لتكوّن <span class="chem">Ca(HCO<sub>3</sub>)<sub>2</sub></span> الذائبة.</td>
+          <td>مع محلول <span class="chem">MgSO<sub>4</sub></span> (كبريتات ماغنيسيوم): يتكون <span class="ppt p-white">راسب أبيض على البارد</span> من <span class="chem">MgCO<sub>3</sub></span> يذوب في <span class="chem">dil. HCl</span>.</td>
+        </tr>
+        <tr>
+          <td><strong>٢. البيكربونات</strong><br><span class="chem">HCO<sub>3</sub><sup>-</sup></span></td>
+          <td>نفس النتيجة بالضبط: فوران وتصاعد غاز <span class="chem">CO<sub>2</sub></span> يُعكّر ماء الجير الرائق.<br><em>(لذلك لا يصلح <span class="chem">HCl</span> للتمييز بين الكربونات والبيكربونات!)</em></td>
+          <td>مع محلول <span class="chem">MgSO<sub>4</sub></span>: يتكون <span class="ppt p-white">راسب أبيض بعد التسخين</span> (لأن <span class="chem">Mg(HCO<sub>3</sub>)<sub>2</sub></span> المتكونة ع البارد تذوب في الماء وتنحل بالتسخين إلى <span class="chem">MgCO<sub>3</sub></span>).</td>
+        </tr>
+        <tr>
+          <td><strong>٣. الكبريتيت</strong><br><span class="chem">SO<sub>3</sub><sup>2-</sup></span></td>
+          <td>يتصاعد غاز <span class="chem">SO<sub>2</sub></span> ذو <strong>الرائحة النفاذة</strong>، والذي <span class="ppt p-green">يُخضِّر</span> ورقة مبللة بمحلول ثاني كرومات البوتاسيوم البرتقالية <span class="chem">K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub></span> المحمضة بـ <span class="chem">conc. H<sub>2</sub>SO<sub>4</sub></span> (لتكوّن <span class="chem">Cr<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></span> الأخضر).</td>
+          <td>مع محلول نترات الفضة <span class="chem">AgNO<sub>3</sub></span>: يتكون <span class="ppt p-white">راسب أبيض</span> من كبريتيت الفضة <span class="chem">Ag<sub>2</sub>SO<sub>3</sub></span> <span class="ppt p-black">يسوَدّ بالتسخين</span>.</td>
+        </tr>
+        <tr>
+          <td><strong>٤. الكبريتيد</strong><br><span class="chem">S<sup>2-</sup></span></td>
+          <td>يتصاعد غاز <span class="chem">H<sub>2</sub>S</span> ذو <strong>الرائحة الكريهة</strong>، والذي <span class="ppt p-black">يُسوِّد</span> ورقة مبللة بمحلول أسيتات الرصاص II <span class="chem">(CH<sub>3</sub>COO)<sub>2</sub>Pb</span> لتكوّن راسب أسود من <span class="chem">PbS</span>.</td>
+          <td>مع محلول <span class="chem">AgNO<sub>3</sub></span>: يتكون على البارد <span class="ppt p-black">راسب أسود</span> من كبريتيد الفضة <span class="chem">Ag<sub>2</sub>S</span>.</td>
+        </tr>
+        <tr>
+          <td><strong>٥. الثيوكبريتات</strong><br><span class="chem">S<sub>2</sub>O<sub>3</sub><sup>2-</sup></span></td>
+          <td>يتصاعد غاز <span class="chem">SO<sub>2</sub></span> ذو الرائحة النفاذة + يظهر <span class="ppt p-yellow">معلّق أصفر من الكبريت S</span> في المحلول!<br><div class="eq-box">Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> + 2HCl → 2NaCl + H<sub>2</sub>O + SO<sub>2</sub>↑ + S↓</div></td>
+          <td>مع <strong>محلول اليود البني <span class="chem">I<sub>2</sub></span></strong>: <strong>يزول اللون البني لليود</strong> لتكوّن مركبات عديمة اللون (<span class="chem">NaI</span> + رباعي ثيونات الصوديوم <span class="chem">Na<sub>2</sub>S<sub>4</sub>O<sub>6</sub></span>).</td>
+        </tr>
+        <tr>
+          <td><strong>٦. النيتريت</strong><br><span class="chem">NO<sub>2</sub><sup>-</sup></span></td>
+          <td>يتصاعد غاز أكسيد النيتريك <span class="chem">NO</span> <strong>عديم اللون</strong> داخل الأنبوبة، يتحول <strong>عند فوهة الأنبوبة</strong> إلى <span class="ppt p-redbrown">أبخرة بنية حمراء</span> من <span class="chem">NO<sub>2</sub></span> لاتحاده بأكسجين الهواء.</td>
+          <td>مع محلول برمنجنات البوتاسيوم البنفسجية <span class="chem">KMnO<sub>4</sub></span> المحمضة بـ <span class="chem">conc. H<sub>2</sub>SO<sub>4</sub></span>: <strong>يزول اللون البنفسجي</strong> (يتأكسد النيتريت إلى نترات <span class="chem">NaNO<sub>3</sub></span> ويُختزل <span class="chem">Mn<sup>+7</sup></span> إلى <span class="chem">Mn<sup>2+</sup></span>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="trap">
+      <strong class="t-head">قواعد ذوبانية مهمة جداً في الكربونات والبيكربونات (كتاب المدرسة):</strong>
+      • <strong>جميع أملاح البيكربونات تذوب في الماء</strong> (وكذلك جميع أملاح النترات والنيتريت والصوديوم والبوتاسيوم والأمونيوم تذوب في الماء!).<br>
+      • <strong>جميع أملاح الكربونات لا تذوب في الماء ما عدا ٣ فقط:</strong> كربونات <span class="chem">(Na<sub>2</sub>CO<sub>3</sub> , K<sub>2</sub>CO<sub>3</sub> , (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub>)</span>، ولكن <strong>جميع</strong> الكربونات تذوب في الأحماض!
+    </div>
+  </div>
+
+  <!-- ٣. مجموعة H2SO4 المركز + مجموعة BaCl2 -->
+  <div class="section-card" data-cat="h2so4">
+    <h2 class="section-title"><span class="sec-num">٣</span> المجموعة الثانية (<span class="chem">conc. H<sub>2</sub>SO<sub>4</sub></span> ساخن) + المجموعة الثالثة (محلول <span class="chem">BaCl<sub>2</sub></span>)</h2>
+
+    <h3 style="color:var(--primary); margin-bottom:6px;">أولاً: مجموعة حمض الكبريتيك المركز الساخن (٤ أنيونات — الملح الصلب في الأساسية):</h3>
+    <table class="chem-table">
+      <thead>
+        <tr>
+          <th style="width:15%;">الأنيون</th>
+          <th style="width:45%;">التجربة الأساسية (ملح صلب + <span class="chem">conc. H<sub>2</sub>SO<sub>4</sub></span> ساخن)</th>
+          <th style="width:40%;">التجربة التأكيدية (محلول الملح + الكاشف)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>١. الكلوريد</strong><br><span class="chem">Cl<sup>-</sup></span></td>
+          <td>يتصاعد غاز <span class="chem">HCl</span> عديم اللون، يُكوِّن <span class="ppt p-white">سُحُباً بيضاء كثيفة</span> من <span class="chem">NH<sub>4</sub>Cl</span> مع ساق مبللة بمحلول النشادر <span class="chem">NH<sub>3</sub></span>. <em>(لا يتأكسد بـ <span class="chem">H<sub>2</sub>SO<sub>4</sub></span>)</em>.</td>
+          <td>مع محلول <span class="chem">AgNO<sub>3</sub></span>: <span class="ppt p-white">راسب أبيض</span> من <span class="chem">AgCl</span> يصير بنفسجياً في الضوء، و<strong>يذوب بسرعة في محلول النشادر المركز</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>٢. البروميد</strong><br><span class="chem">Br<sup>-</sup></span></td>
+          <td>يتصاعد غاز <span class="chem">HBr</span> عديم اللون، يتأكسد جزئياً بـ <span class="chem">H<sub>2</sub>SO<sub>4</sub></span> فتنفصل <span class="ppt p-orange">أبخرة برتقالية حمراء</span> من <span class="chem">Br<sub>2</sub></span> <strong>تُصفِّر ورقة مبللة بالنشا</strong> (+ غاز <span class="chem">SO<sub>2</sub></span>).</td>
+          <td>مع محلول <span class="chem">AgNO<sub>3</sub></span>: <span class="ppt p-ywhite">راسب أبيض مصفرّ</span> من <span class="chem">AgBr</span> يصير داكناً في الضوء، و<strong>يذوب ببطء في محلول النشادر المركز</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>٣. اليوديد</strong><br><span class="chem">I<sup>-</sup></span></td>
+          <td>يتصاعد غاز <span class="chem">HI</span> عديم اللون، يتأكسد جزئياً في الحال فتنفصل <span class="ppt p-violet">أبخرة اليود البنفسجية I<sub>2</sub></span> <strong>تُزرِّق ورقة مبللة بالنشا</strong> (+ غاز <span class="chem">SO<sub>2</sub></span>).</td>
+          <td>مع محلول <span class="chem">AgNO<sub>3</sub></span>: <span class="ppt p-yellow">راسب أصفر</span> من <span class="chem">AgI</span> <strong>لا يذوب في محلول النشادر!</strong></td>
+        </tr>
+        <tr>
+          <td><strong>٤. النترات</strong><br><span class="chem">NO<sub>3</sub><sup>-</sup></span></td>
+          <td>تتصاعد <span class="ppt p-redbrown">أبخرة بنية حمراء كثيفة</span> من <span class="chem">NO<sub>2</sub></span> <strong>من داخل الأنبوبة</strong> لتحلل <span class="chem">HNO<sub>3</sub></span> بالحرارة، <strong>وتزداد كثافتها بإضافة خراطة النحاس <span class="chem">Cu</span></strong>.</td>
+          <td><strong>تجربة الحلقة البنية:</strong> محلول نترات + <strong>محلول <span class="chem">FeSO<sub>4</sub></span> حديثة التحضير</strong> + قطرات <span class="chem">conc. H<sub>2</sub>SO<sub>4</sub></span> بحرص على الجدار ← تتكون <strong>حلقة بنية <span class="chem">(FeSO<sub>4</sub>·NO)</span> تزول بالرج أو بالتسخين</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:var(--teal); margin: 16px 0 6px;">ثانياً: مجموعة محلول كلوريد الباريوم <span class="chem">BaCl<sub>2</sub></span> (أنيونان فقط — محلول الملح في الأساسية والتأكيدية!):</h3>
+    <table class="chem-table">
+      <thead>
+        <tr>
+          <th style="width:15%;">الأنيون</th>
+          <th style="width:45%;">التجربة الأساسية (محلول الملح + محلول <span class="chem">BaCl<sub>2</sub></span>)</th>
+          <th style="width:40%;">التجربة التأكيدية (محلول الملح + الكاشف)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>١. الفوسفات</strong><br><span class="chem">PO<sub>4</sub><sup>3-</sup></span></td>
+          <td>يتكون <span class="ppt p-white">راسب أبيض</span> من فوسفات الباريوم <span class="chem">Ba<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></span> <strong>يذوب في حمض <span class="chem">dil. HCl</span></strong>!</td>
+          <td>مع محلول <span class="chem">AgNO<sub>3</sub></span>: يتكون <span class="ppt p-yellow">راسب أصفر</span> من فوسفات الفضة <span class="chem">Ag<sub>3</sub>PO<sub>4</sub></span> <strong>يذوب في محلول النشادر وفي حمض النيتريك <span class="chem">HNO<sub>3</sub></span></strong>!</td>
+        </tr>
+        <tr>
+          <td><strong>٢. الكبريتات</strong><br><span class="chem">SO<sub>4</sub><sup>2-</sup></span></td>
+          <td>يتكون <span class="ppt p-white">راسب أبيض</span> من كبريتات الباريوم <span class="chem">BaSO<sub>4</sub></span> <strong>لا يذوب في حمض <span class="chem">dil. HCl</span></strong>!</td>
+          <td>مع محلول أسيتات الرصاص II <span class="chem">(CH<sub>3</sub>COO)<sub>2</sub>Pb</span>: يتكون <span class="ppt p-white">راسب أبيض</span> من كبريتات الرصاص II <span class="chem">PbSO<sub>4</sub></span>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="trap">
+      <strong class="t-head">مقارنتان لا يخلو منهما امتحان ثانوية عامة:</strong>
+      ١) <strong>كيف تميز بين راسبَي <span class="chem">AgI</span> و <span class="chem">Ag<sub>3</sub>PO<sub>4</sub></span> (كلاهما أصفر!)؟</strong> بإضافة <strong>محلول النشادر</strong>: الفوسفات <span class="chem">Ag<sub>3</sub>PO<sub>4</sub></span> يذوب، بينما اليوديد <span class="chem">AgI</span> لا يذوب!<br>
+      ٢) <strong>كيف تميز بين راسبَي <span class="chem">Ba<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></span> و <span class="chem">BaSO<sub>4</sub></span> (كلاهما أبيض!)؟</strong> بإضافة <strong><span class="chem">dil. HCl</span></strong>: الفوسفات يذوب، بينما الكبريتات لا يذوب!
+    </div>
+  </div>
+
+  <!-- ٤. الكشف عن الكاتيونات -->
+  <div class="section-card" data-cat="cations">
+    <h2 class="section-title"><span class="sec-num">٤</span> الكشف عن الكاتيونات (الشقوق القاعدية) — المقررة في منهجك فقط!</h2>
+    <p style="font-size:0.94rem; margin-bottom:10px;">
+      • <strong>لماذا الكشف عن الكاتيونات أكثر تعقيداً من الأنيونات؟</strong> لكثرة عدد الكاتيونات + التداخل فيما بينها + وجود الكاتيون الواحد في أكثر من حالة تأكسد.
+    </p>
+
+    <table class="chem-table">
+      <thead>
+        <tr>
+          <th style="width:17%;">المجموعة التحليلية</th>
+          <th style="width:16%;">الكاتيونات المقررة</th>
+          <th style="width:22%;">كاشف المجموعة وهيئة الترسيب</th>
+          <th style="width:45%;">المشاهدة والتجارب التأكيدية والذوبانية</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>الأولى</strong></td>
+          <td><span class="chem">Ag<sup>+</sup></span> فضة I<br><span class="chem">Hg<sup>+</sup></span> زئبق I<br><span class="chem">Pb<sup>2+</sup></span> رصاص II</td>
+          <td>حمض <span class="chem">dil. HCl</span><br><em>(تترسب كـ <strong>كلوريدات</strong>)</em></td>
+          <td>رواسب بيضاء شحيحة الذوبان في الماء:<br><span class="chem">AgCl , HgCl , PbCl<sub>2</sub></span><br><em>(ملاحظة: <span class="chem">PbCl<sub>2</sub></span> يذوب في الماء الساخن).</em></td>
+        </tr>
+        <tr>
+          <td><strong>الثانية</strong></td>
+          <td><span class="chem">Cu<sup>2+</sup></span> نحاس II</td>
+          <td>غاز <span class="chem">H<sub>2</sub>S</span> في وسط حامضي <span class="chem">(+ dil. HCl)</span><br><em>(تترسب كـ <strong>كبريتيدات</strong>)</em></td>
+          <td>يتكون <span class="ppt p-black">راسب أسود</span> من كبريتيد النحاس II <span class="chem">(CuS)</span>، <strong>يذوب في حمض النيتريك الساخن <span class="chem">HNO<sub>3</sub></span></strong>.</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>الثالثة</strong><br><em>(تترسب كـ <strong>هيدروكسيدات</strong>)</em></td>
+          <td><strong>الألومنيوم</strong><br><span class="chem">Al<sup>3+</sup></span></td>
+          <td rowspan="3"><strong>الأساسي:</strong><br>محلول هيدروكسيد الأمونيوم <span class="chem">NH<sub>4</sub>OH</span><br><br><strong>التأكيدي:</strong><br>محلول الصودا الكاوية <span class="chem">NaOH</span></td>
+          <td><span class="ppt p-white">راسب أبيض جيلاتيني</span> من <span class="chem">Al(OH)<sub>3</sub></span>:<br>• يذوب في الأحماض المخففة.<br>• <strong>يذوب في وفرة (زيادة) من <span class="chem">NaOH</span></strong> لتكوّن <strong>ميتا ألومينات الصوديوم <span class="chem">NaAlO<sub>2</sub></span></strong> الذائبة!<br>• <strong>لا يذوب في زيادة من <span class="chem">NH<sub>4</sub>OH</span>!</strong></td>
+        </tr>
+        <tr>
+          <td><strong>الحديد II</strong><br><span class="chem">Fe<sup>2+</sup></span></td>
+          <td><span class="ppt p-green">راسب أبيض يتحول إلى أبيض مخضرّ</span> في الهواء من <span class="chem">Fe(OH)<sub>2</sub></span>، يذوب في الأحماض المخففة <em>(ولا يذوب في <span class="chem">NaOH</span>)</em>.</td>
+        </tr>
+        <tr>
+          <td><strong>الحديد III</strong><br><span class="chem">Fe<sup>3+</sup></span></td>
+          <td><span class="ppt p-redbrown">راسب جيلاتيني بني محمرّ</span> من <span class="chem">Fe(OH)<sub>3</sub></span>، يذوب في الأحماض المخففة <em>(ولا يذوب في <span class="chem">NaOH</span>)</em>.</td>
+        </tr>
+        <tr>
+          <td><strong>الخامسة</strong></td>
+          <td><strong>الكالسيوم</strong><br><span class="chem">Ca<sup>2+</sup></span></td>
+          <td>محلول كربونات الأمونيوم <span class="chem">(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub></span><br><em>(تترسب كـ <strong>كربونات</strong>)</em></td>
+          <td>• <strong>الأساسية:</strong> <span class="ppt p-white">راسب أبيض</span> من <span class="chem">CaCO<sub>3</sub></span> يذوب في <span class="chem">dil. HCl</span> ويذوب في الماء المحتوي على <span class="chem">CO<sub>2</sub></span> لتكوّن <span class="chem">Ca(HCO<sub>3</sub>)<sub>2</sub></span>.<br>• <strong>تأكيدية ١ (+ <span class="chem">dil. H<sub>2</sub>SO<sub>4</sub></span>):</strong> <span class="ppt p-white">راسب أبيض</span> من <span class="chem">CaSO<sub>4</sub></span>.<br>• <strong>تأكيدية ٢ (الكشف الجاف بلهب بنزن):</strong> يعطي لوناً <span class="ppt p-redbrown">أحمر طوبياً</span>!</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ٥. التحليل الكمي الحجمي (المعايرة والأدلة) -->
+  <div class="section-card" data-cat="titration">
+    <h2 class="section-title"><span class="sec-num">٥</span> التحليل الكمي الحجمي: المعايرة + الأدلة الكيميائية + قوانين المسائل</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>الأدلة الكيميائية الـ ٤ المقررة وألوانها (حفظ صم!)</h3>
+        <table class="chem-table" style="margin:0;">
+          <thead>
+            <tr>
+              <th>الدليل (الكاشف)</th>
+              <th>حامضي</th>
+              <th>متعادل</th>
+              <th>قاعدي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>الميثيل البرتقالي</strong></td>
+              <td><span class="ppt p-redbrown">أحمر</span></td>
+              <td><span class="ppt p-orange">برتقالي</span></td>
+              <td><span class="ppt p-yellow">أصفر</span></td>
+            </tr>
+            <tr>
+              <td><strong>الفينولفثالين</strong></td>
+              <td><span class="ppt p-white">عديم اللون</span></td>
+              <td><span class="ppt p-white">عديم اللون</span></td>
+              <td><span class="ppt p-redbrown">أحمر وردي</span></td>
+            </tr>
+            <tr>
+              <td><strong>عباد الشمس</strong></td>
+              <td><span class="ppt p-redbrown">أحمر</span></td>
+              <td><span class="ppt p-violet">أرجواني</span></td>
+              <td><span class="ppt p-blue">أزرق</span></td>
+            </tr>
+            <tr>
+              <td><strong>أزرق بروموثيمول</strong></td>
+              <td><span class="ppt p-yellow">أصفر</span></td>
+              <td><span class="ppt p-green">أخضر فاتح</span></td>
+              <td><span class="ppt p-blue">أزرق</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>مفاهيم أساسية في المعايرة</h3>
+        <ul class="list">
+          <li><strong>المحلول القياسي:</strong> محلول معلوم التركيز بدقة يُستخدم لتعيين تركيز محلول آخر مجهول التركيز (معلوم الحجم).</li>
+          <li><strong>أنواع تفاعلات المعايرة الثلاثة:</strong> (١) تفاعلات <strong>تعادل</strong> (أحماض وقواعد) • (٢) تفاعلات <strong>أكسدة واختزال</strong> • (٣) تفاعلات <strong>ترسيب</strong>.</li>
+          <li><strong>نقطة التعادل (نهاية التفاعل):</strong> النقطة التي يتم عندها تمام التفاعل المكافئ بين الحمض والقاعدة ويتغير عندها لون الدليل.</li>
+          <li><strong>فخ الفينولفثالين:</strong> لا يصلح للتمييز بين الوسط الحامضي والمتعادل لأنه <strong>عديم اللون في كليهما</strong>!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="law-card">
+        <strong>قانون المعايرة الأساسي (عند التعادل):</strong><br>
+        <div class="law-math">(M<sub>a</sub> × V<sub>a</sub>) / n<sub>a</sub> = (M<sub>b</sub> × V<sub>b</sub>) / n<sub>b</sub></div>
+        <p style="font-size:0.9rem;">
+          أو لو مديك كتلة مادة صلبة تُعاير بمحلول (وفر وقتك بالقانون ده!):<br>
+          <span class="chem">(كتلة المادة ÷ الكتلة المولية) ÷ n<sub>1</sub> = (M<sub>2</sub> × V<sub>2 باللتر</sub>) ÷ n<sub>2</sub></span>
+        </p>
+      </div>
+
+      <div class="law-card">
+        <strong>قوانين المول والكتلة والتخفيف:</strong><br>
+        <div class="law-math">M<sub>1</sub> × V<sub>1</sub> = M<sub>2</sub> × V<sub>2</sub> &nbsp;(قانون التخفيف)</div>
+        <p style="font-size:0.9rem;">
+          • <strong>كتلة المادة (جم)</strong> = التركيز <span class="chem">(M)</span> × الحجم باللتر <span class="chem">(V<sub>L</sub>)</span> × الكتلة المولية.<br>
+          • <strong>حجم الماء المضاف عند التخفيف</strong> = <span class="chem">V<sub>2</sub> − V<sub>1</sub></span>.
+        </p>
+      </div>
+    </div>
+
+    <div class="trap">
+      <strong class="t-head">أهم فكرتين في مسائل المعايرة في النظام الجديد:</strong>
+      ١) <strong>سؤال «ما نوع المحلول الناتج وما لون الدليل عند خلط حجمين معلومين؟»:</strong> احسب نسبة الحمض <span class="chem">(M<sub>a</sub>V<sub>a</sub> / n<sub>a</sub>)</span> لوحدها ونسبة القاعدة <span class="chem">(M<sub>b</sub>V<sub>b</sub> / n<sub>b</sub>)</span> لوحدها (الحجم باللتر في الاتنين): <strong>الأكبر في القيمة هو المسيطر على نوع المحلول!</strong><br>
+      ٢) <strong>سؤال «مخلوط غير نقي مثل <span class="chem">(NaCl + NaOH)</span> أُضيف إليه <span class="chem">HCl</span>»:</strong> حمض <span class="chem">HCl</span> يتفاعل فقط مع <span class="chem">NaOH</span> ولا يتفاعل مع <span class="chem">NaCl</span>! احسب كتلة <span class="chem">NaOH</span> من المعايرة ثم اقسمها على كتلة المخلوط الكلية × ١٠٠!
+    </div>
+  </div>
+
+  <!-- ٦. التحليل الكمي الكتلي: التطاير والترسيب -->
+  <div class="section-card" data-cat="grav">
+    <h2 class="section-title"><span class="sec-num">٦</span> التحليل الكمي الكتلي (الوزني): التطاير والترسيب</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>أولاً: طريقة التطاير (حساب ماء التبلر <span class="chem">X·nH<sub>2</sub>O</span>)</h3>
+        <ul class="list">
+          <li>نسخّن الملح المتهدرت بشدة <strong>حتى تثبت كتلته</strong> (دليل طرد كل ماء التبلر).</li>
+          <li><strong>كتلة ماء التبلر</strong> = كتلة الملح المتهدرت (قبل التسخين) − كتلة الملح الجاف (بعد ثبات الكتلة).</li>
+          <li><strong>% لماء التبلر</strong> = (كتلة ماء التبلر ÷ كتلة الملح المتهدرت) × ١٠٠.</li>
+          <li><strong>إيجاد عدد مولات ماء التبلر <span class="chem">(n)</span> في ثانية:</strong><br>
+            <strong>عدد مولات الماء</strong> (كتلة ماء التبلر ÷ ١٨) ÷ <strong>عدد مولات الملح الجاف</strong> (كتلة الجاف ÷ كتلته المولية).
+          </li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>ثانياً: طريقة الترسيب</h3>
+        <ul class="list">
+          <li>تحويل المكون المراد تقديره إلى <strong>راسب نقي شحيح الذوبان</strong> ذي تركيب كيميائي معروف وثابت.</li>
+          <li>يُفصل الراسب على <strong>ورق ترشيح عديم الرماد</strong> (يحترق تماماً في البوتقة فلا يترك أي رماد يغير كتلة الراسب!).</li>
+          <li><strong>طريقة الحل الثابتة (المقص الموزون):</strong><br>
+            اكتب المعادلة الموزونة، واعمل علاقة مقص مباشر بين <strong>[المادة المطلوبة بمعاملها]</strong> و<strong>[الراسب بمعامله]</strong>:<br>
+            السطر الأول: الكتلة المولية لكل طرف × معامله.<br>
+            السطر الثاني: الكتلة بالجرام (س للمجهول، وكتلة الراسب المُعطاة).
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٧. تجميعة ألوان الرواسب + الرسومات البيانية -->
+  <div class="section-card" data-cat="summary">
+    <h2 class="section-title"><span class="sec-num">٧</span> الزيتونة النهائية: كل ألوان الرواسب في الباب الثاني + أشهر ٤ رسومات بيانية</h2>
+
+    <table class="chem-table">
+      <thead>
+        <tr>
+          <th style="width:18%;">اللون</th>
+          <th>الرواسب التي لها هذا اللون في الباب الثاني</th>
+          <th style="width:38%;">مفتاح الذوبان والتمييز السريع</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ppt p-white">راسب أبيض</span></td>
+          <td>
+            <span class="chem">CaCO<sub>3</sub> , MgCO<sub>3</sub></span> (ع البارد) , <span class="chem">MgCO<sub>3</sub></span> (بعد التسخين من البيكربونات)<br>
+            <span class="chem">Ag<sub>2</sub>SO<sub>3</sub></span> (يسود بالتسخين) • <span class="chem">AgCl</span> (بنفسجي بالضوء)<br>
+            <span class="chem">Ba<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> , BaSO<sub>4</sub> , PbSO<sub>4</sub> , CaSO<sub>4</sub></span><br>
+            <span class="chem">Al(OH)<sub>3</sub></span> (أبيض جيلاتيني)
+          </td>
+          <td>
+            • <span class="chem">AgCl</span> يذوب بسرعة في النشادر.<br>
+            • <span class="chem">Ba<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></span> يذوب في <span class="chem">HCl</span>، أما <span class="chem">BaSO<sub>4</sub></span> فلا يذوب في <span class="chem">HCl</span>!<br>
+            • <span class="chem">Al(OH)<sub>3</sub></span> يذوب في زيادة من <span class="chem">NaOH</span> ولا يذوب في النشادر.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="ppt p-ywhite">أبيض مصفرّ</span></td>
+          <td>بروميد الفضة <span class="chem">AgBr</span></td>
+          <td>يصير داكناً بالضوء، و<strong>يذوب ببطء</strong> في النشادر المركز.</td>
+        </tr>
+        <tr>
+          <td><span class="ppt p-yellow">أصفر</span></td>
+          <td>يوديد الفضة <span class="chem">AgI</span> • فوسفات الفضة <span class="chem">Ag<sub>3</sub>PO<sub>4</sub></span> • معلّق الكبريت <span class="chem">S</span></td>
+          <td><span class="chem">Ag<sub>3</sub>PO<sub>4</sub></span> <strong>يذوب</strong> في النشادر و<span class="chem">HNO<sub>3</sub></span>، أما <span class="chem">AgI</span> <strong>لا يذوب</strong> في النشادر!</td>
+        </tr>
+        <tr>
+          <td><span class="ppt p-black">أسود</span></td>
+          <td><span class="chem">PbS , Ag<sub>2</sub>S , CuS</span></td>
+          <td><span class="chem">CuS</span> يذوب في حمض النيتريك الساخن <span class="chem">HNO<sub>3</sub></span>.</td>
+        </tr>
+        <tr>
+          <td><span class="ppt p-green">أبيض مخضرّ</span></td>
+          <td>هيدروكسيد الحديد الثنائي <span class="chem">Fe(OH)<sub>2</sub></span></td>
+          <td>يذوب في الأحماض المخففة، ولا يذوب في <span class="chem">NaOH</span>.</td>
+        </tr>
+        <tr>
+          <td><span class="ppt p-redbrown">بني محمرّ جيلاتيني</span></td>
+          <td>هيدروكسيد الحديد الثلاثي <span class="chem">Fe(OH)<sub>3</sub></span></td>
+          <td>يذوب في الأحماض المخففة، ولا يذوب في <span class="chem">NaOH</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:var(--primary); margin:16px 0 8px;">أشهر ٤ رسومات بيانية في امتحانات النظام الجديد (الباب الثاني):</h3>
+    <div class="graph-grid">
+      <div class="graph-box">
+        <h4>١) وفرة <span class="chem">NaOH</span> على <span class="chem">AlCl<sub>3</sub></span></h4>
+        <svg viewBox="0 0 160 100" width="140" height="85">
+          <polyline points="20,10 20,85 150,85" fill="none" stroke="#334155" stroke-width="2"/>
+          <polyline points="20,85 75,20 135,85" fill="none" stroke="#0d7463" stroke-width="3"/>
+        </svg>
+        <p>كتلة الراسب تزيد ثم تذوب بالكامل وتعود <strong>للصفر</strong> لتكوّن <span class="chem">NaAlO<sub>2</sub></span>.</p>
+      </div>
+
+      <div class="graph-box">
+        <h4>٢) وفرة <span class="chem">NaOH</span> على خليط <span class="chem">(Al<sup>3+</sup> + Fe<sup>3+</sup>)</span></h4>
+        <svg viewBox="0 0 160 100" width="140" height="85">
+          <polyline points="20,10 20,85 150,85" fill="none" stroke="#334155" stroke-width="2"/>
+          <polyline points="20,85 70,20 105,52 145,52" fill="none" stroke="#b91c1c" stroke-width="3"/>
+        </svg>
+        <p>تزيد ثم تقل وتثبت <strong>فوق الصفر</strong> (يذوب <span class="chem">Al(OH)<sub>3</sub></span> ويبقى <span class="chem">Fe(OH)<sub>3</sub></span>).</p>
+      </div>
+
+      <div class="graph-box">
+        <h4>٣) وفرة <span class="chem">NH<sub>4</sub>OH</span> على <span class="chem">AlCl<sub>3</sub></span></h4>
+        <svg viewBox="0 0 160 100" width="140" height="85">
+          <polyline points="20,10 20,85 150,85" fill="none" stroke="#334155" stroke-width="2"/>
+          <polyline points="20,85 75,25 145,25" fill="none" stroke="#0f3d5e" stroke-width="3"/>
+        </svg>
+        <p>تزيد ثم <strong>تثبت</strong>؛ لأن <span class="chem">Al(OH)<sub>3</sub></span> لا يذوب في زيادة من النشادر.</p>
+      </div>
+
+      <div class="graph-box">
+        <h4>٤) تسخين ملح متهدرت <span class="chem">BaCl<sub>2</sub>·2H<sub>2</sub>O</span></h4>
+        <svg viewBox="0 0 160 100" width="140" height="85">
+          <polyline points="20,10 20,85 150,85" fill="none" stroke="#334155" stroke-width="2"/>
+          <polyline points="20,22 85,55 145,55" fill="none" stroke="#b45309" stroke-width="3"/>
+        </svg>
+        <p>كتلة العينة تقل بتبخر الماء ثم <strong>تثبت فوق الصفر</strong> (كتلة الملح الجاف).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٨. دفتر المعادلات الموزونة الكاملة للباب الثاني -->
+  <div class="section-card" data-cat="equations">
+    <h2 class="section-title"><span class="sec-num">٨</span> دفتر المعادلات الموزونة الكامل للباب الثاني (كتاب المدرسة بالكامل)</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>١) معادلات مجموعة <span class="chem">dil. HCl</span> والغازات</h3>
+        <p style="font-size:0.88rem; font-weight:700; color:var(--teal);">• الكربونات والبيكربونات + ماء الجير:</p>
+        <div class="eq-box">Na<sub>2</sub>CO<sub>3(s)</sub> + 2HCl<sub>(aq)</sub> → 2NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> + CO<sub>2(g)</sub>↑</div>
+        <div class="eq-box">NaHCO<sub>3(s)</sub> + HCl<sub>(aq)</sub> → NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> + CO<sub>2(g)</sub>↑</div>
+        <div class="eq-box">Ca(OH)<sub>2(aq)</sub> + CO<sub>2(g)</sub> —(S.T)→ CaCO<sub>3(s)</sub>↓ + H<sub>2</sub>O<sub>(l)</sub></div>
+        <div class="eq-box">CaCO<sub>3(s)</sub> + H<sub>2</sub>O<sub>(l)</sub> + CO<sub>2(g)</sub> —(L.T)→ Ca(HCO<sub>3</sub>)<sub>2(aq)</sub></div>
+        <div class="eq-box">Na<sub>2</sub>CO<sub>3(aq)</sub> + MgSO<sub>4(aq)</sub> → Na<sub>2</sub>SO<sub>4(aq)</sub> + MgCO<sub>3(s)</sub>↓ (ع البارد)</div>
+        <div class="eq-box">2NaHCO<sub>3(aq)</sub> + MgSO<sub>4(aq)</sub> → Na<sub>2</sub>SO<sub>4(aq)</sub> + Mg(HCO<sub>3</sub>)<sub>2(aq)</sub></div>
+        <div class="eq-box">Mg(HCO<sub>3</sub>)<sub>2(aq)</sub> —(Δ)→ MgCO<sub>3(s)</sub>↓ + H<sub>2</sub>O<sub>(l)</sub> + CO<sub>2(g)</sub>↑</div>
+
+        <p style="font-size:0.88rem; font-weight:700; color:var(--teal); margin-top:8px;">• الكبريتيت والكبريتيد والثيوكبريتات:</p>
+        <div class="eq-box">Na<sub>2</sub>SO<sub>3(s)</sub> + 2HCl<sub>(aq)</sub> —(Δ)→ 2NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> + SO<sub>2(g)</sub>↑</div>
+        <div class="eq-box">K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> + 3SO<sub>2</sub> + H<sub>2</sub>SO<sub>4(conc)</sub> → K<sub>2</sub>SO<sub>4</sub> + Cr<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + H<sub>2</sub>O</div>
+        <div class="eq-box">Na<sub>2</sub>SO<sub>3(aq)</sub> + 2AgNO<sub>3(aq)</sub> → 2NaNO<sub>3(aq)</sub> + Ag<sub>2</sub>SO<sub>3(s)</sub>↓</div>
+        <div class="eq-box">Na<sub>2</sub>S<sub>(s)</sub> + 2HCl<sub>(aq)</sub> → 2NaCl<sub>(aq)</sub> + H<sub>2</sub>S<sub>(g)</sub>↑</div>
+        <div class="eq-box">(CH<sub>3</sub>COO)<sub>2</sub>Pb<sub>(aq)</sub> + H<sub>2</sub>S<sub>(g)</sub> → 2CH<sub>3</sub>COOH<sub>(aq)</sub> + PbS<sub>(s)</sub>↓</div>
+        <div class="eq-box">Na<sub>2</sub>S<sub>(aq)</sub> + 2AgNO<sub>3(aq)</sub> → 2NaNO<sub>3(aq)</sub> + Ag<sub>2</sub>S<sub>(s)</sub>↓</div>
+        <div class="eq-box">Na<sub>2</sub>S<sub>2</sub>O<sub>3(s)</sub> + 2HCl<sub>(aq)</sub> —(Δ)→ 2NaCl + H<sub>2</sub>O + SO<sub>2</sub>↑ + S<sub>(s)</sub>↓</div>
+        <div class="eq-box">2Na<sub>2</sub>S<sub>2</sub>O<sub>3(aq)</sub> + I<sub>2(aq)</sub> → Na<sub>2</sub>S<sub>4</sub>O<sub>6(aq)</sub> + 2NaI<sub>(aq)</sub></div>
+
+        <p style="font-size:0.88rem; font-weight:700; color:var(--teal); margin-top:8px;">• النيتريت (٣ خطوات أساسية + البرمنجنات):</p>
+        <div class="eq-box">NaNO<sub>2(s)</sub> + HCl<sub>(aq)</sub> → NaCl<sub>(aq)</sub> + HNO<sub>2(aq)</sub></div>
+        <div class="eq-box">3HNO<sub>2(aq)</sub> → HNO<sub>3(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> + 2NO<sub>(g)</sub>↑</div>
+        <div class="eq-box">2NO<sub>(g)</sub> + O<sub>2(g)</sub> → 2NO<sub>2(g)</sub>↑ (عند فوهة الأنبوبة)</div>
+        <div class="eq-box">5NaNO<sub>2</sub> + 2KMnO<sub>4</sub> + 3H<sub>2</sub>SO<sub>4</sub> → 5NaNO<sub>3</sub> + K<sub>2</sub>SO<sub>4</sub> + 2MnSO<sub>4</sub> + 3H<sub>2</sub>O</div>
+      </div>
+
+      <div class="box">
+        <h3>٢) معادلات مجموعة <span class="chem">H<sub>2</sub>SO<sub>4</sub></span> و <span class="chem">BaCl<sub>2</sub></span> والكاتيونات</h3>
+        <p style="font-size:0.88rem; font-weight:700; color:var(--primary);">• الكلوريد والبروميد واليوديد:</p>
+        <div class="eq-box">2NaCl<sub>(s)</sub> + H<sub>2</sub>SO<sub>4(l)</sub> —(Δ)→ Na<sub>2</sub>SO<sub>4(aq)</sub> + 2HCl<sub>(g)</sub>↑</div>
+        <div class="eq-box">HCl<sub>(g)</sub> + NH<sub>3(g)</sub> → NH<sub>4</sub>Cl<sub>(s)</sub> (سحب بيضاء)</div>
+        <div class="eq-box">NaCl<sub>(aq)</sub> + AgNO<sub>3(aq)</sub> → NaNO<sub>3(aq)</sub> + AgCl<sub>(s)</sub>↓</div>
+        <div class="eq-box">2NaBr<sub>(s)</sub> + H<sub>2</sub>SO<sub>4(l)</sub> —(Δ)→ Na<sub>2</sub>SO<sub>4</sub> + 2HBr<sub>(g)</sub>↑</div>
+        <div class="eq-box">2HBr<sub>(g)</sub> + H<sub>2</sub>SO<sub>4(l)</sub> —(Δ)→ 2H<sub>2</sub>O + SO<sub>2</sub>↑ + Br<sub>2(v)</sub>↑</div>
+        <div class="eq-box">2NaI<sub>(s)</sub> + H<sub>2</sub>SO<sub>4(l)</sub> —(Δ)→ Na<sub>2</sub>SO<sub>4</sub> + 2HI<sub>(g)</sub>↑</div>
+        <div class="eq-box">2HI<sub>(g)</sub> + H<sub>2</sub>SO<sub>4(l)</sub> —(Δ)→ 2H<sub>2</sub>O + SO<sub>2</sub>↑ + I<sub>2(v)</sub>↑</div>
+
+        <p style="font-size:0.88rem; font-weight:700; color:var(--primary); margin-top:8px;">• النترات وتجربة الحلقة البنية + الفوسفات والكبريتات:</p>
+        <div class="eq-box">2NaNO<sub>3(s)</sub> + H<sub>2</sub>SO<sub>4(l)</sub> —(Δ)→ Na<sub>2</sub>SO<sub>4</sub> + 2HNO<sub>3(l)</sub></div>
+        <div class="eq-box">4HNO<sub>3(l)</sub> —(Δ)→ 2H<sub>2</sub>O + 4NO<sub>2</sub>↑ + O<sub>2</sub>↑</div>
+        <div class="eq-box">Cu<sub>(s)</sub> + 4HNO<sub>3(l)</sub> —(Δ)→ Cu(NO<sub>3</sub>)<sub>2</sub> + 2H<sub>2</sub>O + 2NO<sub>2</sub>↑</div>
+        <div class="eq-box">2NaNO<sub>3</sub> + 6FeSO<sub>4</sub> + 4H<sub>2</sub>SO<sub>4</sub> → 3Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + Na<sub>2</sub>SO<sub>4</sub> + 4H<sub>2</sub>O + 2NO</div>
+        <div class="eq-box">FeSO<sub>4(aq)</sub> + NO<sub>(g)</sub> → FeSO<sub>4</sub>·NO (مركب الحلقة البنية)</div>
+        <div class="eq-box">2Na<sub>3</sub>PO<sub>4</sub> + 3BaCl<sub>2</sub> → 6NaCl + Ba<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>↓</div>
+        <div class="eq-box">Na<sub>3</sub>PO<sub>4</sub> + 3AgNO<sub>3</sub> → 3NaNO<sub>3</sub> + Ag<sub>3</sub>PO<sub>4</sub>↓</div>
+        <div class="eq-box">Na<sub>2</sub>SO<sub>4</sub> + BaCl<sub>2</sub> → 2NaCl + BaSO<sub>4</sub>↓</div>
+        <div class="eq-box">Na<sub>2</sub>SO<sub>4</sub> + (CH<sub>3</sub>COO)<sub>2</sub>Pb → 2CH<sub>3</sub>COONa + PbSO<sub>4</sub>↓</div>
+
+        <p style="font-size:0.88rem; font-weight:700; color:var(--primary); margin-top:8px;">• أهم معادلات الكاتيونات (النحاس، الألومنيوم، الحديد، الكالسيوم):</p>
+        <div class="eq-box">CuSO<sub>4(aq)</sub> + H<sub>2</sub>S<sub>(g)</sub> —(dil. HCl)→ H<sub>2</sub>SO<sub>4(aq)</sub> + CuS<sub>(s)</sub>↓</div>
+        <div class="eq-box">AlCl<sub>3(aq)</sub> + 3NH<sub>4</sub>OH<sub>(aq)</sub> → 3NH<sub>4</sub>Cl<sub>(aq)</sub> + Al(OH)<sub>3(s)</sub>↓</div>
+        <div class="eq-box">AlCl<sub>3(aq)</sub> + 3NaOH<sub>(aq)</sub> → 3NaCl<sub>(aq)</sub> + Al(OH)<sub>3(s)</sub>↓</div>
+        <div class="eq-box">Al(OH)<sub>3(s)</sub> + NaOH<sub>(aq)</sub> → NaAlO<sub>2(aq)</sub> + 2H<sub>2</sub>O<sub>(l)</sub></div>
+        <div class="eq-box">FeSO<sub>4</sub> + 2NaOH → Na<sub>2</sub>SO<sub>4</sub> + Fe(OH)<sub>2</sub>↓ &nbsp;|&nbsp; FeCl<sub>3</sub> + 3NaOH → 3NaCl + Fe(OH)<sub>3</sub>↓</div>
+        <div class="eq-box">CaCl<sub>2</sub> + (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> → 2NH<sub>4</sub>Cl + CaCO<sub>3</sub>↓ &nbsp;|&nbsp; CaCl<sub>2</sub> + H<sub>2</sub>SO<sub>4</sub> → 2HCl + CaSO<sub>4</sub>↓</div>
+      </div>
+    </div>
+
+    <div class="trap">
+      <strong class="t-head">تريكة الـ ٤ مول الذهبية في مسائل الألومنيوم <span class="chem">Al<sup>3+</sup></span>:</strong>
+      • لترسيب <strong>١ مول</strong> من أيونات <span class="chem">Al<sup>3+</sup></span> نحتاج <strong>٣ مول</strong> من <span class="chem">NaOH</span>.<br>
+      • لإذابة الراسب المتكون نحتاج <strong>١ مول إضافي</strong> من <span class="chem">NaOH</span>.<br>
+      • إذن: لإضافة <span class="chem">NaOH</span> إلى محلول ألومنيوم <strong>حتى يختفي الراسب تماماً</strong> نحتاج <strong>٤ مول من <span class="chem">NaOH</span> لكل ١ مول من <span class="chem">Al<sup>3+</sup></span>!</strong> المعادلة الكلية: <span class="chem">AlCl<sub>3</sub> + 4NaOH → 3NaCl + NaAlO<sub>2</sub> + 2H<sub>2</sub>O</span>.
+    </div>
+  </div>
+
+  <!-- ٩. التفاصيل المستخبية بين السطور في كتاب المدرسة -->
+  <div class="section-card" data-cat="details">
+    <h2 class="section-title"><span class="sec-num">٩</span> تفاصيل مستخبية بين السطور في كتاب المدرسة (عشان ولا حرف يفوتك!)</h2>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>١) الأدوات المعملية في تجربة المعايرة ووظيفة كل أداة</h3>
+        <ul class="list">
+          <li><strong>السحاحة (Burette):</strong> أنبوبة مدرجة من أعلى لأسفل، يُوضع بداخلها دائماً <strong>المحلول القياسي</strong> (معلوم التركيز).</li>
+          <li><strong>الماصة (Pipette):</strong> تُستخدم لنقل <strong>حجم معلوم بدقة</strong> من المحلول المراد تقدير تركيزه إلى الدورق.</li>
+          <li><strong>الدورق المخروطي (Conical Flask):</strong> يُوضع فيه <strong>المحلول مجهول التركيز</strong> (معلوم الحجم) + <strong>قطرتان فقط من الدليل المناسب</strong>.</li>
+          <li><strong>علل: نضيف قطرات قليلة فقط من الدليل؟</strong> لأن الأدلة الكيميائية عبارة عن <strong>أحماض أو قواعد عضوية ضعيفة</strong> يتغير لونها بتغير وسط التفاعل، فإضافة كمية كبيرة منها تستهلك جزءاً من المحلول القياسي وتُحدث خطأ في نقطة التعادل!</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>٢) الكاتيونات التي لها أكثر من راسب في الباب الثاني</h3>
+        <ul class="list">
+          <li><strong>الفضة الأحادي <span class="chem">Ag<sup>+</sup></span> (له ٦ رواسب كاملة!):</strong><br>
+            <span class="chem">AgCl</span> (أبيض) • <span class="chem">AgBr</span> (أبيض مصفر) • <span class="chem">AgI</span> (أصفر لا يذوب بالنشادر) • <span class="chem">Ag<sub>3</sub>PO<sub>4</sub></span> (أصفر يذوب بالنشادر) • <span class="chem">Ag<sub>2</sub>SO<sub>3</sub></span> (أبيض يسود بالتسخين) • <span class="chem">Ag<sub>2</sub>S</span> (أسود).</li>
+          <li><strong>الرصاص الثنائي <span class="chem">Pb<sup>2+</sup></span> (له ٣ رواسب):</strong><br>
+            <span class="chem">PbCl<sub>2</sub></span> (أبيض مع <span class="chem">HCl</span>) • <span class="chem">PbSO<sub>4</sub></span> (أبيض مع الكبريتات) • <span class="chem">PbS</span> (أسود مع <span class="chem">H<sub>2</sub>S</span>).</li>
+          <li><strong>الكالسيوم <span class="chem">Ca<sup>2+</sup></span> (له راسبان أبيضان):</strong><br>
+            <span class="chem">CaCO<sub>3</sub></span> (مع كربونات الأمونيوم أو <span class="chem">CO<sub>2</sub></span>) • <span class="chem">CaSO<sub>4</sub></span> (مع <span class="chem">dil. H<sub>2</sub>SO<sub>4</sub></span>).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="box">
+        <h3>٣) أعداد التأكسد والتغيرات الحادثة في تجارب الباب الثاني</h3>
+        <ul class="list">
+          <li><strong>إخضرار <span class="chem">K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub></span> بغاز <span class="chem">SO<sub>2</sub></span>:</strong> اختزال الكروم من <span class="chem">Cr<sup>+6</sup></span> (برتقالي) إلى <span class="chem">Cr<sup>3+</sup></span> (أخضر)، وتأكسد الكبريت في <span class="chem">SO<sub>2</sub></span> من <span class="chem">+4</span> إلى <span class="chem">+6</span>.</li>
+          <li><strong>زوال لون <span class="chem">KMnO<sub>4</sub></span> مع النيتريت:</strong> اختزال المنجنيز من <span class="chem">Mn<sup>+7</sup></span> (بنفسجي) إلى <span class="chem">Mn<sup>2+</sup></span> (عديم اللون)، وتأكسد النيتروجين من <span class="chem">+3</span> إلى <span class="chem">+5</span>.</li>
+          <li><strong>زوال لون اليود <span class="chem">I<sub>2</sub></span> مع الثيوكبريتات:</strong> اختزال اليود من <span class="chem">0</span> إلى <span class="chem">-1</span> في <span class="chem">NaI</span>، وتأكسد الكبريت من متوسط <span class="chem">+2</span> إلى <span class="chem">+2.5</span> في <span class="chem">Na<sub>2</sub>S<sub>4</sub>O<sub>6</sub></span>.</li>
+          <li><strong>انحلال حمض النيتروز <span class="chem">3HNO<sub>2</sub></span>:</strong> عملية <strong>أكسدة واختزال ذاتي</strong>؛ حيث يتحول <span class="chem">N<sup>+3</sup></span> إلى <span class="chem">N<sup>+5</sup></span> في <span class="chem">HNO<sub>3</sub></span> وإلى <span class="chem">N<sup>+2</sup></span> في <span class="chem">NO</span>!</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h3>٤) تريكات المعايرة والهواء الجوي في أسئلة المستويات العليا</h3>
+        <ul class="list">
+          <li><strong>معايرة الكربونات والبيكربونات:</strong> أملاح <span class="chem">Na<sub>2</sub>CO<sub>3</sub></span> و <span class="chem">NaHCO<sub>3</sub></span> و <span class="chem">K<sub>2</sub>CO<sub>3</sub></span> ذات تأثير <strong>قاعدي</strong>؛ فتُعايَر بالأحماض مباشرة وتُعوض عنها في خانة القاعدة <span class="chem">(M<sub>b</sub>, V<sub>b</sub>, n<sub>b</sub>)</span>!</li>
+          <li><strong>محاليل تتلف بتركها في الهواء الجوي (تتأكسد بالأكسجين):</strong> محلول <span class="chem">FeSO<sub>4</sub></span> (لذلك يُشترط أن تكون حديثة التحضير في الحلقة البنية!)، ومحلول <span class="chem">NaNO<sub>2</sub></span>، ومحلول <span class="chem">Na<sub>2</sub>SO<sub>3</sub></span>.</li>
+          <li><strong>متى تستخدم الماء فقط للتمييز بين ملحين صلبين بدون كواشف؟</strong> إذا كان أحدهما يذوب في الماء والآخر شحيح الذوبان (مثل <span class="chem">Na<sub>2</sub>CO<sub>3</sub></span> يذوب، و <span class="chem">CaCO<sub>3</sub></span> أو <span class="chem">MgCO<sub>3</sub></span> لا يذوب!).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="empty-msg" id="emptyMsg">مفيش نتيجة مطابقة للكلمة دي.. جرب تكتب اسم الشق أو الصيغة (مثلاً: نيتريت، فوسفات، AgCl، تبلر، معايرة).</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.section-card');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  let activeCat = 'all';
+
+  function normalizeText(str) {
+    return str
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .toLowerCase();
+  }
+
+  function filterCards() {
+    const query = normalizeText(searchInput.value.trim());
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const catMatch = (activeCat === 'all' || card.dataset.cat === activeCat);
+      const textMatch = !query || normalizeText(card.innerText).includes(query);
+
+      if (catMatch && textMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      filterCards();
+    });
+  });
+
+  searchInput.addEventListener('input', filterCards);
+</script>
+
+</body>
+</html>
