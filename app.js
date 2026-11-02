@@ -545,6 +545,23 @@
     window.open(rel(url), "_blank");
   };
 
+  window.copyPayNumber = function () {
+    const n = "01556766145";
+    const msg = document.getElementById("pay-copy-msg");
+    const done = function () {
+      if (msg) msg.textContent = "اتنسخ: 01556766145 — حوّل فودافون كاش أو إنستاباي";
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(n).then(done).catch(function () {
+        window.prompt("انسخ الرقم:", n);
+        done();
+      });
+    } else {
+      window.prompt("انسخ الرقم:", n);
+      done();
+    }
+  };
+
   window.startSubscribe = function (stage) {
     payStage = stage === "g3" ? "g3" : "g12";
     document.getElementById("pay-box").style.display = "block";
