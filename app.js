@@ -221,10 +221,12 @@
         st => `
       <button class="gate-card" onclick="pickStage('${st.id}')">
         <strong>${st.label}</strong>
-        <span>طباعة الملخصات باشتراك ${st.price} جنيه / السنة</span>
+        <span>طباعة الشروحات باشتراك ${st.price} جنيه / السنة</span>
       </button>`
       )
       .join("");
+    const gn = document.getElementById("gate-name");
+    if (gn && profile && profile.studentName) gn.value = profile.studentName;
   };
 
   function hideGatePanels() {
@@ -234,22 +236,139 @@
     });
   }
   function profileReady(p) {
-    if (!p || !p.stage || !p.system) return false;
+    if (!p || !p.stage || !p.system || !p.studentName) return false;
     if (p.system === "baccalaureate") return !!p.path;
     if (p.stage === "g1") return true;
     return !!p.track;
   }
+  function readGateName() {
+    const el = document.getElementById("gate-name");
+    const n = ((el && el.value) || (profile && profile.studentName) || "").trim();
+    return n;
+  }
+
   function finishGate() {
-    profile.studentName = profile.studentName || "مهاب محمد";
+    const n = readGateName();
+    if (!n) {
+      alert("اكتب اسمك الثلاثي فوق قبل ما تدخل.");
+      const el = document.getElementById("gate-name");
+      if (el) el.focus();
+      return;
+    }
+    profile.studentName = n;
     if (!profile.track) profile.track = "science";
     saveProfile();
+    logVisit();
     document.getElementById("gate").style.display = "none";
     selectedSubjectId = null;
     bootApp();
   }
 
+  const VISIT_KEY = "qemma_visit_log_v1";
+  const VISIT_TOPIC = "elqemma-mohab-visitors-k7p2";
+  const FOUNDER_PIN = "MOHAB2027";
+  let founderOk = sessionStorage.getItem("qemma_founder") === "1";
+
+  function logVisit() {
+    if (sessionStorage.getItem("qemma_visit_sent") === "1") return;
+    const rec = {
+      name: (profile && profile.studentName) || "بدون اسم",
+      stage: (profile && profile.stage) || "",
+      system: (profile && profile.system) || "",
+      path: (profile && profile.path) || "",
+      track: (profile && profile.track) || "",
+      at: new Date().toLocaleString("ar-EG"),
+      screen: (window.screen && screen.width + "×" + screen.height) || "",
+    };
+    try {
+      const arr = JSON.parse(localStorage.getItem(VISIT_KEY) || "[]");
+      arr.unshift(rec);
+      localStorage.setItem(VISIT_KEY, JSON.stringify(arr.slice(0, 300)));
+    } catch (e) {}
+    sessionStorage.setItem("qemma_visit_sent", "1");
+    const line =
+      rec.name +
+      " | " +
+      rec.stage +
+      " | " +
+      rec.system +
+      " | " +
+      (rec.path || rec.track || "-") +
+      " | " +
+      rec.at;
+    fetch("https://ntfy.sh/" + VISIT_TOPIC, { method: "POST", body: line }).catch(function () {});
+    fetch("https://api.ipify.org?format=json")
+      .then(function (r) {
+        return r.json();
+      })
+      .then(function (d) {
+        rec.ip = d.ip;
+        const arr2 = JSON.parse(localStorage.getItem(VISIT_KEY) || "[]");
+        if (arr2[0] && arr2[0].at === rec.at) arr2[0].ip = d.ip;
+        localStorage.setItem(VISIT_KEY, JSON.stringify(arr2));
+        fetch("https://ntfy.sh/" + VISIT_TOPIC, {
+          method: "POST",
+          body: line + " | IP " + d.ip,
+        }).catch(function () {});
+      })
+      .catch(function () {});
+  }
+
+  window.unlockVisits = function () {
+    const pin = (document.getElementById("founder-pin").value || "").trim();
+    const msg = document.getElementById("visits-lock-msg");
+    if (pin !== FOUNDER_PIN) {
+      if (msg) {
+        msg.style.color = "#f87171";
+        msg.textContent = "الكود غلط.";
+      }
+      return;
+    }
+    founderOk = true;
+    sessionStorage.setItem("qemma_founder", "1");
+    document.getElementById("visits-lock").style.display = "none";
+    document.getElementById("visits-box").style.display = "block";
+    renderVisits();
+  };
+
+  window.renderVisits = function () {
+    const box = document.getElementById("visits-list");
+    if (!box) return;
+    let arr = [];
+    try {
+      arr = JSON.parse(localStorage.getItem(VISIT_KEY) || "[]");
+    } catch (e) {}
+    if (!arr.length) {
+      box.innerHTML =
+        "<p>لسه مفيش زيارات على الجهاز ده. أي حد يدخل من لينك تاني هيظهر عندك في تطبيق ntfy على الموبايل.</p>";
+      return;
+    }
+    box.innerHTML = arr
+      .map(function (v) {
+        return (
+          '<div class="visit-row"><strong>' +
+          escapeHtml(v.name) +
+          "</strong><div style=\"font-size:13px;color:#94a3b8\">" +
+          escapeHtml(v.stage + " • " + v.system + " • " + (v.path || v.track || "")) +
+          (v.ip ? " • " + v.ip : "") +
+          "<br>" +
+          escapeHtml(v.at) +
+          "</div></div>"
+        );
+      })
+      .join("");
+  };
+
   window.pickStage = function (stageId) {
+    const n = readGateName();
+    if (!n) {
+      alert("اكتب اسمك الثلاثي أولاً.");
+      const el = document.getElementById("gate-name");
+      if (el) el.focus();
+      return;
+    }
     profile = profile || {};
+    profile.studentName = n;
     profile.stage = stageId;
     profile.system = null;
     profile.path = null;
@@ -332,6 +451,7 @@
     applyPrintLock();
     fetchState();
     renderHome();
+    logVisit();
   }
 
   function refreshSubChip() {
@@ -383,6 +503,9 @@
   }
 
   window.switchTab = function (tab) {
+    if (tab === "founder" && !founderOk) {
+      /* الزيارات تتفتح بالكود داخل الصفحة — الاستوديو ظاهر، السجل مقفول */
+    }
     ["home", "exams", "leaderboard", "plans", "founder"].forEach(t => {
       const el = document.getElementById("tab-" + t);
       if (el) el.style.display = t === tab ? "block" : "none";
@@ -398,6 +521,7 @@
     }
     if (tab === "leaderboard") renderAttempts();
     if (tab === "home") renderHome();
+    if (tab === "founder" && founderOk) renderVisits();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -425,9 +549,9 @@
             <div class="item-card" style="border-top:3px solid ${sub.color};">
               <div>
                 <div class="card-top"><span class="tag" style="color:${sub.color};background:${sub.color}22;">${sub.units.length} أبواب</span>
-                <span class="card-meta">${ready} ملخص جاهز</span></div>
+                <span class="card-meta">${ready} درس مشروح</span></div>
                 <h3>${escapeHtml(sub.name)}</h3>
-                <p>كل باب فيه ملخص الدرس + امتحان على الملخص + امتحان شامل على الباب.</p>
+                <p>كل درس مشروح بالتفصيل + امتحان على الشرح + امتحان شامل على الباب.</p>
               </div>
               <button class="btn-primary" style="width:100%;" onclick="openSubject('${sub.id}')">افتح المادة</button>
             </div>`;
@@ -450,22 +574,22 @@
             const s = getSummary(lesson.summaryId);
             const ready = lessonReady(lesson);
             const exam = lesson.examId ? getExam(lesson.examId) : null;
-            const label = lesson.title || (s && s.title) || "ملخص";
+            const label = lesson.title || (s && s.title) || "الدرس";
             return `
             <div class="lesson-row">
               <div>
                 <strong>${escapeHtml(label)}</strong>
-                <div class="card-meta">${ready ? "ملخص كامل + " + (exam ? exam.questions.length + " سؤال" : "امتحان") : "قريباً"}</div>
+                <div class="card-meta">${ready ? "شرح كامل + " + (exam ? exam.questions.length + " سؤال" : "امتحان") : "قريباً"}</div>
               </div>
               <div class="card-actions">
                 ${
                   ready
-                    ? `<button class="btn-sm btn-open" onclick="openSummary('${lesson.summaryId}')">من الصفر</button>`
+                    ? `<button class="btn-sm btn-open" onclick="openSummary('${lesson.summaryId}')">شرح الدرس</button>`
                     : `<button class="btn-sm" disabled style="opacity:.45;">قريباً</button>`
                 }
                 ${
                   exam
-                    ? `<button class="btn-sm btn-exam" onclick="startExamById('${exam.id}')">⚡ امتحان الملخص</button>`
+                    ? `<button class="btn-sm btn-exam" onclick="startExamById('${exam.id}')">امتحان الدرس</button>`
                     : `<button class="btn-sm" disabled style="opacity:.45;">امتحان قريباً</button>`
                 }
                 ${

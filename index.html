@@ -13,7 +13,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_EG" />
   <meta name="google-site-verification" content="" />
-  <link rel="stylesheet" href="styles.css?v=20271103c" />
+  <link rel="stylesheet" href="styles.css?v=20271103e" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,12 +33,13 @@
         <div class="brand-logo">ق</div>
         <div>
           <div class="brand-title">منصة القمّة</div>
-          <div class="brand-sub">ملخص لكل درس • امتحان على كل ملخص • شامل على كل باب</div>
+          <div class="brand-sub">شرح كامل لكل درس • امتحان على الشرح • شامل على الباب</div>
         </div>
       </div>
       <p class="qemma-quote">استثمر في نفسك، فالمستقبل ينتمي لمن يتعلم.</p>
       <h1 id="gate-title">اختار مرحلتك الدراسية</h1>
       <p id="gate-sub" class="gate-sub">أولى وتانية وتالتة ثانوي — عام أو بكالوريا</p>
+      <input id="gate-name" class="form-control" placeholder="اكتب اسمك الثلاثي أولاً" style="margin:0 auto 14px;max-width:320px;text-align:center;font-weight:800;" />
       <div id="gate-stages" class="gate-cards"></div>
       <div id="gate-system" class="gate-cards" style="display:none;"></div>
       <div id="gate-paths" class="gate-cards" style="display:none;"></div>
@@ -61,7 +62,7 @@
         </div>
       </div>
       <nav class="nav-tabs">
-        <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">📚 المواد والملخصات</button>
+        <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">📚 المواد والشرح</button>
         <button class="nav-btn" data-tab="exams" onclick="switchTab('exams')">🔥 الامتحانات</button>
         <button class="nav-btn" data-tab="leaderboard" onclick="switchTab('leaderboard')">🏆 سجل الأبطال</button>
         <button class="nav-btn" data-tab="plans" onclick="switchTab('plans')">💳 الاشتراك</button>
@@ -79,9 +80,9 @@
       <div class="hero">
         <div>
           <div class="hero-badge" id="hero-badge">مرحلتك</div>
-          <h1>ملخص لكل درس، امتحان على الملخص، وبعدين <span>شامل على الباب</span></h1>
+          <h1>شرح كامل لكل درس، امتحان على الشرح، وبعدين <span>شامل على الباب</span></h1>
           <p class="qemma-quote">استثمر في نفسك، فالمستقبل ينتمي لمن يتعلم.</p>
-          <p>اختار المادة → الباب → افتح الزيتونة وامتحن عليها. الطباعة وتحميل PDF للمشتركين فقط.</p>
+          <p>كل درس مشروح من أوله لآخره — مش ملخص. افتح الشرح، افهم، امتحن.</p>
           <div class="hero-actions">
             <button class="btn-primary" onclick="switchTab('exams')">الامتحانات الجاهزة ⚡</button>
             <button class="btn-secondary" onclick="switchTab('plans')">اشترك للطباعة 🖨️</button>
@@ -89,7 +90,7 @@
         </div>
         <div class="hero-stats">
           <div class="stat-card"><div class="stat-num" id="stat-subjects">0</div><div class="stat-label">مواد شعبتك</div></div>
-          <div class="stat-card"><div class="stat-num" id="stat-ready">0</div><div class="stat-label">ملخص جاهز</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-ready">0</div><div class="stat-label">درس مشروح</div></div>
           <div class="stat-card"><div class="stat-num" id="stat-exams">0</div><div class="stat-label">امتحان شغّال</div></div>
           <div class="stat-card"><div class="stat-num" id="stat-attempts">0</div><div class="stat-label">محاولة</div></div>
         </div>
@@ -184,11 +185,20 @@
           <button class="btn-primary" style="width:100%;" onclick="addCustomQuestion()">حفظ السؤال</button>
           <div id="cq-msg" style="margin-top:10px;font-weight:700;"></div>
         </div>
-        <div class="item-card">
-          <div class="card-top"><span class="tag" style="background:rgba(251,191,36,0.16);color:#fbbf24;">خطة السنة</span></div>
-          <h3>المنهج بيتقفّل مع مذاكرتك</h3>
-          <p>خريطة كل المراحل والمواد والأبواب موجودة من دلوقتي. أي درس بتذاكره بينزل زيتونة + امتحان على الملخص + شامل على الباب. من غير ما تضيّع وقت البرمجة.</p>
-          <p>بعد يونيو: الموقع مجاني للقراءة، والطباعة باشتراك 500 لتالتة و 1000 لأولى وتانية.</p>
+        <div class="item-card" id="visits-card">
+          <div class="card-top"><span class="tag" style="background:rgba(52,211,153,0.16);color:#34d399;">زيارات المنصة — ليك بس</span></div>
+          <h3>مين فتح اللينك ودخل</h3>
+          <p>القائمة دي للمؤسس فقط. الطالب بيكتب اسمه على البوابة، وبيوصلك إشعار.</p>
+          <div id="visits-lock">
+            <input id="founder-pin" class="form-control" placeholder="كود المؤسس" type="password" />
+            <button class="btn-primary" style="width:100%;margin-top:8px;" onclick="unlockVisits()">فتح سجل الزيارات</button>
+            <div id="visits-lock-msg" style="margin-top:8px;font-weight:800;"></div>
+          </div>
+          <div id="visits-box" style="display:none;">
+            <p style="font-size:13px;color:var(--text-muted);">علشان يوصلك إشعار على الموبايل: نزّل تطبيق <strong>ntfy</strong> واشترك في الموضوع المكتوب في الشرح بعد الرفع.</p>
+            <button class="btn-secondary" style="width:100%;margin-bottom:10px;" onclick="renderVisits()">تحديث القائمة</button>
+            <div id="visits-list"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -197,7 +207,7 @@
   <div id="summary-modal" class="modal-backdrop">
     <div class="modal-box">
       <div class="modal-header">
-        <strong id="modal-title" style="color:#fff;">ملخص من الصفر</strong>
+        <strong id="modal-title" style="color:#fff;">شرح الدرس</strong>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button id="btn-print" class="btn-secondary" style="padding:5px 12px;font-size:13px;" onclick="tryPrint()">🖨️ طباعة</button>
           <a id="modal-newtab" href="#" target="_blank" class="btn-secondary" style="padding:5px 12px;font-size:13px;">فتح كامل ↗</a>
@@ -213,9 +223,9 @@
     منصة القمّة — تأسيس وتطوير: <strong style="color:#fbbf24;">م/ مهاب محمد</strong>
   </footer>
 
-  <script src="exams-data.js?v=20271103c"></script>
-  <script src="curriculum.js?v=20271103c"></script>
-  <script src="content-bank.js?v=20271103c"></script>
-  <script src="app.js?v=20271103c"></script>
+  <script src="exams-data.js?v=20271103e"></script>
+  <script src="curriculum.js?v=20271103e"></script>
+  <script src="content-bank.js?v=20271103e"></script>
+  <script src="app.js?v=20271103e"></script>
 </body>
 </html>
