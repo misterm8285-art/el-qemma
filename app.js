@@ -460,7 +460,7 @@
               <div class="card-actions">
                 ${
                   ready
-                    ? `<button class="btn-sm btn-open" onclick="openSummary('${lesson.summaryId}')">📖 الملخص</button>`
+                    ? `<button class="btn-sm btn-open" onclick="openSummary('${lesson.summaryId}')">من الصفر</button>`
                     : `<button class="btn-sm" disabled style="opacity:.45;">قريباً</button>`
                 }
                 ${
